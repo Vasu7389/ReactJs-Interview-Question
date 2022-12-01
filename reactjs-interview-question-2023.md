@@ -31,7 +31,7 @@ const useDebounce = (value, delay) => {
 //example
 const Counter = () => {
   const [value, setValue] = useState(0);
-  const lastValue = useDebounce(value, 500);
+  const lastValue = useDebounce(value, 1000);
 
   return (
     <div>
