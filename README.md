@@ -7,7 +7,7 @@ description: "Reactjs Interview Question 2023 with PDF download | Interview Ques
 
 <details>
 <summary>
-    <h3>1. Write a custom hook which can be used for debouncing feature.</h3> 
+    <h3>1. Write a custom hook which can be used to debounce user's input.</h3> 
 </summary>
 
 ```jsx
@@ -48,7 +48,7 @@ const Counter = () => {
 
 <details>
 <summary>
-    <h3>2. Write a custom hook which can be used to copy text to clipboard.</h3> 
+    <h3>2. Write a custom hook to copy text to clipboard.</h3> 
 </summary>
 
 ```jsx
@@ -96,6 +96,106 @@ const TextCopy = (props) => {
       <span>{copied && "Copied!"}</span>
     </div>
   );
+};
+```
+
+</details>
+
+<details>
+<summary>
+    <h3>3. How to Use the 'useId' Hook to generate unique ids.</h3> 
+</summary>
+
+- useId does not take any parameters.
+
+- useId returns a unique ID string associated with this particular useId call in this particular component.
+
+```jsx
+//usage
+import { useId } from "react";
+
+const App = () => {
+  const id = useId();
+
+  return (
+    <form>
+      <label htmlFor={`email-${id}`}>Email</label>
+      <input type="text" id={`email-${id}`} name="email" />
+
+      <label htmlFor={`password-${id}`}>Password</label>
+      <input type="password" id={`password-${id}`} name="password" />
+    </form>
+  );
+};
+
+// 🔴 Bad Practise - Don't use for key
+const id = useId();
+
+return posts.map((post) => <article key={id}>...</article>);
+```
+
+</details>
+
+<details>
+<summary>
+    <h3>4. How to validate Props in React?</h3> 
+</summary>
+
+- We can use 'prop-types' package
+
+- Earlier, till React v15.5 this was there as part of React iteslf
+
+```jsx
+import PropTypes from "prop-types";
+
+function MyComponent({ name }) {
+  return <div>Hello, {name}</div>;
+}
+
+MyComponent.propTypes = {
+  name: PropTypes.string,
+};
+
+export default MyComponent;
+```
+
+</details>
+
+<details>
+<summary>
+    <h3>5. Give a practical example of Higher Order Component in react.</h3> 
+</summary>
+
+- Show a loader while a component waits for data
+
+```jsx
+//HOC
+function WithLoading(Component) {
+  return function WihLoadingComponent({ isLoading, ...props }) {
+    if (!isLoading) return <Component {...props} />;
+    return <p>Please wait, fetching your data in no time...</p>;
+  };
+}
+export default WithLoading;
+
+//usage
+import UserListComponent from "./UserListComponent.js"; //importing component
+import WithLoading from "./withLoading.js"; //importing HOC
+const ListWithLoading = WithLoading(UserListComponent); //connect component with HOC
+
+const App = () => {
+  const [loading, setLoading] = useState(true);
+  const [users, setUsers] = useState([]);
+  useEffect(() => {
+    //fetch data
+    const dataFromApi = ["this is coming from API call", "don't show loader"];
+    //at this time loader will be shown in the UI using HOC
+    //data fetched successfully
+    setUsers([...dataFromApi]);
+    setLoading(false);
+  }, []);
+
+  return <ListWithLoading isLoading={loading} users={users} />;
 };
 ```
 
