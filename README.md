@@ -200,3 +200,73 @@ const App = () => {
 ```
 
 </details>
+
+<details>
+<summary>
+    <h3>6. Why React's useDeferredValue hook is useful?</h3> 
+</summary>
+
+- 'useDeferredValue' is a React Hook that lets you defer updating a part of the UI.
+
+- Basically it let you perform the debouncing technique with lesser code.
+
+```jsx
+//usage
+import { useState, useDeferredValue } from "react";
+//userList component takes searchText to fetch user's list
+import UserList from "./UserList.js";
+
+export default function App() {
+  const [searchText, setSearchText] = useState("");
+  //pass searchText as default visible value in useDeferredValue
+  const deferredQuery = useDeferredValue(searchText);
+
+  return (
+    <>
+      <label>
+        Search user:
+        <input
+          value={searchText}
+          onChange={(e) => setSearchText(e.target.value)}
+        />
+      </label>
+      <div>
+        <UserList searchText={deferredQuery} />
+      </div>
+    </>
+  );
+}
+```
+
+</details>
+
+<details>
+<summary>
+    <h3>7. How to detect 'click' outside React component?</h3> 
+</summary>
+
+```jsx
+export default function OutsideAlerter() {
+  const clickMeDivRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (!ref?.current?.contains(event.target)) {
+        alert("You clicked outside of me!");
+      }
+    };
+
+    // Bind the event listener
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      // Unbind the event listener on clean up
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [clickMeDivRef]);
+
+  return <div ref={clickMeDivRef}>Clicked me?</div>;
+}
+```
+
+</details>
