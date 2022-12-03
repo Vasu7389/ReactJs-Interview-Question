@@ -270,3 +270,93 @@ export default function OutsideAlerter() {
 ```
 
 </details>
+
+<details>
+<summary>
+    <h3>8. Why do React component names have to start with capital letters?</h3> 
+</summary>
+
+In JSX, lowercase tag names are considered to be HTML tags. However, lowercase tag names with a dot (property accessor) aren't.
+
+- `<person />` compiles to React.createElement('person') (html tag)
+- `<Person />` compiles to React.createElement(Person)
+- `<obj.person />` compiles to React.createElement(obj.person)
+
+```jsx
+// Wrong! This is a component and should be in uppercase.
+function person(props) {
+  // Correct! This usage of <div> is correct because div is a valid element.
+  return <div>{props.isLearning ? "Great!" : "Call Mom!"}</div>;
+}
+
+function App() {
+  // Wrong! React thinks <person /> is a HTML tag because it's not capitalized.
+  return <person isLearning={true} />;
+}
+
+// Correct! This is a component and should be capitalized
+function Person(props) {
+  // Correct! This usage of <div> is correct because div is a valid element.
+  return <div>{props.isLearning ? "Great!" : "Call Mom!"}</div>;
+}
+
+function App() {
+  // Correct! React knows <Person /> is a component because it's capitalized.
+  return <Person isLearning={true} />;
+}
+```
+
+</details>
+
+<details>
+<summary>
+    <h3>9. What is the difference between npx and npm?</h3> 
+</summary>
+
+- NPM is a package manager and can be used to install node.js packages.
+- NPX is a tool to execute node.js packages.
+
+It doesn't matter whether you installed that package globally or locally. NPX will temporarily install it and run it. NPM also can run packages if you configure a package.json file.
+
+So if you want to check/run a node package quickly without installing it - use NPX.
+
+'create-react-app' is a npm package that is expected to be run only once in a project's lifecycle. Hence, it is preferred to use npx to install and run it in a single step.
+
+```bash
+> npx create-react-app codinn
+```
+
+```bash
+npM - Manager
+```
+
+```bash
+npX - Execute
+```
+
+</details>
+
+<details>
+<summary>
+    <h3>10. How to set focus on an input field after component mounts on UI?</h3> 
+</summary>
+
+```jsx
+import React, { useEffect, useRef } from "react";
+
+const SearchPage = () => {
+  const textInput = useRef(null);
+
+  useEffect(() => {
+    textInput.current.focus();
+  }, []);
+
+  return (
+    <div>
+      <input ref={textInput} type="text" />
+    </div>
+  );
+};
+```
+
+</details>
