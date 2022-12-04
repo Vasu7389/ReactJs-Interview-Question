@@ -3,7 +3,7 @@ title: "Reactjs Interview Question 2023"
 description: "Reactjs Interview Question 2023 with PDF download | Interview Questions for Reactjs and Redux"
 ---
 
-<span style=" font-size: 0.8rem; border-bottom: 1px solid grey;"> Updated Dec 2, 2022 </span>
+<span style=" font-size: 0.8rem; border-bottom: 1px solid grey;"> Updated Dec 4, 2022 </span>
 
 <details>
 <summary>
@@ -357,6 +357,112 @@ const SearchPage = () => {
     </div>
   );
 };
+```
+
+</details>
+
+<details>
+<summary>
+    <h3>11. How to programmatically navigate using latest React Router version?</h3> 
+</summary>
+
+```jsx
+//old - v5
+import { useHistory } from "react-router-dom";
+
+function HomeButton() {
+  let history = useHistory();
+  history.push('/some/path') here
+};
+
+//new - v6+
+import { useNavigate } from "react-router-dom";
+
+function SignupForm() {
+  let navigate = useNavigate();
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+    await submitForm(event.target);
+    navigate("../success", { replace: true });
+  }
+
+  return <form onSubmit={handleSubmit}>{/* ... */}</form>;
+}
+
+//or
+import { redirect } from "react-router-dom";
+
+const loader = async () => {
+  const user = await getUser();
+  if (!user) {
+    return redirect("/login");
+  }
+};
+```
+
+</details>
+
+<details>
+<summary>
+    <h3>12. What is React state batching? Guess the output.</h3> 
+</summary>
+
+Given Snippet
+
+```jsx
+export default function Counter() {
+  const [number, setNumber] = useState(0);
+
+  return (
+    <>
+      <h1>{number}</h1>
+      <button
+        onClick={() => {
+          setNumber(number + 1);
+          setNumber(number + 1);
+          setNumber(number + 1);
+        }}
+      >
+        +3
+      </button>
+    </>
+  );
+}
+```
+
+Output
+
+- on click of '+3' -> prints '1'
+- or update state only once because of state batching concept
+
+Why?
+
+This lets you update multiple state variables without triggering too many re-renders.
+
+But if you want to update anyways? That is - it need to print 3 on click of '+3'.
+
+Pass the callback method to `setNumber`.
+
+```js
+setNumber((n) => n + 1);
+```
+
+```jsx
+return (
+  <>
+    <h1>{number}</h1>
+    <button
+      onClick={() => {
+        setNumber((n) => n + 1);
+        setNumber((n) => n + 1);
+        setNumber((n) => n + 1);
+      }}
+    >
+      +3
+    </button>
+  </>
+);
 ```
 
 </details>
