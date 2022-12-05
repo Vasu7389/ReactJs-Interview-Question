@@ -91,6 +91,11 @@ The syntax looks like
 
 ```jsx
 const [count, setCount] = React.useState(0);
+
+<button onClick={() => setCount(()=>count++)}>
+  Increase Count
+</button>;
+
 ```
 
 The equivalent when using a class component would be.
