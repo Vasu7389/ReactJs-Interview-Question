@@ -92,10 +92,7 @@ The syntax looks like
 ```jsx
 const [count, setCount] = React.useState(0);
 
-<button onClick={() => setCount(()=>count++)}>
-  Increase Count
-</button>;
-
+<button onClick={() => setCount(count + 1)}>Increase Count</button>;
 ```
 
 The equivalent when using a class component would be.
@@ -805,21 +802,20 @@ const Child = () => {
 
 </details>
 
-
 <details>
 <summary>
     <h3>37.  What is the difference between useMemo and useCallback?</h3> 
 </summary>
 
 - useCallback gives you referential equality between renders for functions. And useMemo gives you referential equality between renders for values.
-- useCallback and useMemo both expect a function and an array of dependencies. The difference is that useCallback returns its function when the dependencies change       while useMemo calls its function and returns the result.
+- useCallback and useMemo both expect a function and an array of dependencies. The difference is that useCallback returns its function when the dependencies change while useMemo calls its function and returns the result.
 - useCallback returns its function uncalled so you can call it later, while useMemo calls its function and returns the result
 
 </details>
 
  <details>
 <summary>
-    <h3>38. Reasons Why You Should Prefer Vite Over Create-React-App?</h3> 
+    <h3>38. Reasons why you should prefer vite over create-react-app?</h3> 
 </summary>
 
 - Create React App (CRA) has long been the go-to tool for most developers to scaffold React projects and set up a dev server. It offers a modern build setup with no configuration.
@@ -831,7 +827,3 @@ const Child = () => {
 - A build command that bundles your code with Rollup, pre-configured to output optimized static assets for production.
 
 </details>
-    
-    
-    
-    
