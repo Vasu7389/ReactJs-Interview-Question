@@ -816,3 +816,22 @@ const Child = () => {
 - useCallback returns its function uncalled so you can call it later, while useMemo calls its function and returns the result
 
 </details>
+
+ <details>
+<summary>
+    <h3>38. Reasons Why You Should Prefer Vite Over Create-React-App?</h3> 
+</summary>
+
+- Create React App (CRA) has long been the go-to tool for most developers to scaffold React projects and set up a dev server. It offers a modern build setup with no configuration.
+- But, we see increased development and build time when the project size increases. This slow feedback loop affects developers’ productivity and happiness.
+- To address these issues, there is a new front-end tooling in the ecosystem: Vite!
+- Unlike CRA, Vite does not build your entire application before serving, instead, it builds the application on demand. It also leverages the power of native ES modules, esbuild, and Rollup to improve development and build time.
+- Vite is a next-generation, front-end tool that focuses on speed and performance.
+- Vite is a development server that provides rich feature enhancements over native ES modules: fast Hot Module Replacement (HMR), pre-bundling, support for typescript, jsx, and dynamic import.
+- A build command that bundles your code with Rollup, pre-configured to output optimized static assets for production.
+
+</details>
+    
+    
+    
+    
