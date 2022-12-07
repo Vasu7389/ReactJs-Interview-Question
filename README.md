@@ -327,28 +327,6 @@ const Counter = () => {
 </summary>
 
 ```jsx
-//helper method
-const copyToClipboard = (str) => {
-  const elmnt = document.createElement("textarea");
-  elmnt.value = str;
-  elmnt.setAttribute("readonly", "");
-  elmnt.style.position = "absolute";
-  elmnt.style.left = "-9999px";
-  document.body.appendChild(elmnt);
-  const selected =
-    document.getSelection().rangeCount > 0
-      ? document.getSelection().getRangeAt(0)
-      : false;
-  elmnt.select();
-  const success = document.execCommand("copy");
-  document.body.removeChild(elmnt);
-  if (selected) {
-    document.getSelection().removeAllRanges();
-    document.getSelection().addRange(selected);
-  }
-  return success;
-};
-
 // hook
 function useCopyToClipboard(content) {
   const [isCopied, setIsCopied] = useState(false);
