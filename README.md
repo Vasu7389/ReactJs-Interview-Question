@@ -3,7 +3,7 @@ title: "Reactjs Interview Question 2023"
 description: "Reactjs Interview Question 2023 with PDF download | Interview Questions for Reactjs and Redux"
 ---
 
-<span style=" font-size: 0.8rem; border-bottom: 1px solid grey;"> Updated Dec 4, 2022 </span>
+<span style=" font-size: 0.8rem; border-bottom: 1px solid grey;"> Updated Dec 11, 2022 </span>
 
 React has got more popularity among the top IT companies like Facebook, PayPal, Uber, etc., around the world.
 Here you'll find the most frequently asked ReactJS and React Hooks interview questions that will help you in preparing your interview.
