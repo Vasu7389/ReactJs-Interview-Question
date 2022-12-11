@@ -801,3 +801,15 @@ const Child = () => {
 - A build command that bundles your code with Rollup, pre-configured to output optimized static assets for production.
 
 </details>
+    <details>
+<summary>
+    <h3>39. Reasons Why Should You Use a Router in React.js?</h3>
+</summary>
+
+- The major advantage of react-router is that the page does not have to be refreshed when a link to another page is clicked.
+- It also allows us to use browser history features while preserving the right application view.
+- For better user experience, animations and transitions can be easily implemented when switching between different components.
+- React Router uses dynamic routing to ensure that routing is achieved as it is requested by the user. This also means that all the required components are also rendered without any flashes of white screen or page reload.
+-The main Components of React Router are: BrowserRouter,Routes,Route,Link .
+</details>
+
