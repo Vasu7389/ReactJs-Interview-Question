@@ -804,7 +804,7 @@ const Child = () => {
 
 <details>
 <summary>
-    <h3>39. What are advantages of react-router?</h3>
+    <h3>39. What are the advantages of react-router?</h3>
 </summary>
 
 - The major advantage of `react-router` is that the page does not have to be refreshed when a link to another page is clicked.
