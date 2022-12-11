@@ -789,27 +789,28 @@ const Child = () => {
 
  <details>
 <summary>
-    <h3>38. Reasons why you should prefer vite over create-react-app?</h3>
+    <h3>38. Why you should prefer vite over create-react-app?</h3>
 </summary>
 
 - Create React App (CRA) has long been the go-to tool for most developers to scaffold React projects and set up a dev server. It offers a modern build setup with no configuration.
-- But, we see increased development and build time when the project size increases. This slow feedback loop affects developers’ productivity and happiness.
-- To address these issues, there is a new front-end tooling in the ecosystem: Vite!
+- But, we see increased development and build time when the project size increases. This slow feedback loop affects developer's productivity and happiness.
+- To address these issues, there is a new front-end tooling in the ecosystem: `Vite`.
 - Unlike CRA, Vite does not build your entire application before serving, instead, it builds the application on demand. It also leverages the power of native ES modules, esbuild, and Rollup to improve development and build time.
 - Vite is a next-generation, front-end tool that focuses on speed and performance.
 - Vite is a development server that provides rich feature enhancements over native ES modules: fast Hot Module Replacement (HMR), pre-bundling, support for typescript, jsx, and dynamic import.
 - A build command that bundles your code with Rollup, pre-configured to output optimized static assets for production.
 
 </details>
-    <details>
+
+<details>
 <summary>
-    <h3>39. Reasons Why Should You Use a Router in React.js?</h3>
+    <h3>39. What are advantages of react-router?</h3>
 </summary>
 
-- The major advantage of react-router is that the page does not have to be refreshed when a link to another page is clicked.
-- It also allows us to use browser history features while preserving the right application view.
-- For better user experience, animations and transitions can be easily implemented when switching between different components.
-- React Router uses dynamic routing to ensure that routing is achieved as it is requested by the user. This also means that all the required components are also rendered without any flashes of white screen or page reload.
--The main Components of React Router are: BrowserRouter,Routes,Route,Link .
-</details>
+- The major advantage of `react-router` is that the page does not have to be refreshed when a link to another page is clicked.
+- It also allows us to use browser's `history` feature while preserving the right application view.
+- Better user experience, animations and transitions can be easily implemented when switching between different components.
+- React Router uses `dynamic routing` to ensure that routing is achieved as it is requested by the user. This also means that all the required components are also rendered without any flashes of white screen or page reload.
+- The main components of `react-router` are: `BrowserRouter`, `Routes`, `Route`, `Link`.
 
+</details>
