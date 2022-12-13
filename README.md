@@ -3,9 +3,10 @@ title: "Reactjs Interview Question 2023"
 description: "Reactjs Interview Question 2023 with PDF download | Interview Questions for Reactjs and Redux"
 ---
 
-<span style=" font-size: 0.8rem; border-bottom: 1px solid grey;"> Updated Dec 11, 2022 </span>
+<span style=" font-size: 0.8rem; border-bottom: 1px solid grey;"> Updated Dec 13, 2022 </span>
 
-React has got more popularity among the top IT companies like Facebook, PayPal, Uber, etc., around the world.
+ReactJS is a popular JavaScript library for building user interfaces. It is maintained by Facebook, and is widely used for building web applications, mobile apps, and other user interfaces. React allows developers to create reusable components, which can help make large applications easier to manage and maintain. It is designed to be efficient, declarative, and flexible, and can be used to create complex, dynamic user interfaces.
+
 Here you'll find the most frequently asked ReactJS and React Hooks interview questions that will help you in preparing your interview.
 
 <details>
@@ -812,5 +813,79 @@ const Child = () => {
 - Better user experience, animations and transitions can be easily implemented when switching between different components.
 - React Router uses `dynamic routing` to ensure that routing is achieved as it is requested by the user. This also means that all the required components are also rendered without any flashes of white screen or page reload.
 - The main components of `react-router` are: `BrowserRouter`, `Routes`, `Route`, `Link`.
+
+</details>
+
+<details>
+<summary>
+    <h3>40. How can you optimize performance in a ReactJS application?</h3>
+</summary>
+
+- One way is to use the shouldComponentUpdate lifecycle method to prevent unnecessary re-renders of a component.
+- Another way is to use the PureComponent class, which implements shouldComponentUpdate with a shallow comparison of props and state.
+- Additionally, using the React.memo higher-order component can optimize the performance of functional components.
+
+</details>
+
+<details>
+<summary>
+    <h3>41. Write code for CRUD functionality in ReactJs?</h3>
+</summary>
+
+To implement CRUD (create, read, update, delete) functionality in a React application using hooks, you can use the useState hook to manage the state of your application and the useEffect hook to handle side effects, such as making API calls to a server to create, read, update, or delete data.
+
+Here is an example of how you might implement CRUD functionality in a React component using hooks:
+
+```jsx
+import React, { useState, useEffect } from "react";
+
+function App() {
+  // useState hook to manage the state of our items
+  const [items, setItems] = useState([]);
+
+  // useEffect hook to fetch the items from an API
+  useEffect(() => {
+    fetch("https://my-api.com/items")
+      .then((response) => response.json())
+      .then((data) => setItems(data));
+  }, []);
+
+  // helper function to add a new item
+  const addItem = (name) => {
+    const newItem = { name };
+    setItems([...items, newItem]);
+  };
+
+  // helper function to update an item
+  const updateItem = (index, name) => {
+    const updatedItems = [...items];
+    updatedItems[index] = { name };
+    setItems(updatedItems);
+  };
+
+  // helper function to delete an item
+  const deleteItem = (index) => {
+    const updatedItems = [...items];
+    updatedItems.splice(index, 1);
+    setItems(updatedItems);
+  };
+
+  // render the items in a list
+  return (
+    <ul>
+      {items.map((item, index) => (
+        <li key={index}>
+          {item.name}
+          <button onClick={() => updateItem(index, "updated name")}>
+            Update
+          </button>
+          <button onClick={() => deleteItem(index)}>Delete</button>
+        </li>
+      ))}
+      <button onClick={() => addItem("new item")}>Add item</button>
+    </ul>
+  );
+}
+```
 
 </details>
