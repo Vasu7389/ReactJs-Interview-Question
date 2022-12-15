@@ -1,6 +1,6 @@
 ---
 title: "Reactjs Interview Question 2023"
-description: "Reactjs Interview Question 2023 with PDF download | Interview Questions for Reactjs and Redux"
+description: "50+ Reactjs Interview Question 2023 with PDF download | Interview Questions for Reactjs and Redux"
 ---
 
 <span style=" font-size: 0.8rem; border-bottom: 1px solid grey;"> Updated Dec 15, 2022 </span>
@@ -908,7 +908,6 @@ Some common hooks that are used in React include useState, useEffect, and useCon
 
 </details>
 
-
 <details>
 <summary>
  <h3>44. Can you use hooks inside a class-based component? </h3>
@@ -927,12 +926,140 @@ You can test a component that uses hooks by using the act utility from the react
 
 </details>
 
-
 <details>
 <summary>
     <h3>46. What is the useEffect hook used for? </h3>
 </summary>
 
 The useEffect hook is used for performing side effects in functional components. This can include things like data fetching, setting up subscriptions, or manually changing the DOM. The useEffect hook is called after the component renders, and can be used to ensure that your component stays up-to-date with any relevant data or dependencies.
+
+</details>
+
+<details>
+<summary>
+    <h3>47. Create a simple custom hook in React? </h3>
+</summary>
+
+To create a custom hook in React, you can use the useState hook to add local state to a functional component. Here's an example:
+
+```jsx
+import { useState } from "react";
+
+function useCounter() {
+  const [count, setCount] = useState(0);
+
+  function increment() {
+    setCount(count + 1);
+  }
+
+  return { count, increment };
+}
+```
+
+This hook adds a count state and an increment function to a component. To use this hook in a component, you can call it at the top of the component function, like this:
+
+```jsx
+function MyComponent() {
+  const { count, increment } = useCounter();
+
+  return (
+    <div>
+      <p>The count is {count}.</p>
+      <button onClick={increment}>Increment</button>
+    </div>
+  );
+}
+```
+
+Now, whenever the increment button is clicked, the count state will be updated and the component will re-render with the new value.
+
+</details>
+
+<details>
+<summary>
+    <h3>48. What is the difference between useEffect and useLayoutEffect? </h3>
+</summary>
+
+Here is an example of how you might use useEffect and useLayoutEffect in a React component:
+
+```jsx
+import React, { useState, useEffect, useLayoutEffect } from "react";
+
+function MyComponent() {
+  const [count, setCount] = useState(0);
+
+  // useEffect runs after the render cycle has completed
+  useEffect(() => {
+    // This code will run every time the component renders,
+    // after the render is complete.
+    console.log("useEffect running");
+  });
+
+  // useLayoutEffect runs synchronously immediately after the render cycle
+  useLayoutEffect(() => {
+    // This code will run every time the component renders,
+    // before the browser has a chance to paint the update to the screen.
+    // Be careful! This can cause visual inconsistencies.
+    console.log("useLayoutEffect running");
+  });
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+    </div>
+  );
+}
+```
+
+In this example, when the Increment button is clicked, the useEffect hook will run after the component has been updated and re-rendered, whereas the useLayoutEffect hook will run before the update is painted to the screen. This means that if you were to use useLayoutEffect to update the UI, the user might see the UI update before the update is complete, which can cause visual inconsistencies. useEffect, on the other hand, runs after the update is complete and is therefore safer to use for updating the UI.
+
+</details>
+
+<details>
+<summary>
+    <h3>49. Why virtual DOM is faster to update than real DOM? </h3>
+</summary>
+
+- The virtual DOM is faster to update than the real DOM because React uses a clever technique to minimize the number of updates that need to be made to the real DOM.
+
+- When you update the virtual DOM, React will compare the new virtual DOM with the old one, determine which parts have changed, and then update the real DOM accordingly. This means that only the parts of the DOM that actually need to be changed are updated, which is much faster than updating the entire DOM every time there is a change.
+
+- Furthermore, the virtual DOM is implemented in JavaScript, which is generally faster to execute than the native code that is used to manipulate the real DOM.
+
+- This means that React can perform updates to the virtual DOM quickly, and then use the resulting diff to make efficient updates to the real DOM.
+
+Overall, the use of the virtual DOM allows React to make efficient updates to the UI, which results in a faster and more responsive user experience.
+
+</details>
+
+<details>
+<summary>
+    <h3>50. Can you explain the difference between a pure and impure function, and why it matters in the context of React? </h3>
+</summary>
+
+In React, a pure function is a function that returns the same output for the same set of inputs, regardless of when it is called. An impure function, on the other hand, is a function that may produce different outputs for the same set of inputs, depending on when it is called or other factors.
+
+Here is an example of a pure function in React:
+
+```jsx
+function addNumbers(a, b) {
+  return a + b;
+}
+```
+
+This function takes in two numbers, a and b, and returns their sum. This function will always return the same result for the same input, regardless of when it is called or what state the component is in.
+
+Here is an example of an impure function in React:
+
+```jsx
+function getRandomNumber() {
+  return Math.random();
+}
+```
+
+This function returns a random number every time it is called. Because the output of this function depends on factors outside of its control (in this case, the current time and a random seed), it is considered an impure function.
+
+In general, pure functions are preferred in React because they are easier to reason about and test. Impure functions, on the other hand, can introduce unpredictable behavior and make your code more difficult to understand.
 
 </details>
