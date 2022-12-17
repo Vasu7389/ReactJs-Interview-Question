@@ -1065,3 +1065,99 @@ This function returns a random number every time it is called. Because the outpu
 In general, pure functions are preferred in React because they are easier to reason about and test. Impure functions, on the other hand, can introduce unpredictable behavior and make your code more difficult to understand.
 
 </details>
+
+<details>
+<summary>
+    <h3>51. Explain Styled Component in React with example? </h3>
+</summary>
+
+Styled Components is a library for React and React Native that allows you to write actual CSS code to style your components. It allows you to write your styles in a declarative way alongside your components, rather than having to maintain separate style sheets.
+
+Here is an example of using Styled Components in a React component:
+
+```jsx
+import styled from "styled-components";
+
+const Button = styled.button`
+  background: palevioletred;
+  border-radius: 3px;
+  border: none;
+  color: white;
+`;
+
+function MyComponent() {
+  return <Button>Click me!</Button>;
+}
+```
+
+In this example, the Button component is styled with a pale violet red background and white text. The styles are written within a template literal and are applied to the button element. When the Button component is rendered, it will have these styles applied to it.
+
+Styled Components allows you to easily customize your styles based on props passed to the component. For example:
+
+```jsx
+const Button = styled.button`
+  background: ${(props) => (props.primary ? "palevioletred" : "white")};
+  border-radius: 3px;
+  border: none;
+  color: ${(props) => (props.primary ? "white" : "palevioletred")};
+`;
+
+function MyComponent() {
+  return (
+    <div>
+      <Button>Click me!</Button>
+      <Button primary>Click me!</Button>
+    </div>
+  );
+}
+```
+
+In this example, the Button component has a customizable background and text color based on the primary prop. The first Button will have a white background and pale violet red text, while the second Button will have a pale violet red background and white text.
+
+</details>
+
+<details>
+<summary>
+    <h3>52. Styled-Components vs Inline Styling in React? </h3>
+</summary>
+
+It really depends on your specific needs and preferences. Both inline styling and Styled Components have their own advantages and disadvantages, and the best choice for you will depend on the requirements of your project.
+
+Inline styling refers to the practice of applying styles directly to elements using the style attribute. In React, this can be done using the style prop on elements. For example:
+
+```jsx
+function MyComponent() {
+  return <div style={{ color: "red", fontSize: "20px" }}>Hello, World!</div>;
+}
+```
+
+One advantage of inline styling is that it can be very simple to use and understand. There's no need to import additional libraries or set up complex configurations. Inline styling also allows you to easily apply styles based on props or state, which can be very useful in certain situations.
+
+However, inline styling can also have some drawbacks. It can make your code more cluttered and harder to read, especially for complex styles. It can also be more difficult to reuse styles across different components, as you would need to copy and paste the style objects between components.
+
+Styled Components is a library that allows you to define styles using actual CSS syntax and apply them to React components. It allows you to write your styles in a declarative way alongside your components, rather than having to maintain separate style sheets. Here's an example of using Styled Components in a React component:
+
+```jsx
+import styled from "styled-components";
+
+const Button = styled.button`
+  background: palevioletred;
+  border-radius: 3px;
+  border: none;
+  color: white;
+`;
+
+function MyComponent() {
+  return <Button>Click me!</Button>;
+}
+```
+
+One advantage of Styled Components is that it helps to keep your styles organized and modular. Instead of having a separate CSS file for each component, you can define the styles directly within the component itself. This can make it easier to understand and maintain your code, as everything related to the component is kept in one place.
+
+Styled Components also allows you to easily customize your styles based on props passed to the component, and to define complex styles using standard CSS syntax.
+
+However, Styled Components does require an additional library to be installed and imported, which can add some complexity to your project. It may also have a slightly higher learning curve for developers who are not familiar with CSS-in-JS libraries.
+
+Ultimately, the choice between inline styling and Styled Components will depend on your specific needs and preferences. If you're looking for a quick and easy way to apply simple styles, inline styling may be the way to go. If you want more control and flexibility over your styles, and are willing to invest some time in learning a new library, Styled Components may be a better choice.
+
+</details>
