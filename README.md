@@ -3,7 +3,7 @@ title: "ReactJs Interview Question 2023"
 description: "Find the top React job interview questions for 2023 for beginners, frontend developers, junior developers as well as for experienced developers which might help you cracking your next interview."
 ---
 
-<span style=" font-size: 0.8rem; border-bottom: 1px solid grey;"> Updated Dec 17, 2022 </span>
+<span style=" font-size: 0.8rem; border-bottom: 1px solid grey;"> Updated Dec 28, 2022 </span>
 
 Here you'll find the top React job interview questions for 2023 for beginners, frontend developers, junior developers as well as for experienced developers which might help you cracking your next interview.
 
@@ -1159,5 +1159,109 @@ Styled Components also allows you to easily customize your styles based on props
 However, Styled Components does require an additional library to be installed and imported, which can add some complexity to your project. It may also have a slightly higher learning curve for developers who are not familiar with CSS-in-JS libraries.
 
 Ultimately, the choice between inline styling and Styled Components will depend on your specific needs and preferences. If you're looking for a quick and easy way to apply simple styles, inline styling may be the way to go. If you want more control and flexibility over your styles, and are willing to invest some time in learning a new library, Styled Components may be a better choice.
+
+</details>
+
+## Guess the Output
+
+<details>
+<summary>
+    <h3>53. What is the output of the following code snippet when the "Click me" button is clicked twice?
+ </h3>
+
+```jsx
+function App() {
+  const [count, setCount] = React.useState(0);
+
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>Click me</button>
+    </div>
+  );
+}
+```
+
+</summary>
+
+### Answer
+
+The output would be "You clicked 2 times".
+
+</details>
+
+<details>
+<summary>
+    <h3>54. What is the output of the following code snippet when the "Increment age" button is clicked three times?
+ </h3>
+
+```jsx
+function App() {
+  const [state, setState] = React.useState({
+    name: "John",
+    age: 30,
+  });
+
+  return (
+    <div>
+      <p>
+        My name is {state.name} and I am {state.age} years old
+      </p>
+      <button onClick={() => setState({ ...state, age: state.age + 1 })}>
+        Increment age
+      </button>
+    </div>
+  );
+}
+```
+
+</summary>
+
+### Answer
+
+The output would be "My name is John and I am 33 years old".
+
+</details>
+
+<details>
+<summary>
+    <h3>55. What is the output of the following code snippet when the "Add hobby" button is clicked twice and then the page is refreshed?
+ </h3>
+
+```jsx
+function App() {
+  const [state, setState] = React.useState({
+    name: "John",
+    age: 30,
+    hobbies: ["reading", "running"],
+  });
+
+  return (
+    <div>
+      <p>
+        My name is {state.name} and I am {state.age} years old
+      </p>
+      <ul>
+        {state.hobbies.map((hobby) => (
+          <li key={hobby}>{hobby}</li>
+        ))}
+      </ul>
+      <button
+        onClick={() =>
+          setState({ ...state, hobbies: [...state.hobbies, "swimming"] })
+        }
+      >
+        Add hobby
+      </button>
+    </div>
+  );
+}
+```
+
+</summary>
+
+### Answer
+
+The output would be a list with two items: "reading" and "running". The state of the component is reset when the page is refreshed, so the hobbies list would only contain the original two items after the refresh.
 
 </details>
