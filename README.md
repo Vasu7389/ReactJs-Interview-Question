@@ -4,7 +4,7 @@ description: "Find the top React job interview questions for 2023 for beginners,
 githubPath: "https://github.com/Vasu7389/ReactJs-Interview-Question-2023"
 ---
 
-<span style=" font-size: 0.8rem; border-bottom: 1px solid grey;"> Updated Dec 29, 2022 </span>
+<span style=" font-size: 0.8rem; border-bottom: 1px solid grey;"> Updated Dec 30, 2022 </span>
 
 Here you'll find the top React job interview questions for 2023 for beginners, frontend developers, junior developers as well as for experienced developers which might help you cracking your next interview.
 
