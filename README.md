@@ -1,12 +1,12 @@
 ---
-title: "ReactJs Interview Question 2023"
-description: "Find the top React job interview questions for 2023 for beginners, frontend developers, junior developers as well as for experienced developers which might help you cracking your next interview."
+title: "ReactJs Interview Question 2023 [50+ Questions]"
+description: "Find the top React job 50+ Questions interview questions for 2023 for beginners, frontend developers, junior developers as well as for experienced developers which might help you cracking your next interview."
 githubPath: "https://github.com/Vasu7389/ReactJs-Interview-Question-2023"
 ---
 
-<span style=" font-size: 0.8rem; border-bottom: 1px solid grey;"> Updated Dec 30, 2022 </span>
+<span style=" font-size: 0.8rem; border-bottom: 1px solid grey;"> Updated Jan 04, 2023 </span>
 
-Here you'll find the top React job interview questions for 2023 for beginners, frontend developers, junior developers as well as for experienced developers which might help you cracking your next interview.
+Here you'll find the top 50+ React job interview questions for 2023 for beginners, frontend developers, junior developers as well as for experienced developers which might help you cracking your next interview.
 
 ## ReactJs
 
@@ -1266,5 +1266,42 @@ function App() {
 ### Answer
 
 The output would be a list with two items: "reading" and "running". The state of the component is reset when the page is refreshed, so the hobbies list would only contain the original two items after the refresh.
+
+</details>
+
+<details>
+<summary>
+    <h3>56. What is the output of the following code snippet when the "Increment" button is clicked twice and then the "Reset" button is clicked once?
+ </h3>
+
+```jsx
+import { useEffect, useState } from "react";
+
+function App() {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    console.log("count updated");
+  }, []);
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+      <button onClick={() => setCount(0)}>Reset</button>
+    </div>
+  );
+}
+```
+
+ </summary>
+Answer
+The output would be:
+
+```jsx
+count updated
+```
+
+The `useEffect` hook is called every time the component is rendered, but the dependencies array is empty. This means that the effect will only be run on the initial render of the component, and not on subsequent renders. Since the `Increment` button is clicked twice and the component is re-rendered each time, the effect is not run. However, when the `Reset` button is clicked and the component is re-rendered with a new value for count, the effect is run and the string `count updated` is logged to the console.
 
 </details>
