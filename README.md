@@ -4,7 +4,7 @@ description: "Find the top React job 50+ Questions interview questions for 2023 
 githubPath: "https://github.com/Vasu7389/ReactJs-Interview-Question-2023"
 ---
 
-<span style=" font-size: 0.8rem; border-bottom: 1px solid grey;"> Updated Jan 04, 2023 </span>
+<span style=" font-size: 0.8rem; border-bottom: 1px solid grey;"> Updated Jan 11, 2023 </span>
 
 Here you'll find the top 50+ React job interview questions for 2023 for beginners, frontend developers, junior developers as well as for experienced developers which might help you cracking your next interview.
 
@@ -1303,5 +1303,34 @@ count updated
 ```
 
 The `useEffect` hook is called every time the component is rendered, but the dependencies array is empty. This means that the effect will only be run on the initial render of the component, and not on subsequent renders. Since the `Increment` button is clicked twice and the component is re-rendered each time, the effect is not run. However, when the `Reset` button is clicked and the component is re-rendered with a new value for count, the effect is run and the string `count updated` is logged to the console.
+
+</details>
+
+<details>
+<summary>
+    <h3>57. Create your own useState hook for your new vanilla javascript project.
+ </h3>
+ </summary>
+Here is an example of a `useState` hook function that you can use in a `vanilla` JavaScript project:
+
+```jsx
+function useState(initialState) {
+  let state = initialState;
+  function setState(newState) {
+    //we can also add few conditions to validate the data.
+    state = newState;
+    render(); //your custom method to trigger page refresh on state change
+  }
+  return [state, setState];
+}
+```
+
+Here is an example of a `useState` hook which might be implemented in a vanilla JavaScript project.
+
+The useState function takes an `initial state` as an argument, and returns an array with the current state and a function to update it.
+
+The state is maintained in a `closure` so that it can be accessed and updated by the component functions.
+
+For the render function on the setState is not something that you would typically include in a vanilla implementation, since is related to some kind of framework, but in your case you may replace it with your specific render function.
 
 </details>
