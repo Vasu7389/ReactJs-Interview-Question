@@ -1334,3 +1334,47 @@ The state is maintained in a `closure` so that it can be accessed and updated by
 For the render function on the setState is not something that you would typically include in a vanilla implementation, since is related to some kind of framework, but in your case you may replace it with your specific render function.
 
 </details>
+
+<!--  new question  -->
+<details>
+<summary>
+    <h3>58. Write a custom hook which can be used to apply dark and light mode
+ </h3>
+
+ <!--  for custom hook  -->
+
+import { useEffect, useState } from "react";
+
+const useDarkMode = () => {
+const [isDarkMode, setIsDarkMode] = useState(
+localStorage.getItem('isDarkMode') === 'true'
+);
+
+// function to toggle
+const toggleDarkMode = () => {
+setIsDarkMode(prevMode => {
+localStorage.setItem('isDarkMode', !prevMode);
+return !prevMode;
+});
+};
+return { isDarkMode, toggleDarkMode };
+};
+export default useDarkMode;
+
+<!-- usage -->
+
+const App = () => {
+const { isDarkMode, toggleDarkMode } = useDarkMode();
+
+return (
+
+<div className={isDarkMode ? 'dark-mode' : 'light-mode'}>
+<button onClick={toggleDarkMode}> {isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}</button>
+</div>
+);
+};
+export default App;
+
+ </summary>
+Here's an example of a custom hook that can toggle between dark and light mode, and also uses local storage to persist the theme across different sessions in a single file.This is a simple example, you can improve this by adding more styles, and you can also use it in multiple components.
+</details>
