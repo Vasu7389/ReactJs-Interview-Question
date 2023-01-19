@@ -4,7 +4,7 @@ description: "Find the top React job 50+ Questions interview questions for 2023 
 githubPath: "https://github.com/Vasu7389/ReactJs-Interview-Question-2023"
 ---
 
-<span style=" font-size: 0.8rem; border-bottom: 1px solid grey;"> Updated Jan 11, 2023 </span>
+<span style=" font-size: 0.8rem; border-bottom: 1px solid grey;"> Updated Jan 19, 2023 </span>
 
 Here you'll find the top 50+ React job interview questions for 2023 for beginners, frontend developers, junior developers as well as for experienced developers which might help you cracking your next interview.
 
@@ -1335,46 +1335,55 @@ For the render function on the setState is not something that you would typicall
 
 </details>
 
-<!--  new question  -->
 <details>
 <summary>
-    <h3>58. Write a custom hook which can be used to apply dark and light mode
+    <h3>58. Write a custom hook which can be used to apply dark or light mode.
  </h3>
 
- <!--  for custom hook  -->
+ </summary>
 
-import { useEffect, useState } from "react";
+```jsx
+//custom hook
 
 const useDarkMode = () => {
-const [isDarkMode, setIsDarkMode] = useState(
-localStorage.getItem('isDarkMode') === 'true'
-);
+  const [isDarkMode, setIsDarkMode] = useState(
+    localStorage.getItem("isDarkMode") === "true"
+  );
 
-// function to toggle
-const toggleDarkMode = () => {
-setIsDarkMode(prevMode => {
-localStorage.setItem('isDarkMode', !prevMode);
-return !prevMode;
-});
+  // function to toggle
+  const toggleDarkMode = () => {
+    setIsDarkMode((prevMode) => {
+      localStorage.setItem("isDarkMode", !prevMode);
+      return !prevMode;
+    });
+  };
+  return { isDarkMode, toggleDarkMode };
 };
-return { isDarkMode, toggleDarkMode };
-};
+
 export default useDarkMode;
+```
 
-<!-- usage -->
+```jsx
+//usage
+// note- there should be different classes to toggle between dark and light mode
+// here, ex- 'dark-mode', 'light-mode'
 
 const App = () => {
-const { isDarkMode, toggleDarkMode } = useDarkMode();
+  const { isDarkMode, toggleDarkMode } = useDarkMode();
 
-return (
-
-<div className={isDarkMode ? 'dark-mode' : 'light-mode'}>
-<button onClick={toggleDarkMode}> {isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}</button>
-</div>
-);
+  return (
+    <div className={isDarkMode ? "dark-mode" : "light-mode"}>
+      <button onClick={toggleDarkMode}>
+        {isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
+      </button>
+    </div>
+  );
 };
 export default App;
+```
 
- </summary>
-Here's an example of a custom hook that can toggle between dark and light mode, and also uses local storage to persist the theme across different sessions in a single file.This is a simple example, you can improve this by adding more styles, and you can also use it in multiple components.
+Here's an example of a custom hook that can toggle between dark and light mode, and also uses local storage to persist the theme across different sessions in a single file.
+
+This is a simple example, you can improve this by adding more styles, and you can also use it in multiple components.
+
 </details>
