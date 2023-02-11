@@ -4,7 +4,7 @@ description: "Find the top React job 50+ Questions interview questions for 2023 
 githubPath: "https://github.com/Vasu7389/ReactJs-Interview-Question-2023"
 ---
 
-<span style=" font-size: 0.8rem; border-bottom: 1px solid grey;"> Updated Jan 19, 2023 </span>
+<span style=" font-size: 0.8rem; border-bottom: 1px solid grey;"> Updated Feb 11, 2023 </span>
 
 Here you'll find the top 50+ React job interview questions for 2023 for beginners, frontend developers, junior developers as well as for experienced developers which might help you cracking your next interview.
 
@@ -1385,5 +1385,119 @@ export default App;
 Here's an example of a custom hook that can toggle between dark and light mode, and also uses local storage to persist the theme across different sessions in a single file.
 
 This is a simple example, you can improve this by adding more styles, and you can also use it in multiple components.
+
+</details>
+
+<details>
+<summary>
+    <h3>59. How to access the latest value of a text input field in a React component using the 'useRef' hook?
+ </h3>
+
+ </summary>
+
+Answer:
+
+You can access the latest value of a text input field in a React component using the `useRef` hook as follows:
+
+```jsx
+import React, { useRef } from "react";
+
+const InputComponent = () => {
+  const inputRef = useRef(null);
+
+  const handleClick = () => {
+    console.log(inputRef.current.value);
+  };
+
+  return (
+    <div>
+      <input type="text" ref={inputRef} />
+      <button onClick={handleClick}>Show value </button>
+    </div>
+  );
+};
+```
+
+</details>
+
+<details>
+<summary>
+    <h3>60. How to create a counter that increments every second using the 'useRef' hook?
+ </h3>
+
+ </summary>
+
+Answer:
+
+You can create a counter that increments every second using the `useRef` hook as follows:
+
+```jsx
+import React, { useState, useRef, useEffect } from "react";
+
+const Counter = () => {
+  const [count, setCount] = useState(0);
+  const intervalRef = useRef();
+
+  useEffect(() => {
+    intervalRef.current = setInterval(() => {
+      setCount((count) => count + 1);
+    }, 1000);
+
+    return () => {
+      clearInterval(intervalRef.current);
+    };
+  }, []);
+
+  return <h1>{count}</h1>;
+};
+```
+
+</details>
+
+<details>
+<summary>
+    <h3>61. How to implement a simple dropdown menu using the 'useRef' hook?
+ </h3>
+
+ </summary>
+
+Answer:
+
+You can implement a simple dropdown menu using the `useRef` hook as follows:
+
+```jsx
+import React, { useState, useRef } from "react";
+
+const Dropdown = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef(null);
+
+  const handleClickOutside = (event) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      setIsOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  return (
+    <div ref={dropdownRef}>
+      <button onClick={() => setIsOpen(!isOpen)}>Dropdown</button>
+      {isOpen && (
+        <ul>
+          <li>Option 1</li>
+          <li>Option 2</li>
+          <li>Option 3</li>
+        </ul>
+      )}
+    </div>
+  );
+};
+```
 
 </details>
