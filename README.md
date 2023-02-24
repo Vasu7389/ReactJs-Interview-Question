@@ -4,13 +4,17 @@ description: "Find the top React job 50+ Questions interview questions for 2023 
 githubPath: "https://github.com/Vasu7389/ReactJs-Interview-Question-2023"
 ---
 
-<span style=" font-size: 0.8rem; border-bottom: 1px solid grey;"> Updated Feb 11, 2023 </span>
+<span style=" font-size: 0.8rem; border-bottom: 1px solid grey;"> Updated Feb 24, 2023 </span>
 
 Here you'll find the top 50+ React job interview questions for 2023 for beginners, frontend developers, junior developers as well as for experienced developers which might help you cracking your next interview.
 
 ## ReactJs
 
 ReactJs is a popular JavaScript library for building user interfaces. It is maintained by Facebook, and is widely used for building web applications, mobile apps, and other user interfaces. React allows developers to create reusable components, which can help make large applications easier to manage and maintain. It is designed to be efficient, declarative, and flexible, and can be used to create complex, dynamic user interfaces.
+
+Looking to expand your knowledge on Javascript as well? Check out our comprehensive collection of <span style="border-bottom: 1px solid grey;">
+[JavaScript interview question and answers page](https://www.codinn.dev/tricky-javascript-2023/es6789-code-snippets-interview-questions)
+</span> to help you prepare for your next interview.
 
 <span style=" font-size: 0.5rem;"> \*Discover the answers by clicking on the questions.</span>
 
