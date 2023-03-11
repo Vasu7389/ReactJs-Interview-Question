@@ -4,7 +4,7 @@ description: "Find the top React job 50+ Questions interview questions for 2023 
 githubPath: "https://github.com/Vasu7389/ReactJs-Interview-Question-2023"
 ---
 
-<span style=" font-size: 0.8rem; border-bottom: 1px solid grey;"> Updated Feb 24, 2023 </span>
+<span style=" font-size: 0.8rem; border-bottom: 1px solid grey;"> Updated Mar 11, 2023 </span>
 
 Here you'll find the top 50+ React job interview questions for 2023 for beginners, frontend developers, junior developers as well as for experienced developers which might help you cracking your next interview.
 
@@ -1503,5 +1503,95 @@ const Dropdown = () => {
   );
 };
 ```
+
+</details>
+
+<details>
+<summary>
+    <h3>62. Can you explain the React architecture in one sentence?</h3>
+
+```
+Think You Know React? Try Answering this!
+```
+
+</summary>
+Answer:
+
+React is like a virtual Lego set where each component is a brick that can be combined in various ways to build complex user interfaces.
+
+</details>
+<details>
+<summary>
+    <h3>63. How does React know what to render?</h3>
+
+```
+Think You Know React? Try Answering this!
+```
+
+</summary>
+Answer:
+
+React uses a virtual DOM to keep track of the state of the application and determine what changes need to be made to the real DOM to reflect those changes.
+
+</details>
+
+<details>
+<summary>
+    <h3>64. If React was a food, what food would it be?</h3>
+
+```
+Think You Know React? Try Answering this!
+```
+
+</summary>
+Answer:
+
+React would be like a sushi platter, where each piece of sushi is a component and can be combined in different ways to create a unique and satisfying user experience.
+
+</details>
+
+<details>
+<summary>
+    <h3>65. How would you explain the concept of "lifting state up" in React?</h3>
+</summary>
+Answer:
+
+Lifting state up is the process of moving state from a lower-level component to a higher-level component in the React component hierarchy.
+
+This is done to share state between sibling components that do not have a direct parent-child relationship.
+
+By lifting state up to a common ancestor component, we can avoid prop drilling and make the application more efficient and easier to maintain.
+
+```jsx
+import React, { useState } from "react";
+
+function App() {
+  const [count, setCount] = useState(0);
+
+  const incrementCount = () => {
+    setCount(count + 1);
+  };
+
+  return (
+    <div>
+      <h1>Count: {count}</h1>
+      <CounterButton incrementCount={incrementCount} />
+      <ResetButton setCount={setCount} />
+    </div>
+  );
+}
+
+function CounterButton({ incrementCount }) {
+  return <button onClick={incrementCount}>Increment Count</button>;
+}
+
+function ResetButton({ setCount }) {
+  return <button onClick={() => setCount(0)}>Reset Count</button>;
+}
+```
+
+By lifting the count state up to the App component, we can share this state between the CounterButton and ResetButton components without having to pass it down as props through multiple levels of components.
+
+This makes the code cleaner and more efficient, and avoids prop drilling.
 
 </details>
