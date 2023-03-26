@@ -4,7 +4,7 @@ description: "Find the top React job 50+ Questions interview questions for 2023 
 githubPath: "https://github.com/Vasu7389/ReactJs-Interview-Question-2023"
 ---
 
-<span style=" font-size: 0.8rem; border-bottom: 1px solid grey;"> Updated Mar 11, 2023 </span>
+<span style=" font-size: 1rem; border-bottom: 1px solid grey;"> Updated Mar 26, 2023 </span>
 
 Here you'll find the top 50+ React job interview questions for 2023 for beginners, frontend developers, junior developers as well as for experienced developers which might help you cracking your next interview.
 
@@ -16,7 +16,7 @@ Looking to expand your knowledge on Javascript as well? Check out our comprehens
 [JavaScript interview question and answers page](https://www.codinn.dev/tricky-javascript-2023/es6789-code-snippets-interview-questions)
 </span> to help you prepare for your next interview.
 
-<span style=" font-size: 0.5rem;"> \*Discover the answers by clicking on the questions.</span>
+<span style=" font-size: 1rem;"> \*Discover the answers by clicking on the questions.</span>
 
 <details>
 <summary>
@@ -1593,5 +1593,287 @@ function ResetButton({ setCount }) {
 By lifting the count state up to the App component, we can share this state between the CounterButton and ResetButton components without having to pass it down as props through multiple levels of components.
 
 This makes the code cleaner and more efficient, and avoids prop drilling.
+
+</details>
+
+<details>
+<summary>
+    <h3>66. How does Next.js differ from React.js, and what benefits does it provide for building web applications?</h3>
+</summary>
+Answer:
+
+Next.js is a framework built on top of React.js that provides additional features for building server-side rendered web applications.
+
+One of the main differences between Next.js and React.js is that Next.js provides server-side rendering out of the box, which allows for faster initial page loads and better search engine optimization.
+
+Next.js also provides features like automatic code splitting and optimized performance for production builds, which can make it easier to build and deploy large-scale applications.
+
+Additionally, Next.js provides support for static site generation, which allows for even faster load times and improved user experiences.
+
+Overall, Next.js provides a more complete solution for building modern web applications than React.js alone, and can be especially beneficial for larger applications that require server-side rendering and other advanced features.
+
+</details>
+
+<details>
+<summary>
+    <h3>67. Scenario Based - </h3>
+    
+You have been tasked with creating a form component that allows users to submit data to an API endpoint using React. The form should include the following fields:
+
+```bash
+Name (required)
+Email (required)
+Message (required)
+Checkbox (optional)
+```
+
+When the user submits the form, the data should be sent to the API endpoint as a POST request. If the request is successful, the form should be reset and a success message should be displayed. If the request fails, an error message should be displayed.
+
+Write a functional React component that implements the above requirements.
+
+</summary>
+Answer:
+
+```jsx
+import React, { useState } from "react";
+
+function ContactForm() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+    checkbox: false,
+  });
+  const [submitting, setSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState("");
+
+  const handleChange = (e) => {
+    const { name, value, checked } = e.target;
+    setFormData({
+      ...formData,
+      [name]: name === "checkbox" ? checked : value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setSubmitting(true);
+
+    try {
+      const response = await fetch("https://example.com/api/contact", {
+        method: "POST",
+        body: JSON.stringify(formData),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      if (!response.ok) {
+        throw new Error("Error submitting form");
+      }
+      setFormData({
+        name: "",
+        email: "",
+        message: "",
+        checkbox: false,
+      });
+      setSubmitted(true);
+      setError("");
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <label htmlFor="name">Name</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        value={formData.name}
+        onChange={handleChange}
+        required
+      />
+
+      <label htmlFor="email">Email</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        value={formData.email}
+        onChange={handleChange}
+        required
+      />
+
+      <label htmlFor="message">Message</label>
+      <textarea
+        id="message"
+        name="message"
+        value={formData.message}
+        onChange={handleChange}
+        required
+      />
+
+      <label htmlFor="checkbox">
+        <input
+          type="checkbox"
+          id="checkbox"
+          name="checkbox"
+          checked={formData.checkbox}
+          onChange={handleChange}
+        />
+        Checkbox
+      </label>
+
+      {error && <div>{error}</div>}
+      {submitting ? (
+        <div>Submitting...</div>
+      ) : submitted ? (
+        <div>Form submitted successfully!</div>
+      ) : (
+        <button type="submit">Submit</button>
+      )}
+    </form>
+  );
+}
+
+export default ContactForm;
+```
+
+This form component uses the useState hook to manage the form data, submission status, and error state. When the form is submitted, it sends a POST request to the specified API endpoint using fetch(), and displays either a success message, an error message, or a loading spinner depending on the submission status.
+
+</details>
+
+<details>
+<summary>
+    <h3>68. Scenario Based - </h3>
+    
+You have been given a requirement to build a simple to-do list application in React. The application should allow the user to add, edit, and delete tasks from the list. Each task should have a title, a description, and a priority level (high, medium, low). When a task is marked as completed, it should be displayed with a strikethrough.
+
+Write a React component that implements the above requirements. You may use any state management library of your choice (e.g. Redux, MobX, Context API).
+
+</summary>
+Answer:
+
+```jsx
+import React, { useState } from "react";
+
+function TodoList() {
+  const [tasks, setTasks] = useState([]);
+
+  const [newTask, setNewTask] = useState({
+    title: "",
+    description: "",
+    priority: "medium",
+    completed: false,
+  });
+
+  const handleNewTaskChange = (e) => {
+    const { name, value } = e.target;
+    setNewTask({
+      ...newTask,
+      [name]: value,
+    });
+  };
+
+  const handleAddTask = (e) => {
+    e.preventDefault();
+    setTasks([...tasks, newTask]);
+    setNewTask({
+      title: "",
+      description: "",
+      priority: "medium",
+      completed: false,
+    });
+  };
+
+  const handleDeleteTask = (index) => {
+    const newTasks = [...tasks];
+    newTasks.splice(index, 1);
+    setTasks(newTasks);
+  };
+
+  const handleEditTask = (index, updatedTask) => {
+    const newTasks = [...tasks];
+    newTasks[index] = updatedTask;
+    setTasks(newTasks);
+  };
+
+  const toggleCompleted = (index) => {
+    const newTasks = [...tasks];
+    newTasks[index].completed = !newTasks[index].completed;
+    setTasks(newTasks);
+  };
+
+  return (
+    <div>
+      <form onSubmit={handleAddTask}>
+        <input
+          type="text"
+          name="title"
+          placeholder="Task title"
+          value={newTask.title}
+          onChange={handleNewTaskChange}
+        />
+        <textarea
+          name="description"
+          placeholder="Task description"
+          value={newTask.description}
+          onChange={handleNewTaskChange}
+        />
+        <select
+          name="priority"
+          value={newTask.priority}
+          onChange={handleNewTaskChange}
+        >
+          <option value="high">High</option>
+          <option value="medium">Medium</option>
+          <option value="low">Low</option>
+        </select>
+        <button type="submit">Add Task</button>
+      </form>
+
+      <ul>
+        {tasks.map((task, index) => (
+          <li key={index}>
+            <h3
+              style={{
+                textDecoration: task.completed ? "line-through" : "none",
+              }}
+            >
+              {task.title}
+            </h3>
+            <p>{task.description}</p>
+            <div>
+              <button onClick={() => handleDeleteTask(index)}>Delete</button>
+              <button onClick={() => toggleCompleted(index)}>
+                {task.completed ? "Mark Incomplete" : "Mark Complete"}
+              </button>
+              <button
+                onClick={() => {
+                  const updatedTask = prompt("Enter updated task:");
+                  if (updatedTask) {
+                    handleEditTask(index, {
+                      ...task,
+                      title: updatedTask,
+                    });
+                  }
+                }}
+              >
+                Edit
+              </button>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+export default TodoList;
+```
 
 </details>
