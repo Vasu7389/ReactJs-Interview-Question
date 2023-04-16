@@ -12,7 +12,7 @@ Here you'll find the top 50+ React job interview questions for 2023 for beginner
 
 👋 Hey there! Welcome to our open-source project on ReactJs interview questions for 2023.
 
-🚀 As a ReactJs developer, I know how important it is to stay up-to-date with the latest technologies and best practices. That's why we've created this <span style="text-decoration: underline;color: var(--theme-sub-color);">
+🚀 As a ReactJs developer, I know how important it is to stay up-to-date with the latest technologies and best practices. That's why I've created this <span style="text-decoration: underline;color: var(--theme-sub-color);">
 [repository](https://github.com/Vasu7389/ReactJs-Interview-Question-2023)</span> to help fellow developers prepare for their ReactJs interviews in 2023.
 
 The repository contains a 📝 comprehensive list of interview questions covering various topics such as React components, state management, performance optimization, and more. Each question comes with a detailed answer, providing a clear explanation and example.
