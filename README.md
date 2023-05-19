@@ -4,7 +4,7 @@ description: "Find the top React job 50+ Questions interview questions for 2023 
 githubPath: "https://github.com/Vasu7389/ReactJs-Interview-Question-2023"
 ---
 
-<span style=" font-size: 1rem; border-bottom: 1px solid grey;"> Updated Apr 16, 2023 </span>
+<span style=" font-size: 1rem; border-bottom: 1px solid grey;"> Updated May 19, 2023 </span>
 
 Here you'll find the top 50+ React job interview questions for 2023 for beginners, frontend developers, junior developers as well as for experienced developers which might help you cracking your next interview.
 
@@ -1901,5 +1901,147 @@ function TodoList() {
 
 export default TodoList;
 ```
+
+</details>
+
+<details>
+<summary>
+    <h3>69. Scenario Based - </h3>
+
+You have been assigned to create a registration form component in React. The form should include fields for the user to enter their name, email, and password.
+
+Implement form validation to ensure that the following conditions are met:
+
+- The name field is required and should contain only alphabetic characters.
+- The email field is required and should be a valid email address format.
+- The password field is required and should have a minimum length of 8 characters.
+
+Write a React component that implements the above requirements.
+
+</summary>
+
+Solution -
+
+```jsx
+import React, { useState } from "react";
+
+function RegistrationForm() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+
+  const [errors, setErrors] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const validateForm = () => {
+    let isValid = true;
+    const newErrors = {
+      name: "",
+      email: "",
+      password: "",
+    };
+
+    if (formData.name.trim() === "") {
+      newErrors.name = "Name is required";
+      isValid = false;
+    } else if (!/^[a-zA-Z]+$/.test(formData.name)) {
+      newErrors.name = "Name should only contain alphabetic characters";
+      isValid = false;
+    }
+
+    if (formData.email.trim() === "") {
+      newErrors.email = "Email is required";
+      isValid = false;
+    } else if (
+      !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(formData.email)
+    ) {
+      newErrors.email = "Invalid email address";
+      isValid = false;
+    }
+
+    if (formData.password.trim() === "") {
+      newErrors.password = "Password is required";
+      isValid = false;
+    } else if (formData.password.length < 8) {
+      newErrors.password = "Password should be at least 8 characters long";
+      isValid = false;
+    }
+
+    setErrors(newErrors);
+    return isValid;
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (validateForm()) {
+      // Form is valid, proceed with registration logic
+      // e.g., submit data to server or perform necessary actions
+      console.log("Form submitted successfully:", formData);
+    }
+  };
+
+  return (
+    <div>
+      <h2>Registration Form</h2>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label>Name:</label>
+          <input
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleInputChange}
+          />
+          {errors.name && <span>{errors.name}</span>}
+        </div>
+
+        <div>
+          <label>Email:</label>
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleInputChange}
+          />
+          {errors.email && <span>{errors.email}</span>}
+        </div>
+
+        <div>
+          <label>Password:</label>
+          <input
+            type="password"
+            name="password"
+            value={formData.password}
+            onChange={handleInputChange}
+          />
+          {errors.password && <span>{errors.password}</span>}
+        </div>
+
+        <button type="submit">Register</button>
+      </form>
+    </div>
+  );
+}
+
+export default RegistrationForm;
+```
+
+The component uses React hooks to manage form data and validation errors.
+
+The form fields include name, email, and password, and the component ensures that each field meets the specified validation criteria before allowing form submission.
 
 </details>
