@@ -4,7 +4,7 @@ description: "Find the top React job 50+ Questions interview questions for 2023 
 githubPath: "https://github.com/Vasu7389/ReactJs-Interview-Question-2023"
 ---
 
-<span style=" font-size: 1rem; border-bottom: 1px solid grey;"> Updated May 19, 2023 </span>
+<span style=" font-size: 1rem; border-bottom: 1px solid grey;"> Updated July 19, 2023 </span>
 
 Here you'll find the top 50+ React job interview questions for 2023 for beginners, frontend developers, junior developers as well as for experienced developers which might help you cracking your next interview.
 
@@ -2043,5 +2043,218 @@ export default RegistrationForm;
 The component uses React hooks to manage form data and validation errors.
 
 The form fields include name, email, and password, and the component ensures that each field meets the specified validation criteria before allowing form submission.
+
+</details>
+
+<details>
+<summary>
+<h3>70. Scenario Based - Controlled Input with Delayed Value Display</h3>
+
+Create a React component that consists of an input field.
+
+The component should be controlled, meaning its value is determined by React state.
+
+However, when the user types in the input field, there should be a 2-second delay before the displayed value updates.
+
+If the user types new characters within this 2-second interval, the display update should be delayed again by 2 seconds.
+
+Only after 2 seconds of inactivity, the displayed value should be updated with the latest input.
+
+Implement the above behavior in the React component.
+
+</summary>
+
+Solution -
+
+```jsx
+import React, { useState, useEffect } from "react";
+
+function DelayedInput() {
+  const [inputValue, setInputValue] = useState("");
+  const [displayValue, setDisplayValue] = useState("");
+
+  useEffect(() => {
+    let timeoutId = null;
+
+    // Update the display value after a 2-second delay
+    const delayedUpdateDisplay = () => {
+      timeoutId = setTimeout(() => {
+        setDisplayValue(inputValue);
+      }, 2000);
+    };
+
+    // Clear the previous timeout when the user types within 2 seconds
+    clearTimeout(timeoutId);
+
+    // Initiate the delayed update only when the user stops typing
+    delayedUpdateDisplay();
+
+    // Clean up the timeout on component unmount
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, [inputValue]);
+
+  const handleInputChange = (e) => {
+    setInputValue(e.target.value);
+  };
+
+  return (
+    <div>
+      <h2>Delayed Input</h2>
+      <input type="text" value={inputValue} onChange={handleInputChange} />
+      <p>Display Value: {displayValue}</p>
+    </div>
+  );
+}
+
+export default DelayedInput;
+```
+
+The component `DelayedInput` uses React hooks such as `useEffect` to achieve the delayed value display functionality. As the user types, the `inputValue` state is updated immediately, but the displayed value (`displayValue`) is updated after a 2-second delay.
+
+</details>
+
+<details>
+<summary>
+<h3>71. Scenario Based - Dynamic Nested List Rendering</h3>
+
+Create a React component that renders a nested list from a given array of objects. Each object can have a `name` property and a nested `children` property, which is an array of objects with the same structure.
+
+The depth of nesting is unknown and can vary for different objects.
+
+Implement the React component to render the nested list based on the provided data.
+
+Example Data:
+
+```jsx
+const data = [
+  {
+    name: "Item 1",
+    children: [
+      {
+        name: "Subitem 1.1",
+        children: [
+          { name: "Subsubitem 1.1.1", children: [] },
+          { name: "Subsubitem 1.1.2", children: [] },
+        ],
+      },
+      { name: "Subitem 1.2", children: [] },
+    ],
+  },
+  {
+    name: "Item 2",
+    children: [
+      { name: "Subitem 2.1", children: [] },
+      { name: "Subitem 2.2", children: [] },
+    ],
+  },
+];
+```
+
+Render the nested list using the provided data.
+
+</summary>
+
+Solution -
+
+```jsx
+import React from "react";
+
+function NestedList({ data }) {
+  const renderNestedItems = (items) => {
+    return (
+      <ul>
+        {items.map((item, index) => (
+          <li key={index}>
+            {item.name}
+            {item.children.length > 0 && renderNestedItems(item.children)}
+          </li>
+        ))}
+      </ul>
+    );
+  };
+
+  return (
+    <div>
+      <h2>Nested List</h2>
+      {renderNestedItems(data)}
+    </div>
+  );
+}
+
+export default NestedList;
+```
+
+The component `NestedList` recursively renders a nested list using the provided `data` prop. It checks if the current item has children and, if so, calls the `renderNestedItems` function recursively to render the nested list.
+
+</details>
+
+<details>
+<summary>
+<h3>72. Scenario Based - Async Data Fetch and Rendering</h3>
+
+Create a React component that fetches data from a given API endpoint and renders it as a list.
+
+The API endpoint returns an array of objects, each containing an `id` and a `name`. However, there is a 2-second delay before the API responds.
+
+Implement the React component to fetch the data from the API and display it as a list.
+
+API Endpoint: `https://jsonplaceholder.typicode.com/users`
+
+</summary>
+
+Solution -
+
+```jsx
+import React, { useState, useEffect } from "react";
+
+function DataList() {
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          "https://jsonplaceholder.typicode.com/users"
+        );
+        const json = await response.json();
+        // Simulate a 2-second delay before setting the data
+        setTimeout(() => {
+          setData(json);
+          setLoading(false);
+        }, 2000);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  return (
+    <div>
+      <h2>Data List</h2>
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        <ul>
+          {data.map((item) => (
+            <li key={item.id}>{item.name}</li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+}
+
+export default DataList;
+```
+
+The component `DataList` uses `useEffect` hook to fetch data from the provided API endpoint.
+
+While waiting for the API response, it displays a loading message. After a 2-second delay (simulated using `setTimeout`), the fetched data is rendered as a list.
 
 </details>
