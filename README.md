@@ -1536,7 +1536,7 @@ const Dropdown = () => {
 <summary>
     <h3>62. Can you explain the React architecture in one sentence?</h3>
 
-```
+```bash
 Think You Know React? Try Answering this!
 ```
 
@@ -1550,7 +1550,7 @@ React is like a virtual Lego set where each component is a brick that can be com
 <summary>
     <h3>63. How does React know what to render?</h3>
 
-```
+```bash
 Think You Know React? Try Answering this!
 ```
 
@@ -1565,7 +1565,7 @@ React uses a virtual DOM to keep track of the state of the application and deter
 <summary>
     <h3>64. If React was a food, what food would it be?</h3>
 
-```
+```bash
 Think You Know React? Try Answering this!
 ```
 
