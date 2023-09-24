@@ -8,32 +8,6 @@ githubPath: "https://github.com/Vasu7389/ReactJs-Interview-Question-2023"
 
 Here you'll find the top 50+ React job interview questions for 2023 for beginners, frontend developers, junior developers as well as for experienced developers which might help you cracking your next interview.
 
-## Join the Community: Contribute to the Open-Source Project on ReactJs Interview Questions
-
-👋 Hey there! Welcome to our open-source project on ReactJs interview questions for 2023.
-
-🚀 As a ReactJs developer, I know how important it is to stay up-to-date with the latest technologies and best practices. That's why I've created this <span style="text-decoration: underline;color: var(--theme-sub-color);">
-[repository](https://github.com/Vasu7389/ReactJs-Interview-Question-2023)</span> to help fellow developers prepare for their ReactJs interviews in 2023.
-
-The repository contains a 📝 comprehensive list of interview questions covering various topics such as React components, state management, performance optimization, and more. Each question comes with a detailed answer, providing a clear explanation and example.
-
-But hey, I don't know everything!
-
-That's where you come in.
-
-👉 I invite you to contribute to this open-source project.
-
-Whether you want to suggest a new question,
-provide feedback on an existing one,
-or improve the answer, your contributions are welcome and appreciated.
-I've set up guidelines for contributions and a code of conduct to ensure that everyone feels welcome and valued. 💖
-
-In addition to contributing, you can also use this <span style="text-decoration: underline;color: var(--theme-sub-color);">[repository](https://github.com/Vasu7389/ReactJs-Interview-Question-2023)</span> as a study guide to prepare for your ReactJs interviews.
-
-📚 Explore the questions, review the answers, and practice your skills.
-
-Thank you for your interest in this project, and I look forward to collaborating with you. 🤗
-
 ## ReactJs
 
 ReactJs is a popular JavaScript library for building user interfaces. It is maintained by Facebook, and is widely used for building web applications, mobile apps, and other user interfaces. React allows developers to create reusable components, which can help make large applications easier to manage and maintain. It is designed to be efficient, declarative, and flexible, and can be used to create complex, dynamic user interfaces.
