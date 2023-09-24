@@ -4,7 +4,7 @@ description: "Find the top React job 50+ Questions interview questions for 2023 
 githubPath: "https://github.com/Vasu7389/ReactJs-Interview-Question-2023"
 ---
 
-<span style=" font-size: 1rem; border-bottom: 1px solid grey;"> Updated July 19, 2023 </span>
+<span style=" font-size: 1rem; border-bottom: 1px solid grey;"> Updated Sept 24, 2023 </span>
 
 Here you'll find the top 50+ React job interview questions for 2023 for beginners, frontend developers, junior developers as well as for experienced developers which might help you cracking your next interview.
 
@@ -2256,5 +2256,46 @@ export default DataList;
 The component `DataList` uses `useEffect` hook to fetch data from the provided API endpoint.
 
 While waiting for the API response, it displays a loading message. After a 2-second delay (simulated using `setTimeout`), the fetched data is rendered as a list.
+
+</details>
+
+<details>
+<summary>
+<h3>73. Scenario Based - Managing Focus with useRef</h3>
+
+Create a React component that includes an input field and a button. When the button is clicked, it should focus on the input field.
+
+Implement this functionality using the `useRef` hook.
+
+</summary>
+
+Solution:
+
+```jsx
+import React, { useRef } from "react";
+
+function FocusInput() {
+  const inputRef = useRef(null);
+
+  const handleFocusButtonClick = () => {
+    // Focus on the input field
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  };
+
+  return (
+    <div>
+      <h2>Focus Input</h2>
+      <input ref={inputRef} type="text" placeholder="Enter text" />
+      <button onClick={handleFocusButtonClick}>Focus Input</button>
+    </div>
+  );
+}
+
+export default FocusInput;
+```
+
+In this component, we use the `useRef` hook to create a reference (`inputRef`) to the input element. When the button is clicked, the `handleFocusButtonClick` function is called, and it focuses on the input element by calling `inputRef.current.focus()`. This allows us to programmatically manage the focus of the input field.
 
 </details>
