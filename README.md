@@ -2273,3 +2273,49 @@ export default FocusInput;
 In this component, we use the `useRef` hook to create a reference (`inputRef`) to the input element. When the button is clicked, the `handleFocusButtonClick` function is called, and it focuses on the input element by calling `inputRef.current.focus()`. This allows us to programmatically manage the focus of the input field.
 
 </details>
+
+<details>
+<summary>
+<h3>74. What is a higher-order component in React?f</h3>
+
+A higher-order component acts as a container for other components. This helps to keep components simple and enables re-usability. They are generally used when multiple components have to use a common logic. 
+
+</summary>
+
+Solution:
+
+```jsx
+import React, { useState, useEffect } from 'react';
+
+const CommentList = () => {
+  const [comments, setComments] = useState(DataSource.getComments());
+
+  useEffect(() => {
+    const handleChange = () => {
+      setComments(DataSource.getComments());
+    };
+
+    // Subscribe to changes
+    DataSource.addChangeListener(handleChange);
+
+    // Clean up listener
+    return () => {
+      DataSource.removeChangeListener(handleChange);
+    };
+  }, []); // Empty dependency array to mimic componentDidMount and componentWillUnmount
+
+  return (
+    <div>
+      {comments.map((comment) => (
+        <Comment comment={comment} key={comment.id} />
+      ))}
+    </div>
+  );
+};
+
+export default CommentList;
+```
+
+The CommentList component is a React functional component that displays a list of comments. It utilizes the useState hook to manage the comments state and the useEffect hook to subscribe to changes in a global data source (DataSource). When the component mounts, it fetches initial comments and sets up a change listener, updating the state whenever the data source changes. The component renders a list of Comment components based on the comments in its state, each uniquely identified by its id. The change listener is removed when the component unmounts to avoid memory leaks.
+
+</details>
