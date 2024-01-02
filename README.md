@@ -1,19 +1,19 @@
 ---
-title: "ReactJs Interview Question 2023 [50+ Questions]"
-description: "Find the top React job 50+ Questions interview questions for 2023 for beginners, frontend developers, junior developers as well as for experienced developers which might help you cracking your next interview."
-githubPath: "https://github.com/Vasu7389/ReactJs-Interview-Question-2023"
+title: "ReactJs Interview Question 2024 [50+ Questions]"
+description: "Find the top React job 50+ Questions interview questions for 2024 for beginners, frontend developers, junior developers as well as for experienced developers which might help you cracking your next interview."
+githubPath: "https://github.com/Vasu7389/ReactJs-Interview-Question"
 ---
 
-<span style=" font-size: 1rem; border-bottom: 1px solid grey;"> Updated Sept 24, 2023 </span>
+<span style=" font-size: 1rem; border-bottom: 1px solid grey;"> Updated Jan 02, 2024 </span>
 
-Here you'll find the top 50+ React job interview questions for 2023 for beginners, frontend developers, junior developers as well as for experienced developers which might help you cracking your next interview.
+Here you'll find the top 50+ React job interview questions for 2024 for beginners, frontend developers, junior developers as well as for experienced developers which might help you cracking your next interview.
 
 ## ReactJs
 
 ReactJs is a popular JavaScript library for building user interfaces. It is maintained by Facebook, and is widely used for building web applications, mobile apps, and other user interfaces. React allows developers to create reusable components, which can help make large applications easier to manage and maintain. It is designed to be efficient, declarative, and flexible, and can be used to create complex, dynamic user interfaces.
 
 Looking to expand your knowledge on Javascript as well? Check out our comprehensive collection of <span style="text-decoration: underline;color: var(--theme-sub-color);">
-[JavaScript interview question and answers page](https://www.codinn.dev/tricky-javascript-2023/es6789-code-snippets-interview-questions)
+[JavaScript interview question and answers page](https://www.codinn.dev/tricky-javascript/es6789-code-snippets-interview-questions)
 </span> to help you prepare for your next interview.
 
 <span style=" font-size: 1rem;"> \*Discover the answers by clicking on the questions.</span>
@@ -2278,14 +2278,14 @@ In this component, we use the `useRef` hook to create a reference (`inputRef`) t
 <summary>
 <h3>74. What is a higher-order component in React?f</h3>
 
-A higher-order component acts as a container for other components. This helps to keep components simple and enables re-usability. They are generally used when multiple components have to use a common logic. 
+A higher-order component acts as a container for other components. This helps to keep components simple and enables re-usability. They are generally used when multiple components have to use a common logic.
 
 </summary>
 
 Solution:
 
 ```jsx
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 const CommentList = () => {
   const [comments, setComments] = useState(DataSource.getComments());
