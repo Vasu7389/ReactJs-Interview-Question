@@ -4,7 +4,7 @@ description: "Find the top React job 50+ Questions interview questions for 2024 
 githubPath: "https://github.com/Vasu7389/ReactJs-Interview-Question"
 ---
 
-<span style=" font-size: 1rem; border-bottom: 1px solid grey;"> Updated Jan 02, 2024 </span>
+<span style=" font-size: 1rem; border-bottom: 1px solid grey;"> Updated Jan 07, 2024 </span>
 
 Here you'll find the top 50+ React job interview questions for 2024 for beginners, frontend developers, junior developers as well as for experienced developers which might help you cracking your next interview.
 
@@ -2276,7 +2276,7 @@ In this component, we use the `useRef` hook to create a reference (`inputRef`) t
 
 <details>
 <summary>
-<h3>74. What is a higher-order component in React?f</h3>
+<h3>74. What is a higher-order component in React?</h3>
 
 A higher-order component acts as a container for other components. This helps to keep components simple and enables re-usability. They are generally used when multiple components have to use a common logic.
 
@@ -2317,5 +2317,48 @@ export default CommentList;
 ```
 
 The CommentList component is a React functional component that displays a list of comments. It utilizes the useState hook to manage the comments state and the useEffect hook to subscribe to changes in a global data source (DataSource). When the component mounts, it fetches initial comments and sets up a change listener, updating the state whenever the data source changes. The component renders a list of Comment components based on the comments in its state, each uniquely identified by its id. The change listener is removed when the component unmounts to avoid memory leaks.
+
+</details>
+
+<details>
+<summary>
+<h3>75. Explain the role of keys in React lists and the potential issues that can arise without them. Provide a code example to demonstrate their usage.</h3>
+</summary>
+
+**Answer:**
+
+Keys in React lists serve a crucial purpose for efficient rendering and reconciliation.
+
+They enable React to identify which items in a list have changed, been added, or removed, and update the DOM accordingly.
+
+**Without keys, React may perform unnecessary re-renders of components, leading to performance issues and potential bugs.**
+
+Here are key points to remember:
+
+- **Uniqueness:** Each item in a list should have a unique key.
+- **Stability:** Keys should remain consistent across re-renders unless the items themselves change identity.
+- **Data Attributes:** Using data attributes from the items themselves is often a good approach for key assignment.
+
+**Example:**
+
+```jsx
+import React from "react";
+
+const TodoList = ({ todos }) => {
+  return (
+    <ul>
+      {todos.map((todo, index) => (
+        <li key={todo.id}>{todo.text}</li>
+      ))}
+    </ul>
+  );
+};
+```
+
+**Explanation:**
+
+- The `TodoList` component renders a list of `Todo` items.
+- Each `Todo` item is assigned a unique key using its `id` property.
+- React uses these keys to track changes and apply updates efficiently.
 
 </details>
