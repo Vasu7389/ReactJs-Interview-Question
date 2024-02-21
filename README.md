@@ -2362,3 +2362,74 @@ const TodoList = ({ todos }) => {
 - React uses these keys to track changes and apply updates efficiently.
 
 </details>
+
+<summary>
+<h3>76. Scenario Based - Async Data Fetch and Rendering</h3>
+Create a React component that fetches data from a given API endpoint and renders it as a list.
+
+The API endpoint returns an array of objects, each containing an id and a name. However, there is a 2-second delay before the API responds.
+
+Implement the React component to fetch the data from the API and display it as a list.
+
+API Endpoint: https://jsonplaceholder.typicode.com/users
+
+</summary>
+
+
+**Answer:**
+
+```jsx
+
+import React, { useState, useEffect } from "react";
+
+function DataList() {
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          "https://jsonplaceholder.typicode.com/users"
+        );
+        const json = await response.json();
+        // Simulate a 2-second delay before setting the data
+        setTimeout(() => {
+          setData(json);
+          setLoading(false);
+        }, 2000);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  return (
+    <div>
+      <h2>Data List</h2>
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        <ul>
+          {data.map((item) => (
+            <li key={item.id}>{item.name}</li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+}
+
+export default DataList;
+```
+**Explanation:**
+
+This question tests the candidate's understanding of asynchronous data fetching and rendering in React.
+The solution uses useState to manage state variables for the fetched data and loading status.
+useEffect hook is utilized to perform the data fetching operation when the component mounts.
+The API fetch operation is asynchronous, and a loading message is displayed while waiting for the response.
+Upon receiving the API response, the data is set into the state after a 2-second delay (simulated using setTimeout).
+Finally, the fetched data is rendered as a list once the loading is complete.
