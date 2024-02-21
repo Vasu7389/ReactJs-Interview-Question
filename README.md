@@ -2363,6 +2363,8 @@ const TodoList = ({ todos }) => {
 
 </details>
 
+<details>
+    
 <summary>
 <h3>76. Scenario Based - Async Data Fetch and Rendering</h3>
 Create a React component that fetches data from a given API endpoint and renders it as a list.
@@ -2374,7 +2376,6 @@ Implement the React component to fetch the data from the API and display it as a
 API Endpoint: https://jsonplaceholder.typicode.com/users
 
 </summary>
-
 
 **Answer:**
 
@@ -2433,3 +2434,5 @@ useEffect hook is utilized to perform the data fetching operation when the compo
 The API fetch operation is asynchronous, and a loading message is displayed while waiting for the response.
 Upon receiving the API response, the data is set into the state after a 2-second delay (simulated using setTimeout).
 Finally, the fetched data is rendered as a list once the loading is complete.
+
+</details>
