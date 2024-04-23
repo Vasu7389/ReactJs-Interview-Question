@@ -1,12 +1,12 @@
 ---
-title: "ReactJs Interview Question 2024 [50+ Questions]"
-description: "Find the top React job 50+ Questions interview questions for 2024 for beginners, frontend developers, junior developers as well as for experienced developers which might help you cracking your next interview."
+title: "ReactJs Interview Questions 2024 - Asked by TOP Companies"
+description: "Find the top React job 50+ Questions interview questions and answers for freshers, beginners, frontend developers, junior developers as well as for experienced developers which might help you cracking your next interview."
 githubPath: "https://github.com/Vasu7389/ReactJs-Interview-Question"
 ---
 
-<span style=" font-size: 1rem; border-bottom: 1px solid grey;"> Updated Jan 07, 2024 </span>
+<span style=" font-size: 1rem; border-bottom: 1px solid grey;"> Updated Apr 23, 2024 </span>
 
-Here you'll find the top 50+ React job interview questions for 2024 for beginners, frontend developers, junior developers as well as for experienced developers which might help you cracking your next interview.
+Here you'll find the top 50+ React job interview questions and answers for freshers, beginners, frontend developers, junior developers as well as for experienced developers which might help you cracking your next interview.
 
 ## ReactJs
 
@@ -16,7 +16,7 @@ Looking to expand your knowledge on Javascript as well? Check out our comprehens
 [JavaScript interview question and answers page](https://www.codinn.dev/tricky-javascript/es6789-code-snippets-interview-questions)
 </span> to help you prepare for your next interview.
 
-<span style=" font-size: 1rem;"> \*Discover the answers by clicking on the questions.</span>
+<span style=" font-size: 1rem;">\*Discover the answers by clicking on the questions.</span>
 
 <details>
 <summary>
@@ -2360,5 +2360,59 @@ const TodoList = ({ todos }) => {
 - The `TodoList` component renders a list of `Todo` items.
 - Each `Todo` item is assigned a unique key using its `id` property.
 - React uses these keys to track changes and apply updates efficiently.
+
+</details>
+
+<details>
+<summary>
+<h3>76. Scenario Based - Browser's Local Storage</h3>
+
+Imagine you are working on a task management application using React. You want to implement a feature where the user's tasks are saved locally so that even if they refresh the page or close the browser, their tasks remain intact.
+
+How would you achieve this using local storage in React?
+
+</summary>
+
+Solution:
+
+```jsx
+import React, { useState, useEffect } from "react";
+import TaskList from "./TaskList";
+
+const App = () => {
+  const [tasks, setTasks] = useState([]);
+
+  useEffect(() => {
+    const storedTasks = localStorage.getItem("tasks");
+    if (storedTasks) {
+      setTasks(JSON.parse(storedTasks));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks]);
+
+  const addTask = (newTask) => {
+    setTasks([...tasks, newTask]);
+  };
+
+  const deleteTask = (taskId) => {
+    const updatedTasks = tasks.filter((task) => task.id !== taskId);
+    setTasks(updatedTasks);
+  };
+
+  return (
+    <div className="App">
+      <h1>Task Management App</h1>
+      <TaskList tasks={tasks} addTask={addTask} deleteTask={deleteTask} />
+    </div>
+  );
+};
+
+export default App;
+```
+
+In this component, tasks are stored in local storage under the key 'tasks', and they are loaded into the state when the component mounts. Changes to the tasks state are automatically synced with local storage using another useEffect hook.
 
 </details>
