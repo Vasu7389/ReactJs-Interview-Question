@@ -4,7 +4,7 @@ description: "Find the top React job 50+ Questions interview questions and answe
 githubPath: "https://github.com/Vasu7389/ReactJs-Interview-Question"
 ---
 
-<span style=" font-size: 1rem; border-bottom: 1px solid grey;"> Updated Apr 23, 2024 </span>
+<span style=" font-size: 1rem; border-bottom: 1px solid grey;"> Updated May 28, 2024 </span>
 
 Here you'll find the top 50+ React job interview questions and answers for freshers, beginners, frontend developers, junior developers as well as for experienced developers which might help you cracking your next interview.
 
@@ -2414,5 +2414,63 @@ export default App;
 ```
 
 In this component, tasks are stored in local storage under the key 'tasks', and they are loaded into the state when the component mounts. Changes to the tasks state are automatically synced with local storage using another useEffect hook.
+
+</details>
+
+<details>
+<summary>
+<h3>77. Scenario Based - Browser's Session Storage</h3>
+
+Imagine you are developing a shopping cart feature for an e-commerce website using React. You want to implement a feature where the user's cart items are saved temporarily during their session. If they navigate away from the cart page and come back, their cart items should still be there, but if they close the browser, the cart should be reset.
+
+How would you achieve this using session storage in React?
+
+</summary>
+
+Solution:
+
+```jsx
+import React, { useState, useEffect } from "react";
+import Cart from "./Cart";
+
+const App = () => {
+  const [cartItems, setCartItems] = useState([]);
+
+  useEffect(() => {
+    const storedCartItems = sessionStorage.getItem("cartItems");
+    if (storedCartItems) {
+      setCartItems(JSON.parse(storedCartItems));
+    }
+  }, []);
+
+  useEffect(() => {
+    sessionStorage.setItem("cartItems", JSON.stringify(cartItems));
+  }, [cartItems]);
+
+  const addItemToCart = (newItem) => {
+    setCartItems([...cartItems, newItem]);
+  };
+
+  const removeItemFromCart = (itemId) => {
+    const updatedCartItems = cartItems.filter((item) => item.id !== itemId);
+    setCartItems(updatedCartItems);
+  };
+
+  return (
+    <div className="App">
+      <h1>Shopping Cart</h1>
+      <Cart
+        cartItems={cartItems}
+        addItemToCart={addItemToCart}
+        removeItemFromCart={removeItemFromCart}
+      />
+    </div>
+  );
+};
+
+export default App;
+```
+
+In this component, cart items are stored in session storage under the key 'cartItems', and they are loaded into the state when the component mounts. Changes to the cartItems state are automatically synced with session storage using another useEffect hook.
 
 </details>
