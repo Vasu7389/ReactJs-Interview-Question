@@ -20,7 +20,7 @@ Looking to expand your knowledge on Javascript as well? Check out our comprehens
 
 <details>
 <summary>
-    <h3>1. How does React work?</h3>
+    **1. How does React work?**
 </summary>
 
 React creates a virtual DOM. When the state changes in a component it first runs a "diffing" algorithm, which identifies what has changed in the virtual DOM. The second step is reconciliation, where it updates the DOM with the results of diff.
