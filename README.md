@@ -29,7 +29,7 @@ React creates a virtual DOM. When the state changes in a component it first runs
 
 <details>
 <summary>
-    <h3>2. What are the advantages of using React?</h3>
+    <strong>2. What are the advantages of using React?</strong>
 </summary>
 
 - It is easy to know how a component is rendered, you just need to look at the render function.
@@ -42,7 +42,7 @@ React creates a virtual DOM. When the state changes in a component it first runs
 
 <details>
 <summary>
-    <h3>3. What is the difference between a Presentational component and a Container component?</h3>
+    <strong>3. What is the difference between a Presentational component and a Container component?</strong>
 </summary>
 
 Presentational components are concerned with how things look. They generally receive data and callbacks exclusively via props. These components rarely have their own state, but when they do it generally concerns UI state, as opposed to data state.
@@ -55,7 +55,7 @@ Container components are more concerned with how things work. These components p
 
 <details>
 <summary>
-    <h3>4. What are the differences between a class component and functional component?</h3>
+    <strong>4. What are the differences between a class component and functional component?</strong>
 </summary>
 
 - The class component uses ES6 class syntax, and it extends React components with a render method that returns React elements.
@@ -66,7 +66,7 @@ Container components are more concerned with how things work. These components p
 
 <details>
 <summary>
-    <h3>5. What is the difference between state and props?</h3>
+    <strong>5. What is the difference between state and props?</strong>
 </summary>
 
 State is a data structure that starts with a default value when a Component mounts. It may be mutated across time, mostly as a result of user events.
@@ -77,7 +77,7 @@ Props (short for properties) are a Component's configuration. They are received 
 
 <details>
 <summary>
-    <h3>6. What are the different lifecycle methods?</h3>
+    <strong>6. What are the different lifecycle methods?</strong>
 </summary>
 
 - `componentWillMount` (deprecated) - this is most commonly used for App configuration in your root component.
@@ -92,7 +92,7 @@ Props (short for properties) are a Component's configuration. They are received 
 
 <details>
 <summary>
-    <h3>7. Explain React Hooks.</h3>
+    <strong>7. Explain React Hooks.</strong>
 </summary>
 
 Hooks let you use more of React’s features without having to use classes. The first hook that you will most likely encounter is useState. useState is a Hook that lets you add React state to function components. It returns an array with a getter and a setter.
@@ -129,7 +129,7 @@ useEffect(() => {
 
 <details>
 <summary>
-    <h3>8. Where in a React class component should you make an AJAX/API request?</h3>
+    <strong>8. Where in a React class component should you make an AJAX/API request?</strong>
 </summary>
 
 `componentDidMount` is where an AJAX request should be made in a React component. This method will be executed when the component `mounts` (is added to the DOM) for the first time. This method is only executed once during the component’s life. Importantly, you can’t guarantee the AJAX request will have resolved before the component mounts. If it doesn't, that would mean that you’d be trying to setState on an unmounted component, which would not work. Making your AJAX request in `componentDidMount` will guarantee that there is a component to update.
@@ -138,7 +138,7 @@ useEffect(() => {
 
 <details>
 <summary>
-    <h3>9. What are controlled components?</h3>
+    <strong>9. What are controlled components?</strong>
 </summary>
 
 In HTML, form elements such as `<input>`, `<textarea>`, and `<select>` typically maintain their own state and update it based on user input. When a user submits a form the values from the mentioned elements are sent with the form. With React it works differently. The component containing the form will keep track of the value of the input in it's state and will re-render the component each time the callback function e.g. onChange is fired as the state will be updated. An input form element whose value is controlled by React in this way is called a `controlled component`.
@@ -147,7 +147,7 @@ In HTML, form elements such as `<input>`, `<textarea>`, and `<select>` typically
 
 <details>
 <summary>
-    <h3>10. What are refs used for in React?</h3>
+    <strong>10. What are refs used for in React?</strong>
 </summary>
 
 Refs are used to get reference to a DOM node or an instance of a component in React. Good examples of when to use refs are for managing focus/text selection, triggering imperative animations, or integrating with third-party DOM libraries. You should avoid using string refs and inline ref callbacks. Callback refs are advised by React.
@@ -156,7 +156,7 @@ Refs are used to get reference to a DOM node or an instance of a component in Re
 
 <details>
 <summary>
-    <h3>11. What is a higher order component?</h3>
+    <strong>11. What is a higher order component?</strong>
 </summary>
 
 A higher-order component is a function that takes a component and returns a new component. HOC's allow you to reuse code, logic and bootstrap abstraction. The most common is probably Redux’s connect function. Beyond simply sharing utility libraries and simple composition, HOCs are the best way to share behavior between React Components. If you find yourself writing a lot of code in different places that does the same thing, you may be able to refactor that code into a reusable HOC.
@@ -165,7 +165,7 @@ A higher-order component is a function that takes a component and returns a new 
 
 <details>
 <summary>
-    <h3>12. What advantages are there in using arrow functions?</h3>
+    <strong>12. What advantages are there in using arrow functions?</strong>
 </summary>
 
 - Scope safety: Until arrow functions, every new function defined its own this value (a new object in the case of a constructor, undefined in strict mode function calls, the base object if the function is called as an "object method", etc.). An arrow function does not create its own this, the this value of the enclosing execution context is used.
@@ -175,7 +175,7 @@ A higher-order component is a function that takes a component and returns a new 
 
 <details>
 <summary>
-    <h3>13. How would you prevent a class component from rendering?</h3>
+    <strong>13. How would you prevent a class component from rendering?</strong>
 </summary>
 
 Returning null from a component's render method means nothing will be displayed, but it does not affect the firing of the component's lifecycle methods.
@@ -196,7 +196,7 @@ Or using React.PureComponent instead of React.Component React.PureComponent impl
 
 <details>
 <summary>
-    <h3>14. When rendering a list what is a key and what is it's purpose?</h3>
+    <strong>14. When rendering a list what is a key and what is it's purpose?</strong>
 </summary>
 
 Keys help React identify which items have changed, are added, or are removed. Keys should be given to the elements inside the array to give the elements a stable identity. The best way to pick a key is to use a string that uniquely identifies a list item among its siblings. Most often you would use IDs from your data as keys. When you don't have stable IDs for rendered items, you may use the item index as a key as a last resort. It is not recommend to use indexes for keys if the items can reorder, as that would be slow.
@@ -205,7 +205,7 @@ Keys help React identify which items have changed, are added, or are removed. Ke
 
 <details>
 <summary>
-    <h3>15. What is the purpose of `super(props)` ?</h3>
+    <strong>15. What is the purpose of `super(props)` ?</strong>
 </summary>
 
 A child class constructor cannot make use of this until `super()` has been called. Also, ES2015 class constructors have to call `super()` if they are subclasses. The reason for passing props to `super()` is to enable you to access `this.props` in the constructor.
@@ -214,7 +214,7 @@ A child class constructor cannot make use of this until `super()` has been calle
 
 <details>
 <summary>
-    <h3>16. What is JSX?</h3>
+    <strong>16. What is JSX?</strong>
 </summary>
 
 - JSX is a syntax extension to JavaScript and comes with the full power of JavaScript. JSX produces React `elements`.
@@ -225,7 +225,7 @@ A child class constructor cannot make use of this until `super()` has been calle
 
 <details>
 <summary>
-    <h3>17. What is equivalent of the following using React.createElement?</h3>
+    <strong>17. What is equivalent of the following using React.createElement?</strong>
 </summary>
 
 ```jsx
@@ -244,7 +244,7 @@ const element = React.createElement(
 
 <details>
 <summary>
-    <h3>18. What is redux?</h3>
+    <strong>18. What is redux?</strong>
 </summary>
 
 - The basic idea of redux is that the entire application state is kept in a single store. The store is simply a javascript object.
@@ -255,7 +255,7 @@ const element = React.createElement(
 
 <details>
 <summary>
-    <h3>19. What is a store in redux?</h3>
+    <strong>19. What is a store in redux?</strong>
 </summary>
 
 The store is a javascript object that holds application state. Along with this it also has the following responsibilities:
@@ -269,7 +269,7 @@ The store is a javascript object that holds application state. Along with this i
 
 <details>
 <summary>
-    <h3>20. Difference between action and reducer.</h3>
+    <strong>20. Difference between action and reducer.</strong>
 </summary>
 
 - Actions are plain javascript objects.
@@ -282,7 +282,7 @@ A reducer is simply a pure function that takes the previous state and an action,
 
 <details>
 <summary>
-    <h3>21. What is Redux Thunk used for?</h3>
+    <strong>21. What is Redux Thunk used for?</strong>
 </summary>
 
 - Redux thunk is middleware that allows you to write action creators that return a function instead of an action.
@@ -292,7 +292,7 @@ A reducer is simply a pure function that takes the previous state and an action,
 
 <details>
 <summary>
-    <h3>22. Write a custom hook which can be used to debounce user's input.</h3>
+    <strong>22. Write a custom hook which can be used to debounce user's input.</strong>
 </summary>
 
 ```jsx
@@ -333,7 +333,7 @@ const Counter = () => {
 
 <details>
 <summary>
-    <h3>23. Write a custom hook to copy text to clipboard.</h3>
+    <strong>23. Write a custom hook to copy text to clipboard.</strong>
 </summary>
 
 ```jsx
@@ -362,7 +362,7 @@ export default function App() {
 
 <details>
 <summary>
-    <h3>24. How to Use the 'useId' Hook to generate unique ids.</h3>
+    <strong>24. How to Use the 'useId' Hook to generate unique ids.</strong>
 </summary>
 
 - useId does not take any parameters.
@@ -397,7 +397,7 @@ return posts.map((post) => <article key={id}>...</article>);
 
 <details>
 <summary>
-    <h3>25. How to validate Props in React?</h3>
+    <strong>25. How to validate Props in React?</strong>
 </summary>
 
 - We can use 'prop-types' package
@@ -422,7 +422,7 @@ export default MyComponent;
 
 <details>
 <summary>
-    <h3>26. Give a practical example of Higher Order Component in react.</h3>
+    <strong>26. Give a practical example of Higher Order Component in react.</strong>
 </summary>
 
 - Show a loader while a component waits for data
@@ -462,7 +462,7 @@ const App = () => {
 
 <details>
 <summary>
-    <h3>27. Why React's useDeferredValue hook is useful?</h3>
+    <strong>27. Why React's useDeferredValue hook is useful?</strong>
 </summary>
 
 - 'useDeferredValue' is a React Hook that lets you defer updating a part of the UI.
@@ -501,7 +501,7 @@ export default function App() {
 
 <details>
 <summary>
-    <h3>29. How to detect 'click' outside React component?</h3>
+    <strong>29. How to detect 'click' outside React component?</strong>
 </summary>
 
 ```jsx
@@ -532,7 +532,7 @@ export default function OutsideAlerter() {
 
 <details>
 <summary>
-    <h3>30. Why do React component names have to start with capital letters?</h3>
+    <strong>30. Why do React component names have to start with capital letters?</strong>
 </summary>
 
 In JSX, lowercase tag names are considered to be HTML tags. However, lowercase tag names with a dot (property accessor) aren't.
@@ -569,7 +569,7 @@ function App() {
 
 <details>
 <summary>
-    <h3>31. What is the difference between npx and npm?</h3>
+    <strong>31. What is the difference between npx and npm?</strong>
 </summary>
 
 - NPM is a package manager and can be used to install node.js packages.
@@ -597,7 +597,7 @@ npX - Execute
 
 <details>
 <summary>
-    <h3>32. How to set focus on an input field after component mounts on UI?</h3>
+    <strong>32. How to set focus on an input field after component mounts on UI?</strong>
 </summary>
 
 ```jsx
@@ -622,7 +622,7 @@ const SearchPage = () => {
 
 <details>
 <summary>
-    <h3>33. How to programmatically navigate using latest React Router version?</h3>
+    <strong>33. How to programmatically navigate using latest React Router version?</strong>
 </summary>
 
 ```jsx
@@ -664,7 +664,7 @@ const loader = async () => {
 
 <details>
 <summary>
-    <h3>34. What is React state batching? Guess the output.</h3>
+    <strong>34. What is React state batching? Guess the output.</strong>
 </summary>
 
 Given Snippet
@@ -728,7 +728,7 @@ return (
 
 <details>
 <summary>
-    <h3>35. How to pass data between sibling components using React router?</h3>
+    <strong>35. How to pass data between sibling components using React router?</strong>
 </summary>
 
 Passing data between sibling components of React is possible using React Router `useParams` hook.
@@ -757,7 +757,7 @@ const User = () => {
 
 <details>
 <summary>
-    <h3>36. How to access a global variable using useContext hook?</h3>
+    <strong>36. How to access a global variable using useContext hook?</strong>
 </summary>
 
 ```jsx
@@ -788,7 +788,7 @@ const Child = () => {
 
 <details>
 <summary>
-    <h3>37.  What is the difference between useMemo and useCallback?</h3>
+    <strong>37.  What is the difference between useMemo and useCallback?</strong>
 </summary>
 
 - useCallback gives you referential equality between renders for functions. And useMemo gives you referential equality between renders for values.
@@ -799,7 +799,7 @@ const Child = () => {
 
  <details>
 <summary>
-    <h3>38. Why you should prefer vite over create-react-app?</h3>
+    <strong>38. Why you should prefer vite over create-react-app?</strong>
 </summary>
 
 - Create React App (CRA) has long been the go-to tool for most developers to scaffold React projects and set up a dev server. It offers a modern build setup with no configuration.
@@ -814,7 +814,7 @@ const Child = () => {
 
 <details>
 <summary>
-    <h3>39. What are the advantages of react-router?</h3>
+    <strong>39. What are the advantages of react-router?</strong>
 </summary>
 
 - The major advantage of `react-router` is that the page does not have to be refreshed when a link to another page is clicked.
@@ -827,7 +827,7 @@ const Child = () => {
 
 <details>
 <summary>
-    <h3>40. How can you optimize performance in a ReactJS application?</h3>
+    <strong>40. How can you optimize performance in a ReactJS application?</strong>
 </summary>
 
 - One way is to use the shouldComponentUpdate lifecycle method to prevent unnecessary re-renders of a component.
@@ -838,7 +838,7 @@ const Child = () => {
 
 <details>
 <summary>
-    <h3>41. Write code for CRUD functionality in ReactJs?</h3>
+    <strong>41. Write code for CRUD functionality in ReactJs?</strong>
 </summary>
 
 To implement CRUD (create, read, update, delete) functionality in a React application using hooks, you can use the useState hook to manage the state of your application and the useEffect hook to handle side effects, such as making API calls to a server to create, read, update, or delete data.
@@ -901,7 +901,7 @@ function App() {
 
 <details>
 <summary>
- <h3>42. What is a hook in React and why are they useful? </h3>
+ <strong>42. What is a hook in React and why are they useful? </strong>
 </summary>
 
 A hook in React is a function that allows developers to use state and other React features without writing a class. This makes it possible to use these features in functional components, which can be easier to write and understand than class-based components.
@@ -910,7 +910,7 @@ A hook in React is a function that allows developers to use state and other Reac
 
 <details>
 <summary>
- <h3>43. What are some common hooks that are used in React? </h3>
+ <strong>43. What are some common hooks that are used in React? </strong>
 </summary>
 
 Some common hooks that are used in React include useState, useEffect, and useContext. The useState hook allows a functional component to have local state, the useEffect hook allows a functional component to perform side effects, and the useContext hook allows a functional component to access values from the nearest context provider.
@@ -919,7 +919,7 @@ Some common hooks that are used in React include useState, useEffect, and useCon
 
 <details>
 <summary>
- <h3>44. Can you use hooks inside a class-based component? </h3>
+ <strong>44. Can you use hooks inside a class-based component? </strong>
 </summary>
 
 No, hooks can only be used inside functional components. If you need to use state or other React features in a class-based component, you will need to use a class component.
@@ -928,7 +928,7 @@ No, hooks can only be used inside functional components. If you need to use stat
 
 <details>
 <summary>
-    <h3>45. How do you test a component that uses hooks? </h3>
+    <strong>45. How do you test a component that uses hooks? </strong>
 </summary>
 
 You can test a component that uses hooks by using the act utility from the react-testing-library package. This utility allows you to simulate the effects of React's reconciliation process, which is necessary for hooks to work correctly. You can then use standard Jest or Enzyme assertions to verify the behavior of your component.
@@ -937,7 +937,7 @@ You can test a component that uses hooks by using the act utility from the react
 
 <details>
 <summary>
-    <h3>46. What is the useEffect hook used for? </h3>
+    <strong>46. What is the useEffect hook used for? </strong>
 </summary>
 
 The useEffect hook is used for performing side effects in functional components. This can include things like data fetching, setting up subscriptions, or manually changing the DOM. The useEffect hook is called after the component renders, and can be used to ensure that your component stays up-to-date with any relevant data or dependencies.
@@ -946,7 +946,7 @@ The useEffect hook is used for performing side effects in functional components.
 
 <details>
 <summary>
-    <h3>47. Create a simple custom hook in React? </h3>
+    <strong>47. Create a simple custom hook in React? </strong>
 </summary>
 
 To create a custom hook in React, you can use the useState hook to add local state to a functional component. Here's an example:
@@ -986,7 +986,7 @@ Now, whenever the increment button is clicked, the count state will be updated a
 
 <details>
 <summary>
-    <h3>48. What is the difference between useEffect and useLayoutEffect? </h3>
+    <strong>48. What is the difference between useEffect and useLayoutEffect? </strong>
 </summary>
 
 Here is an example of how you might use useEffect and useLayoutEffect in a React component:
@@ -1027,7 +1027,7 @@ In this example, when the Increment button is clicked, the useEffect hook will r
 
 <details>
 <summary>
-    <h3>49. Why virtual DOM is faster to update than real DOM? </h3>
+    <strong>49. Why virtual DOM is faster to update than real DOM? </strong>
 </summary>
 
 - The virtual DOM is faster to update than the real DOM because React uses a clever technique to minimize the number of updates that need to be made to the real DOM.
@@ -1044,7 +1044,7 @@ Overall, the use of the virtual DOM allows React to make efficient updates to th
 
 <details>
 <summary>
-    <h3>50. Can you explain the difference between a pure and impure function, and why it matters in the context of React? </h3>
+    <strong>50. Can you explain the difference between a pure and impure function, and why it matters in the context of React? </strong>
 </summary>
 
 In React, a pure function is a function that returns the same output for the same set of inputs, regardless of when it is called. An impure function, on the other hand, is a function that may produce different outputs for the same set of inputs, depending on when it is called or other factors.
@@ -1075,7 +1075,7 @@ In general, pure functions are preferred in React because they are easier to rea
 
 <details>
 <summary>
-    <h3>51. Explain Styled Component in React with example? </h3>
+    <strong>51. Explain Styled Component in React with example? </strong>
 </summary>
 
 Styled Components is a library for React and React Native that allows you to write actual CSS code to style your components. It allows you to write your styles in a declarative way alongside your components, rather than having to maintain separate style sheets.
@@ -1125,7 +1125,7 @@ In this example, the Button component has a customizable background and text col
 
 <details>
 <summary>
-    <h3>52. Styled-Components vs Inline Styling in React? </h3>
+    <strong>52. Styled-Components vs Inline Styling in React? </strong>
 </summary>
 
 It really depends on your specific needs and preferences. Both inline styling and Styled Components have their own advantages and disadvantages, and the best choice for you will depend on the requirements of your project.
@@ -1173,8 +1173,8 @@ Ultimately, the choice between inline styling and Styled Components will depend 
 
 <details>
 <summary>
-    <h3>53. What is the output of the following code snippet when the "Click me" button is clicked twice?
- </h3>
+    <strong>53. What is the output of the following code snippet when the "Click me" button is clicked twice?
+ </strong>
 
 ```jsx
 function App() {
@@ -1199,8 +1199,8 @@ The output would be "You clicked 2 times".
 
 <details>
 <summary>
-    <h3>54. What is the output of the following code snippet when the "Increment age" button is clicked three times?
- </h3>
+    <strong>54. What is the output of the following code snippet when the "Increment age" button is clicked three times?
+ </strong>
 
 ```jsx
 function App() {
@@ -1232,8 +1232,8 @@ The output would be "My name is John and I am 33 years old".
 
 <details>
 <summary>
-    <h3>55. What is the output of the following code snippet when the "Add hobby" button is clicked twice and then the page is refreshed?
- </h3>
+    <strong>55. What is the output of the following code snippet when the "Add hobby" button is clicked twice and then the page is refreshed?
+ </strong>
 
 ```jsx
 function App() {
@@ -1275,8 +1275,8 @@ The output would be a list with two items: "reading" and "running". The state of
 
 <details>
 <summary>
-    <h3>56. What is the output of the following code snippet when the "Increment" button is clicked twice and then the "Reset" button is clicked once?
- </h3>
+    <strong>56. What is the output of the following code snippet when the "Increment" button is clicked twice and then the "Reset" button is clicked once?
+ </strong>
 
 ```jsx
 import { useEffect, useState } from "react";
@@ -1312,8 +1312,8 @@ The `useEffect` hook is called every time the component is rendered, but the dep
 
 <details>
 <summary>
-    <h3>57. Create your own useState hook for your new vanilla javascript project.
- </h3>
+    <strong>57. Create your own useState hook for your new vanilla javascript project.
+ </strong>
  </summary>
 Here is an example of a `useState` hook function that you can use in a `vanilla` JavaScript project:
 
@@ -1341,8 +1341,8 @@ For the render function on the setState is not something that you would typicall
 
 <details>
 <summary>
-    <h3>58. Write a custom hook which can be used to apply dark or light mode.
- </h3>
+    <strong>58. Write a custom hook which can be used to apply dark or light mode.
+ </strong>
 
  </summary>
 
@@ -1394,8 +1394,8 @@ This is a simple example, you can improve this by adding more styles, and you ca
 
 <details>
 <summary>
-    <h3>59. How to access the latest value of a text input field in a React component using the 'useRef' hook?
- </h3>
+    <strong>59. How to access the latest value of a text input field in a React component using the 'useRef' hook?
+ </strong>
 
  </summary>
 
@@ -1426,8 +1426,8 @@ const InputComponent = () => {
 
 <details>
 <summary>
-    <h3>60. How to create a counter that increments every second using the 'useRef' hook?
- </h3>
+    <strong>60. How to create a counter that increments every second using the 'useRef' hook?
+ </strong>
 
  </summary>
 
@@ -1460,8 +1460,8 @@ const Counter = () => {
 
 <details>
 <summary>
-    <h3>61. How to implement a simple dropdown menu using the 'useRef' hook?
- </h3>
+    <strong>61. How to implement a simple dropdown menu using the 'useRef' hook?
+ </strong>
 
  </summary>
 
@@ -1508,7 +1508,7 @@ const Dropdown = () => {
 
 <details>
 <summary>
-    <h3>62. Can you explain the React architecture in one sentence?</h3>
+    <strong>62. Can you explain the React architecture in one sentence?</strong>
 
 ```bash
 Think You Know React? Try Answering this!
@@ -1522,7 +1522,7 @@ React is like a virtual Lego set where each component is a brick that can be com
 </details>
 <details>
 <summary>
-    <h3>63. How does React know what to render?</h3>
+    <strong>63. How does React know what to render?</strong>
 
 ```bash
 Think You Know React? Try Answering this!
@@ -1537,7 +1537,7 @@ React uses a virtual DOM to keep track of the state of the application and deter
 
 <details>
 <summary>
-    <h3>64. If React was a food, what food would it be?</h3>
+    <strong>64. If React was a food, what food would it be?</strong>
 
 ```bash
 Think You Know React? Try Answering this!
@@ -1552,7 +1552,7 @@ React would be like a sushi platter, where each piece of sushi is a component an
 
 <details>
 <summary>
-    <h3>65. How would you explain the concept of "lifting state up" in React?</h3>
+    <strong>65. How would you explain the concept of "lifting state up" in React?</strong>
 </summary>
 Answer:
 
@@ -1598,7 +1598,7 @@ This makes the code cleaner and more efficient, and avoids prop drilling.
 
 <details>
 <summary>
-    <h3>66. How does Next.js differ from React.js, and what benefits does it provide for building web applications?</h3>
+    <strong>66. How does Next.js differ from React.js, and what benefits does it provide for building web applications?</strong>
 </summary>
 Answer:
 
@@ -1616,7 +1616,7 @@ Overall, Next.js provides a more complete solution for building modern web appli
 
 <details>
 <summary>
-    <h3>67. Scenario Based - </h3>
+    <strong>67. Scenario Based - </strong>
     
 You have been tasked with creating a form component that allows users to submit data to an API endpoint using React. The form should include the following fields:
 
@@ -1749,7 +1749,7 @@ This form component uses the useState hook to manage the form data, submission s
 
 <details>
 <summary>
-    <h3>68. Scenario Based - </h3>
+    <strong>68. Scenario Based - </strong>
     
 You have been given a requirement to build a simple to-do list application in React. The application should allow the user to add, edit, and delete tasks from the list. Each task should have a title, a description, and a priority level (high, medium, low). When a task is marked as completed, it should be displayed with a strikethrough.
 
@@ -1845,7 +1845,7 @@ function TodoList() {
               }}
             >
               {task.title}
-            </h3>
+            </strong>
             <p>{task.description}</p>
             <div>
               <button onClick={() => handleDeleteTask(index)}>Delete</button>
@@ -1880,7 +1880,7 @@ export default TodoList;
 
 <details>
 <summary>
-    <h3>69. Scenario Based - </h3>
+    <strong>69. Scenario Based - </strong>
 
 You have been assigned to create a registration form component in React. The form should include fields for the user to enter their name, email, and password.
 
@@ -2022,7 +2022,7 @@ The form fields include name, email, and password, and the component ensures tha
 
 <details>
 <summary>
-<h3>70. Scenario Based - Controlled Input with Delayed Value Display</h3>
+<strong>70. Scenario Based - Controlled Input with Delayed Value Display</strong>
 
 Create a React component that consists of an input field.
 
@@ -2091,7 +2091,7 @@ The component `DelayedInput` uses React hooks such as `useEffect` to achieve the
 
 <details>
 <summary>
-<h3>71. Scenario Based - Dynamic Nested List Rendering</h3>
+<strong>71. Scenario Based - Dynamic Nested List Rendering</strong>
 
 Create a React component that renders a nested list from a given array of objects. Each object can have a `name` property and a nested `children` property, which is an array of objects with the same structure.
 
@@ -2166,7 +2166,7 @@ The component `NestedList` recursively renders a nested list using the provided 
 
 <details>
 <summary>
-<h3>72. Scenario Based - Async Data Fetch and Rendering</h3>
+<strong>72. Scenario Based - Async Data Fetch and Rendering</strong>
 
 Create a React component that fetches data from a given API endpoint and renders it as a list.
 
@@ -2235,7 +2235,7 @@ While waiting for the API response, it displays a loading message. After a 2-sec
 
 <details>
 <summary>
-<h3>73. Scenario Based - Managing Focus with useRef</h3>
+<strong>73. Scenario Based - Managing Focus with useRef</strong>
 
 Create a React component that includes an input field and a button. When the button is clicked, it should focus on the input field.
 
@@ -2276,7 +2276,7 @@ In this component, we use the `useRef` hook to create a reference (`inputRef`) t
 
 <details>
 <summary>
-<h3>74. What is a higher-order component in React?</h3>
+<strong>74. What is a higher-order component in React?</strong>
 
 A higher-order component acts as a container for other components. This helps to keep components simple and enables re-usability. They are generally used when multiple components have to use a common logic.
 
@@ -2322,7 +2322,7 @@ The CommentList component is a React functional component that displays a list o
 
 <details>
 <summary>
-<h3>75. Explain the role of keys in React lists and the potential issues that can arise without them. Provide a code example to demonstrate their usage.</h3>
+<strong>75. Explain the role of keys in React lists and the potential issues that can arise without them. Provide a code example to demonstrate their usage.</strong>
 </summary>
 
 **Answer:**
@@ -2365,7 +2365,7 @@ const TodoList = ({ todos }) => {
 
 <details>
 <summary>
-<h3>76. Scenario Based - Browser's Local Storage</h3>
+<strong>76. Scenario Based - Browser's Local Storage</strong>
 
 Imagine you are working on a task management application using React. You want to implement a feature where the user's tasks are saved locally so that even if they refresh the page or close the browser, their tasks remain intact.
 
@@ -2419,7 +2419,7 @@ In this component, tasks are stored in local storage under the key 'tasks', and 
 
 <details>
 <summary>
-<h3>77. Scenario Based - Browser's Session Storage</h3>
+<strong>77. Scenario Based - Browser's Session Storage</strong>
 
 Imagine you are developing a shopping cart feature for an e-commerce website using React. You want to implement a feature where the user's cart items are saved temporarily during their session. If they navigate away from the cart page and come back, their cart items should still be there, but if they close the browser, the cart should be reset.
 
