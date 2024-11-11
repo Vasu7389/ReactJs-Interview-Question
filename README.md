@@ -71,9 +71,7 @@ Here you'll find the top 50+ React job interview questions and answers for fresh
 | 56 | [Create your own useState hook for your new vanilla javascript project.](#56-create-your-own-usestate-hook-for-your-new-vanilla-javascript-project) |
 | 57 | [Write a custom hook which can be used to apply dark or light mode.](#57-write-a-custom-hook-which-can-be-used-to-apply-dark-or-light-mode) |
 | 58 | [How to access the latest value of a text input field in a React component using the 'useRef' hook?](#58-how-to-access-the-latest-value-of-a-text-input-field-in-a-react-component-using-the-useref-hook) |
-| 59 | [How to create a counter that increments every second using the 'useEffect' hook?](#59-how-to-create-a-counter-that-in
-
-crements-every-second-using-the-useeffect-hook) |
+| 59 | [How to create a counter that increments every second using the 'useEffect' hook?](#59-how-to-create-a-counter-that-increments-every-second-using-the-useeffect-hook) |
 | 60 | [How to create a counter that increments every second using the 'useRef' hook?](#60-how-to-create-a-counter-that-increments-every-second-using-the-useref-hook) |
 | 61 | [How to implement a simple dropdown menu using the 'useRef' hook?](#61-how-to-implement-a-simple-dropdown-menu-using-the-useref-hook) |
 | 62 | [Can you explain the React architecture in one sentence?](#62-can-you-explain-the-react-architecture-in-one-sentence) |
