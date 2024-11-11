@@ -13,7 +13,6 @@ Here you'll find the top 50+ React job interview questions and answers for fresh
 ReactJs is a popular JavaScript library for building user interfaces. It is maintained by Facebook, and is widely used for building web applications, mobile apps, and other user interfaces. React allows developers to create reusable components, which can help make large applications easier to manage and maintain. It is designed to be efficient, declarative, and flexible, and can be used to create complex, dynamic user interfaces.
 
 Looking to expand your knowledge on Javascript as well? Check out our comprehensive collection of <span style="text-decoration: underline;color: var(--theme-sub-color);">
-[JavaScript interview question and answers page](https://www.codinn.dev/tricky-javascript/es6789-code-snippets-interview-questions)
 </span> to help you prepare for your next interview.
 
 <span style=" font-size: 1rem;">\*Discover the answers by clicking on the questions.</span>
