@@ -4,7 +4,7 @@ description: "Find the top React job 50+ Questions interview questions and answe
 githubPath: "https://github.com/Vasu7389/ReactJs-Interview-Question"
 ---
 
-<span style=" font-size: 1rem; border-bottom: 1px solid grey;"> Updated May 28, 2024 </span>
+<span style=" font-size: 1rem; border-bottom: 1px solid grey;"> Updated Jan 20, 2025 </span>
 
 Here you'll find the top 50+ React job interview questions and answers for freshers, beginners, frontend developers, junior developers as well as for experienced developers which might help you cracking your next interview.
 
@@ -2472,5 +2472,100 @@ export default App;
 ```
 
 In this component, cart items are stored in session storage under the key 'cartItems', and they are loaded into the state when the component mounts. Changes to the cartItems state are automatically synced with session storage using another useEffect hook.
+
+</details>
+
+<details>
+<summary>
+<h3>78. Scenario Based - Async Data Fetch with Caching and Error Handling</h3>
+
+Create a React component that fetches and displays a list of users from an API endpoint.
+
+### Requirements:
+
+- Fetch data from the API endpoint when the component mounts.
+- Implement a caching mechanism to prevent unnecessary API calls if the data is already available.
+- Show a loading state while fetching data.
+- Handle API errors gracefully and display a retry button.
+- Ensure efficient re-renders and avoid unnecessary re-fetching.
+
+API Endpoint: `https://jsonplaceholder.typicode.com/users`
+
+</summary>
+
+Solution -
+
+```jsx
+import React, { useState, useEffect } from "react";
+
+const cache = {}; // Simple in-memory cache
+
+function UserList() {
+  const [data, setData] = useState(cache.users || []);
+  const [loading, setLoading] = useState(!cache.users);
+  const [error, setError] = useState(null);
+
+  const fetchData = async () => {
+    if (cache.users) return; // Use cached data if available
+
+    setLoading(true);
+    setError(null);
+    try {
+      const response = await fetch(
+        "https://jsonplaceholder.typicode.com/users"
+      );
+
+      if (!response.ok) throw new Error("Failed to fetch data");
+
+      const json = await response.json();
+      cache.users = json; // Store data in cache
+      setData(json);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  return (
+    <div>
+      <h2>User List</h2>
+      {loading && <p>Loading...</p>}
+      {error && (
+        <div>
+          <p>Error: {error}</p>
+          <button onClick={fetchData}>Retry</button>
+        </div>
+      )}
+      {!loading && !error && (
+        <ul>
+          {data.map((user) => (
+            <li key={user.id}>{user.name}</li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+}
+
+export default UserList;
+```
+
+### Explanation:
+
+- The component first checks if data is available in the cache to avoid unnecessary API calls.
+- If no cached data exists, it fetches data from the API and caches it.
+- Displays a loading state while fetching.
+- Handles errors gracefully by showing an error message and a retry button.
+- Ensures the UI only updates when necessary, optimizing performance.
+
+This question evaluates:  
+✅ Optimized data fetching with caching  
+✅ Proper error handling and retry mechanisms  
+✅ Efficient re-renders to prevent unnecessary API calls
 
 </details>
