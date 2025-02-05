@@ -8,12 +8,96 @@ githubPath: "https://github.com/Vasu7389/ReactJs-Interview-Question"
 
 Here you'll find the top 50+ React job interview questions and answers for freshers, beginners, frontend developers, junior developers as well as for experienced developers which might help you cracking your next interview.
 
+### Table of Contents - React
+
+| No. | Questions |
+| --- | --------- |
+|   | **React** |
+| 1 | [How does React work?](#1-how-does-react-work) |
+| 2 | [What are the advantages of using React?](#2-what-are-the-advantages-of-using-react) |
+| 3 | [What is the difference between a Presentational component and a Container component?](#3-what-is-the-difference-between-a-presentational-component-and-a-container-component) |
+| 4 | [What are the differences between a class component and functional component?](#4-what-are-the-differences-between-a-class-component-and-functional-component) |
+| 5 | [What is the difference between state and props?](#5-what-is-the-difference-between-state-and-props) |
+| 6 | [What are the different lifecycle methods?](#6-what-are-the-different-lifecycle-methods) |
+| 7 | [Explain React Hooks.](#7-explain-react-hooks) |
+| 8 | [Where in a React class component should you make an AJAX/API request?](#8-where-in-a-react-class-component-should-you-make-an-ajaxapi-request) |
+| 9 | [What are controlled components?](#9-what-are-controlled-components) |
+| 10 | [What are refs used for in React?](#10-what-are-refs-used-for-in-react) |
+| 11 | [What is a higher order component?](#11-what-is-a-higher-order-component) |
+| 12 | [What advantages are there in using arrow functions?](#12-what-advantages-are-there-in-using-arrow-functions) |
+| 13 | [How would you prevent a class component from rendering?](#13-how-would-you-prevent-a-class-component-from-rendering) |
+| 14 | [When rendering a list what is a key and what is its purpose?](#14-when-rendering-a-list-what-is-a-key-and-what-is-its-purpose) |
+| 15 | [What is the purpose of `super(props)`?](#15-what-is-the-purpose-of-superprops) |
+| 16 | [What is JSX?](#16-what-is-jsx) |
+| 17 | [What is equivalent of the following using React.createElement?](#17-what-is-equivalent-of-the-following-using-reactcreateelement) |
+| 18 | [What is redux?](#18-what-is-redux) |
+| 19 | [What is a store in redux?](#19-what-is-a-store-in-redux) |
+| 20 | [Difference between action and reducer.](#20-difference-between-action-and-reducer) |
+| 21 | [What is Redux Thunk used for?](#21-what-is-redux-thunk-used-for) |
+| 22 | [Write a custom hook which can be used to debounce user's input.](#22-write-a-custom-hook-which-can-be-used-to-debounce-users-input) |
+| 23 | [Write a custom hook to copy text to clipboard.](#23-write-a-custom-hook-to-copy-text-to-clipboard) |
+| 24 | [How to Use the 'useId' Hook to generate unique ids.](#24-how-to-use-the-useid-hook-to-generate-unique-ids) |
+| 25 | [How to validate Props in React?](#25-how-to-validate-props-in-react) |
+| 26 | [Give a practical example of Higher Order Component in react.](#26-give-a-practical-example-of-higher-order-component-in-react) |
+| 27 | [Why React's useDeferredValue hook is useful?](#27-why-reacts-usedeferredvalue-hook-is-useful) |
+| 28 | [How to detect 'click' outside React component?](#28-how-to-detect-click-outside-react-component) |
+| 29 | [Why do React component names have to start with capital letters?](#29-why-do-react-component-names-have-to-start-with-capital-letters) |
+| 30 | [What is the difference between npx and npm?](#30-what-is-the-difference-between-npx-and-npm) |
+| 31 | [How to set focus on an input field after component mounts on UI?](#31-how-to-set-focus-on-an-input-field-after-component-mounts-on-ui) |
+| 32 | [How to programmatically navigate using latest React Router version?](#32-how-to-programmatically-navigate-using-latest-react-router-version) |
+| 33 | [What is React state batching? Guess the output.](#33-what-is-react-state-batching-guess-the-output) |
+| 34 | [How to pass data between sibling components using React router?](#34-how-to-pass-data-between-sibling-components-using-react-router) |
+| 35 | [How to access a global variable using useContext hook?](#35-how-to-access-a-global-variable-using-usecontext-hook) |
+| 36 | [What is the difference between useMemo and useCallback?](#36-what-is-the-difference-between-usememo-and-usecallback) |
+| 37 | [Why you should prefer vite over create-react-app?](#37-why-you-should-prefer-vite-over-create-react-app) |
+| 38 | [What are the advantages of react-router?](#38-what-are-the-advantages-of-react-router) |
+| 39 | [How can you optimize performance in a ReactJS application?](#39-how-can-you-optimize-performance-in-a-reactjs-application) |
+| 40 | [Write code for CRUD functionality in ReactJs?](#40-write-code-for-crud-functionality-in-reactjs) |
+| 41 | [What is a hook in React and why are they useful?](#41-what-is-a-hook-in-react-and-why-are-they-useful) |
+| 42 | [What are some common hooks that are used in React?](#42-what-are-some-common-hooks-that-are-used-in-react) |
+| 43 | [Can you use hooks inside a class-based component?](#43-can-you-use-hooks-inside-a-class-based-component) |
+| 44 | [How do you test a component that uses hooks?](#44-how-do-you-test-a-component-that-uses-hooks) |
+| 45 | [What is the useEffect hook used for?](#45-what-is-the-useeffect-hook-used-for) |
+| 46 | [Create a simple custom hook in React?](#46-create-a-simple-custom-hook-in-react) |
+| 47 | [What is the difference between useEffect and useLayoutEffect?](#47-what-is-the-difference-between-useeffect-and-uselayouteffect) |
+| 48 | [Why virtual DOM is faster to update than real DOM?](#48-why-virtual-dom-is-faster-to-update-than-real-dom) |
+| 49 | [Can you explain the difference between a pure and impure function, and why it matters in the context of React?](#49-can-you-explain-the-difference-between-a-pure-and-impure-function-and-why-it-matters-in-the-context-of-react) |
+| 50 | [Explain Styled Component in React with example?](#50-explain-styled-component-in-react-with-example) |
+| 51 | [Styled-Components vs Inline Styling in React?](#51-styled-components-vs-inline-styling-in-react) |
+| 52 | [What is the output of the following code snippet when the "Click me" button is clicked twice?](#52-what-is-the-output-of-the-following-code-snippet-when-the-click-me-button-is-clicked-twice) |
+| 53 | [What is the output of the following code snippet when the "Increment age" button is clicked three times?](#53-what-is-the-output-of-the-following-code-snippet-when-the-increment-age-button-is-clicked-three-times) |
+| 54 | [What is the output of the following code snippet when the "Add hobby" button is clicked twice and then the page is refreshed?](#54-what-is-the-output-of-the-following-code-snippet-when-the-add-hobby-button-is-clicked-twice-and-then-the-page-is-refreshed) |
+| 55 | [What is the output of the following code snippet when the "Increment" button is clicked twice and then the "Reset" button is clicked once?](#55-what-is-the-output-of-the-following-code-snippet-when-the-increment-button-is-clicked-twice-and-then-the-reset-button-is-clicked-once) |
+| 56 | [Create your own useState hook for your new vanilla javascript project.](#56-create-your-own-usestate-hook-for-your-new-vanilla-javascript-project) |
+| 57 | [Write a custom hook which can be used to apply dark or light mode.](#57-write-a-custom-hook-which-can-be-used-to-apply-dark-or-light-mode) |
+| 58 | [How to access the latest value of a text input field in a React component using the 'useRef' hook?](#58-how-to-access-the-latest-value-of-a-text-input-field-in-a-react-component-using-the-useref-hook) |
+| 59 | [How to create a counter that increments every second using the 'useEffect' hook?](#59-how-to-create-a-counter-that-increments-every-second-using-the-useeffect-hook) |
+| 60 | [How to create a counter that increments every second using the 'useRef' hook?](#60-how-to-create-a-counter-that-increments-every-second-using-the-useref-hook) |
+| 61 | [How to implement a simple dropdown menu using the 'useRef' hook?](#61-how-to-implement-a-simple-dropdown-menu-using-the-useref-hook) |
+| 62 | [Can you explain the React architecture in one sentence?](#62-can-you-explain-the-react-architecture-in-one-sentence) |
+| 63 | [How does React know what needs to be re-rendered in the Virtual DOM?](#63-how-does-react-know-what-needs-to-be-re-rendered-in-the-virtual-dom) |
+| 64 | [If React was a food, what food would it be?](#64-if-react-was-a-food-what-food-would-it-be) |
+| 65 | [How would you explain the concept of "lifting state up" in React?](#65-how-would-you-explain-the-concept-of-lifting-state-up-in-react) |
+| 66 | [How does Next.js differ from React.js, and what benefits does it provide for building web applications?](#66-how-does-nextjs-differ-from-reactjs-and-what-benefits-does-it-provide-for-building-web-applications) |
+| 67 | [Scenario-Based - State Management](#67-scenario-based---state-management) |
+| 68 | [Scenario-Based - Conditional Rendering](#68-scenario-based---conditional-rendering) |
+| 69 | [Scenario-Based - Form Validation](#69-scenario-based---form-validation) |
+| 70 | [Scenario-Based - Controlled Input with Delayed Value Display](#70-scenario-based---controlled-input-with-delayed-value-display) |
+| 71 | [Scenario-Based - Dynamic Nested List Rendering](#71-scenario-based---dynamic-nested-list-rendering) |
+| 72 | [Scenario-Based - Async Data Fetch and Rendering](#72-scenario-based---async-data-fetch-and-rendering) |
+| 73 | [Scenario-Based - Managing Focus with useRef](#73-scenario-based---managing-focus-with-useref) |
+| 74 | [What is a higher-order component in React?](#74-what-is-a-higher-order-component-in-react) |
+| 75 | [Explain the role of keys in React lists and the potential issues that can arise without them. Provide a code example to demonstrate their usage.](#75-explain-the-role-of-keys-in-react-lists-and-the-potential-issues-that-can-arise-without-them-provide-a-code-example-to-demonstrate-their-usage) |
+| 76 | [Scenario-Based - Browser's Local Storage](#76-scenario-based---browsers-local-storage) |
+| 77 | [Scenario-Based - Browser's Session Storage](#77-scenario-based---browsers-session-storage) |
+
+Let me know if you need further adjustments!
+
 ## ReactJs
 
 ReactJs is a popular JavaScript library for building user interfaces. It is maintained by Facebook, and is widely used for building web applications, mobile apps, and other user interfaces. React allows developers to create reusable components, which can help make large applications easier to manage and maintain. It is designed to be efficient, declarative, and flexible, and can be used to create complex, dynamic user interfaces.
 
 Looking to expand your knowledge on Javascript as well? Check out our comprehensive collection of <span style="text-decoration: underline;color: var(--theme-sub-color);">
-[JavaScript interview question and answers page](https://www.codinn.dev/tricky-javascript/es6789-code-snippets-interview-questions)
 </span> to help you prepare for your next interview.
 
 <span style=" font-size: 1rem;">\*Discover the answers by clicking on the questions.</span>
