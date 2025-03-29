@@ -1,12 +1,12 @@
 ---
-title: "ReactJs Interview Questions 2024 - Asked by TOP Companies"
-description: "Find the top React job 50+ Questions interview questions and answers for freshers, beginners, frontend developers, junior developers as well as for experienced developers which might help you cracking your next interview."
+title: "React Js Coding Interview Questions & Answers 2025 - Asked by TOP Companies"
+description: "Crack your React interview! Explore top React Js coding interview questions with answers. Covers hooks, lifecycle, state, and performance tips."
 githubPath: "https://github.com/Vasu7389/ReactJs-Interview-Question"
 ---
 
-<span style=" font-size: 1rem; border-bottom: 1px solid grey;"> Updated Jan 20, 2025 </span>
+<span style=" font-size: 1rem; border-bottom: 1px solid grey;"> Updated Mar 29, 2025 </span>
 
-Here you'll find the top 50+ React job interview questions and answers for freshers, beginners, frontend developers, junior developers as well as for experienced developers which might help you cracking your next interview.
+Here you'll find the top 50+ React js coding test questions and answers for freshers, beginners, frontend developers, junior developers as well as for experienced developers which might help you cracking your next interview.
 
 ## ReactJs
 
@@ -17,6 +17,8 @@ Looking to expand your knowledge on Javascript as well? Check out our comprehens
 </span> to help you prepare for your next interview.
 
 <span style=" font-size: 1rem;">\*Discover the answers by clicking on the questions.</span>
+
+## React Js Interview Questions
 
 <details>
 <summary>
@@ -1169,7 +1171,7 @@ Ultimately, the choice between inline styling and Styled Components will depend 
 
 </details>
 
-## Guess the Output
+## React Coding Interview Questions
 
 <details>
 <summary>
@@ -1613,6 +1615,8 @@ Additionally, Next.js provides support for static site generation, which allows 
 Overall, Next.js provides a more complete solution for building modern web applications than React.js alone, and can be especially beneficial for larger applications that require server-side rendering and other advanced features.
 
 </details>
+
+## React Js Coding Test Questions and Qnswers
 
 <details>
 <summary>
