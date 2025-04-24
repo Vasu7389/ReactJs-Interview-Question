@@ -2573,3 +2573,86 @@ This question evaluates:
 ✅ Efficient re-renders to prevent unnecessary API calls
 
 </details>
+
+<details>
+<summary>
+<h3>79. Scenario Based - React Server Components (RSC) Integration</h3>
+
+Create a React application that demonstrates the integration of React Server Components (RSC).
+
+### Requirements:
+
+- Clearly distinguish between Server Components and Client Components.
+- Fetch data directly within the Server Component.
+- Render Server Component within a Client Component.
+- Ensure no client-side JavaScript is sent from the Server Component.
+- Demonstrate clear performance benefits (less JavaScript, faster load).
+
+### Example Scenario:
+
+Fetch and display user data from an API endpoint entirely server-side, and render it efficiently on the client without additional fetch calls.
+
+API Endpoint: `https://jsonplaceholder.typicode.com/users`
+
+</summary>
+
+Solution -
+
+```jsx
+// UserList.server.jsx (Server Component)
+import React from "react";
+
+async function fetchUsers() {
+  const response = await fetch("https://jsonplaceholder.typicode.com/users");
+  if (!response.ok) {
+    throw new Error("Failed to fetch users");
+  }
+  return response.json();
+}
+
+export default async function UserList() {
+  const users = await fetchUsers();
+
+  return (
+    <div>
+      <h2>User List (Rendered on Server)</h2>
+      <ul>
+        {users.map((user) => (
+          <li key={user.id}>{user.name}</li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+```
+
+```jsx
+// App.client.jsx (Client Component)
+"use client";
+import React from "react";
+import UserList from "./UserList.server";
+
+export default function App() {
+  return (
+    <div>
+      <h1>React Server Components Example</h1>
+      <React.Suspense fallback={<div>Loading users...</div>}>
+        <UserList />
+      </React.Suspense>
+    </div>
+  );
+}
+```
+
+### Explanation:
+
+- **UserList.server.jsx** is a React Server Component (RSC) that fetches data directly on the server.
+- **App.client.jsx** is a Client Component that renders the Server Component using `<React.Suspense>` for graceful loading.
+- The server-side rendering ensures data fetching doesn't occur client-side, resulting in less JavaScript shipped to the browser and improved load performance.
+
+This question evaluates:  
+✅ Understanding of Server Components vs Client Components  
+✅ Efficient server-side data fetching  
+✅ Optimized React application architecture with React Server Components
+
+</details>
