@@ -83,9 +83,9 @@ Props (short for properties) are a Component's configuration. They are received 
 </summary>
 
 - `componentWillMount` (deprecated) - this is most commonly used for App configuration in your root component.
-- `componentDidMount` - here you want to do all the setup you couldn’t do without a DOM, and start getting all the data you need. Also if you want to set up eventListeners etc. this lifecycle hook is a good place to do that.
+- `componentDidMount` - here you want to do all the setup you couldn't do without a DOM, and start getting all the data you need. Also if you want to set up eventListeners etc. this lifecycle hook is a good place to do that.
 - `componentWillReceiveProps` (deprecated) - this lifecyclye acts on particular prop changes to trigger state transitions.
-- `shouldComponentUpdate` - if you’re worried about wasted renders shouldComponentUpdate is a great place to improve performance as it allows you to prevent a rerender if component receives new prop. shouldComponentUpdate should always return a boolean and based on what this is will determine if the component is rerendered or not.
+- `shouldComponentUpdate` - if you're worried about wasted renders shouldComponentUpdate is a great place to improve performance as it allows you to prevent a rerender if component receives new prop. shouldComponentUpdate should always return a boolean and based on what this is will determine if the component is rerendered or not.
 - `componentWillUpdate` (deprecated) - rarely used. It can be used instead of componentWillReceiveProps on a component that also has shouldComponentUpdate (but no access to previous props).
 - `componentDidUpdate` - also commonly used to update the DOM in response to prop or state changes.
 - `componentWillUnmount` - enables you can cancel any outgoing network requests, or remove all event listeners associated with the component.
@@ -97,7 +97,7 @@ Props (short for properties) are a Component's configuration. They are received 
     <h3>7. Explain React Hooks.</h3>
 </summary>
 
-Hooks let you use more of React’s features without having to use classes. The first hook that you will most likely encounter is useState. useState is a Hook that lets you add React state to function components. It returns an array with a getter and a setter.
+Hooks let you use more of React's features without having to use classes. The first hook that you will most likely encounter is useState. useState is a Hook that lets you add React state to function components. It returns an array with a getter and a setter.
 
 The syntax looks like
 
@@ -134,7 +134,7 @@ useEffect(() => {
     <h3>8. Where in a React class component should you make an AJAX/API request?</h3>
 </summary>
 
-`componentDidMount` is where an AJAX request should be made in a React component. This method will be executed when the component `mounts` (is added to the DOM) for the first time. This method is only executed once during the component’s life. Importantly, you can’t guarantee the AJAX request will have resolved before the component mounts. If it doesn't, that would mean that you’d be trying to setState on an unmounted component, which would not work. Making your AJAX request in `componentDidMount` will guarantee that there is a component to update.
+`componentDidMount` is where an AJAX request should be made in a React component. This method will be executed when the component `mounts` (is added to the DOM) for the first time. This method is only executed once during the component's life. Importantly, you can't guarantee the AJAX request will have resolved before the component mounts. If it doesn't, that would mean that you'd be trying to setState on an unmounted component, which would not work. Making your AJAX request in `componentDidMount` will guarantee that there is a component to update.
 
 </details>
 
@@ -161,7 +161,7 @@ Refs are used to get reference to a DOM node or an instance of a component in Re
     <h3>11. What is a higher order component?</h3>
 </summary>
 
-A higher-order component is a function that takes a component and returns a new component. HOC's allow you to reuse code, logic and bootstrap abstraction. The most common is probably Redux’s connect function. Beyond simply sharing utility libraries and simple composition, HOCs are the best way to share behavior between React Components. If you find yourself writing a lot of code in different places that does the same thing, you may be able to refactor that code into a reusable HOC.
+A higher-order component is a function that takes a component and returns a new component. HOC's allow you to reuse code, logic and bootstrap abstraction. The most common is probably Redux's connect function. Beyond simply sharing utility libraries and simple composition, HOCs are the best way to share behavior between React Components. If you find yourself writing a lot of code in different places that does the same thing, you may be able to refactor that code into a reusable HOC.
 
 </details>
 
@@ -793,7 +793,7 @@ const Child = () => {
     <h3>37.  What is the difference between useMemo and useCallback?</h3>
 </summary>
 
-- useCallback gives you referential equality between renders for functions. And useMemo gives you referential equality between renders for values.
+- useCallback gives you referential equality between renders for functions. And useMemo gives you referential equality between renders for values.
 - useCallback and useMemo both expect a function and an array of dependencies. The difference is that useCallback returns its function when the dependencies change while useMemo calls its function and returns the result.
 - useCallback returns its function uncalled so you can call it later, while useMemo calls its function and returns the result
 
@@ -2571,5 +2571,50 @@ This question evaluates:
 ✅ Optimized data fetching with caching  
 ✅ Proper error handling and retry mechanisms  
 ✅ Efficient re-renders to prevent unnecessary API calls
+
+</details>
+
+<details>
+<summary>
+    <h3>79. How does the team stay updated with the latest React features and industry best practices?</h3>
+</summary>
+
+Teams can stay updated by following the official React blog, subscribing to newsletters (like React Status), attending conferences and meetups, participating in online communities (such as Stack Overflow, Reddit, or Twitter), and regularly reviewing the React documentation. Internal knowledge-sharing sessions, code reviews, and encouraging experimentation with new features in side projects also help teams stay current with best practices.
+
+</details>
+
+<details>
+<summary>
+    <h3>80. What are synthetic events in React?</h3>
+</summary>
+
+Synthetic events are React's cross-browser wrapper around the browser's native events. They combine the behavior of different browsers into a single API, ensuring that events work consistently across all browsers. Synthetic events are used for all event handling in React, such as onClick, onChange, etc.
+
+</details>
+
+<details>
+<summary>
+    <h3>81. How to gracefully handle errors in React?</h3>
+</summary>
+
+In React, errors in rendering, lifecycle methods, and constructors of the whole tree below a component can be caught using Error Boundaries. An error boundary is a React component that implements either `componentDidCatch(error, info)` or the static method `getDerivedStateFromError`. For async code, use try/catch blocks and handle errors in Promises. Display user-friendly error messages and consider logging errors for further analysis.
+
+</details>
+
+<details>
+<summary>
+    <h3>82. What are portals?</h3>
+</summary>
+
+Portals provide a way to render children into a DOM node that exists outside the DOM hierarchy of the parent component. In React, you can use `ReactDOM.createPortal(child, container)` to render a component outside its parent, which is useful for modals, tooltips, and overlays.
+
+</details>
+
+<details>
+<summary>
+    <h3>83. What is React Fiber?</h3>
+</summary>
+
+React Fiber is the new reconciliation engine in React 16 and above. It enables incremental rendering of the virtual DOM, allowing React to split rendering work into chunks and spread it out over multiple frames. This makes React more responsive and enables features like time slicing, suspense, and better error handling.
 
 </details>
