@@ -1,12 +1,66 @@
 ---
-title: "React Js Coding Interview Questions & Answers 2025 - Asked by TOP Companies"
-description: "Crack your React interview! Explore top React Js coding interview questions with answers. Covers hooks, lifecycle, state, and performance tips."
-githubPath: "https://github.com/Vasu7389/ReactJs-Interview-Question"
+title: "React Js Interview Questions & Answers 2026 - Modern React, TypeScript & Best Practices"
+description: "Master React interviews! Comprehensive guide with 90+ questions covering React 19, Server Components, TypeScript, testing, performance, security, and advanced patterns."
+githubPath: "https://github.com/PankajSingh34/ReactJs-Interview-Question"
 ---
 
-<span style=" font-size: 1rem; border-bottom: 1px solid grey;"> Updated Mar 29, 2025 </span>
+<span style=" font-size: 1rem; border-bottom: 1px solid grey;"> Updated January 12, 2026 </span>
 
-Here you'll find the top 50+ React js coding test questions and answers for freshers, beginners, frontend developers, junior developers as well as for experienced developers which might help you cracking your next interview.
+Here you'll find **90+ comprehensive React.js interview questions and answers** covering everything from fundamentals to advanced patterns. Perfect for freshers, experienced developers, and everyone in between preparing for React interviews at top companies.
+
+## What's New in 2026 Edition?
+
+✨ **React 19 Features** - Latest hooks, Server Components, and React Compiler  
+🔷 **TypeScript Integration** - Advanced patterns and type-safe React development  
+🧪 **Modern Testing** - React Testing Library, Jest, and accessibility testing  
+🚀 **Performance** - Advanced optimization techniques and best practices  
+🔒 **Security & A11y** - Security vulnerabilities and accessibility implementation  
+📐 **Advanced Patterns** - Compound components, render props, and modern architecture
+
+## What's New in 2026 Edition?
+
+✨ **React 19 Features** - Latest hooks, Server Components, and React Compiler  
+🔷 **TypeScript Integration** - Advanced patterns and type-safe React development  
+🧪 **Modern Testing** - React Testing Library, Jest, and accessibility testing  
+🚀 **Performance** - Advanced optimization techniques and best practices  
+🔒 **Security & A11y** - Security vulnerabilities and accessibility implementation  
+📐 **Advanced Patterns** - Compound components, render props, and modern architecture
+
+## 📚 Table of Contents
+
+1. **[React Fundamentals](#react-js-interview-questions)** (Questions 1-52)
+
+   - Basic concepts, components, hooks, lifecycle methods
+   - State management, props, JSX, Virtual DOM
+
+2. **[React 19 & Modern Features](#react-19-features--modern-react)** (Questions 79-83)
+
+   - New `use()` hook, React Compiler, Server Components
+   - App Router, Suspense, and concurrent features
+
+3. **[Performance & TypeScript](#performance-optimization--typescript)** (Questions 84-85)
+
+   - Advanced memoization, useMemo, useCallback
+   - TypeScript patterns, generic components, type safety
+
+4. **[Testing & Quality](#react-testing--best-practices)** (Question 86)
+
+   - React Testing Library, custom hook testing
+   - Component testing, mocking, accessibility testing
+
+5. **[Security & Accessibility](#react-security--accessibility)** (Questions 87-88)
+
+   - XSS prevention, authentication, CSRF protection
+   - Screen readers, ARIA, keyboard navigation
+
+6. **[Advanced Patterns](#advanced-react-patterns)** (Questions 89-90)
+
+   - Compound components, render props
+   - Custom hooks vs render props comparison
+
+7. **[Coding Challenges](#react-js-coding-test-questions-and-qnswers)** (Questions 53-78)
+   - Practical implementations, scenario-based problems
+   - Real-world examples and best practices
 
 ## ReactJs
 
@@ -17,6 +71,8 @@ Looking to expand your knowledge on Javascript as well? Check out our comprehens
 </span> to help you prepare for your next interview.
 
 <span style=" font-size: 1rem;">\*Discover the answers by clicking on the questions.</span>
+
+> **💡 Important Note for 2026:** This guide has been extensively updated with modern React practices. While legacy patterns (like deprecated lifecycle methods) are mentioned for completeness, we strongly recommend using the modern equivalents (hooks, TypeScript, etc.) shown throughout this guide.
 
 ## React Js Interview Questions
 
@@ -2571,5 +2627,3323 @@ This question evaluates:
 ✅ Optimized data fetching with caching  
 ✅ Proper error handling and retry mechanisms  
 ✅ Efficient re-renders to prevent unnecessary API calls
+
+</details>
+
+---
+
+## React 19 Features & Modern React
+
+<details>
+<summary>
+    <h3>79. What are the new features introduced in React 19?</h3>
+</summary>
+
+React 19 introduces several powerful features that enhance developer experience and application performance:
+
+**New Hooks:**
+
+- **`use()` Hook**: A new hook that can consume promises and context
+- **`useFormStatus()`**: For handling form submission states
+- **`useActionState()`**: For managing server actions state
+
+**React Compiler (Automatic Memoization):**
+
+- Automatically optimizes your components without manual memoization
+- Eliminates the need for `useMemo`, `useCallback`, and `React.memo` in many cases
+
+**Server Components Enhancements:**
+
+- Improved Server Components with better hydration
+- Enhanced streaming capabilities
+- Better integration with frameworks like Next.js
+
+**Actions and Forms:**
+
+- Native support for Server Actions
+- Improved form handling with automatic pending states
+- Built-in error boundaries for async operations
+
+```tsx
+// React 19 - use() hook example
+import { use } from "react";
+
+interface User {
+  id: number;
+  name: string;
+}
+
+function UserProfile({ userPromise }: { userPromise: Promise<User> }) {
+  const user = use(userPromise);
+
+  return <div>Welcome, {user.name}!</div>;
+}
+
+// React 19 - useFormStatus() example
+import { useFormStatus } from "react-dom";
+
+function SubmitButton() {
+  const { pending } = useFormStatus();
+
+  return (
+    <button type="submit" disabled={pending}>
+      {pending ? "Submitting..." : "Submit"}
+    </button>
+  );
+}
+```
+
+</details>
+
+<details>
+<summary>
+    <h3>80. Explain React's new `use()` hook and provide examples.</h3>
+</summary>
+
+The `use()` hook is a new primitive in React 19 that can consume promises and context. Unlike other hooks, `use()` can be called conditionally.
+
+**Key Features:**
+
+- Can consume Promises and Context
+- Can be called conditionally (unlike other hooks)
+- Suspends the component while waiting for Promise resolution
+
+```tsx
+import { use, Suspense } from "react";
+
+// TypeScript interfaces
+interface User {
+  id: number;
+  name: string;
+  email: string;
+}
+
+// Consuming a Promise with use()
+function UserData({ userPromise }: { userPromise: Promise<User> }) {
+  const user = use(userPromise);
+
+  return (
+    <div>
+      <h2>{user.name}</h2>
+      <p>{user.email}</p>
+    </div>
+  );
+}
+
+// Consuming Context with use()
+import { createContext } from "react";
+
+const ThemeContext = createContext<"light" | "dark">("light");
+
+function ThemeDisplay() {
+  const theme = use(ThemeContext);
+
+  return <div>Current theme: {theme}</div>;
+}
+
+// Usage with conditional logic
+function ConditionalData({
+  shouldFetch,
+  dataPromise,
+}: {
+  shouldFetch: boolean;
+  dataPromise: Promise<any>;
+}) {
+  if (!shouldFetch) {
+    return <div>Not fetching data</div>;
+  }
+
+  // This is allowed with use() but not with other hooks
+  const data = use(dataPromise);
+  return <div>{data.content}</div>;
+}
+
+// App component
+function App() {
+  const userPromise = fetch("/api/user").then((res) => res.json());
+
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <UserData userPromise={userPromise} />
+    </Suspense>
+  );
+}
+```
+
+</details>
+
+<details>
+<summary>
+    <h3>81. What is the React Compiler and how does it improve performance?</h3>
+</summary>
+
+The React Compiler is an experimental feature in React 19 that automatically optimizes React components by adding memoization where beneficial, eliminating the need for manual optimization with `useMemo`, `useCallback`, and `React.memo`.
+
+**Key Benefits:**
+
+- **Automatic Optimization**: No manual memoization needed
+- **Better Performance**: Prevents unnecessary re-renders automatically
+- **Developer Experience**: Focus on logic, not performance optimization
+- **Gradual Adoption**: Can be enabled incrementally
+
+```tsx
+// Before React Compiler (Manual optimization)
+import { useMemo, useCallback, memo } from "react";
+
+interface User {
+  id: number;
+  name: string;
+}
+
+interface TodoListProps {
+  users: User[];
+  onUserSelect: (userId: number) => void;
+}
+
+const TodoList = memo(({ users, onUserSelect }: TodoListProps) => {
+  const expensiveComputation = useMemo(() => {
+    return users
+      .filter((user) => user.name.length > 5)
+      .map((user) => ({ ...user, displayName: user.name.toUpperCase() }));
+  }, [users]);
+
+  const handleUserClick = useCallback(
+    (userId: number) => {
+      onUserSelect(userId);
+    },
+    [onUserSelect]
+  );
+
+  return (
+    <div>
+      {expensiveComputation.map((user) => (
+        <div key={user.id} onClick={() => handleUserClick(user.id)}>
+          {user.displayName}
+        </div>
+      ))}
+    </div>
+  );
+});
+
+// After React Compiler (Automatic optimization)
+function TodoList({ users, onUserSelect }: TodoListProps) {
+  // React Compiler automatically memoizes this computation
+  const expensiveComputation = users
+    .filter((user) => user.name.length > 5)
+    .map((user) => ({ ...user, displayName: user.name.toUpperCase() }));
+
+  // React Compiler automatically memoizes this callback
+  const handleUserClick = (userId: number) => {
+    onUserSelect(userId);
+  };
+
+  return (
+    <div>
+      {expensiveComputation.map((user) => (
+        <div key={user.id} onClick={() => handleUserClick(user.id)}>
+          {user.displayName}
+        </div>
+      ))}
+    </div>
+  );
+}
+```
+
+**How to enable React Compiler:**
+
+```bash
+# Install React Compiler
+npm install react-compiler-runtime
+npm install --save-dev babel-plugin-react-compiler
+```
+
+</details>
+
+<details>
+<summary>
+    <h3>82. What are React Server Components and how do they work?</h3>
+</summary>
+
+React Server Components (RSC) are components that run on the server and send their rendered output to the client. They enable better performance by reducing the JavaScript bundle size and improving initial page load.
+
+**Key Benefits:**
+
+- **Zero Bundle Size**: Server Components don't add to client bundle
+- **Direct Server Access**: Can directly access databases, file systems
+- **Automatic Code Splitting**: Only client components are bundled
+- **SEO Friendly**: Pre-rendered on server
+
+```tsx
+// Server Component (runs on server)
+import { db } from "@/lib/database";
+
+interface BlogPost {
+  id: string;
+  title: string;
+  content: string;
+  author: string;
+}
+
+// This component runs on the server
+async function BlogList() {
+  // Direct database access - only runs on server
+  const posts: BlogPost[] = await db.posts.findMany({
+    orderBy: { createdAt: "desc" },
+  });
+
+  return (
+    <div className="blog-list">
+      <h1>Latest Blog Posts</h1>
+      {posts.map((post) => (
+        <article key={post.id}>
+          <h2>{post.title}</h2>
+          <p>By {post.author}</p>
+          <div>{post.content.substring(0, 200)}...</div>
+        </article>
+      ))}
+    </div>
+  );
+}
+
+// Client Component (runs in browser)
+("use client");
+
+import { useState } from "react";
+
+interface SearchBarProps {
+  onSearch: (query: string) => void;
+}
+
+function SearchBar({ onSearch }: SearchBarProps) {
+  const [query, setQuery] = useState("");
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    onSearch(query);
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input
+        type="text"
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+        placeholder="Search posts..."
+      />
+      <button type="submit">Search</button>
+    </form>
+  );
+}
+
+// Layout combining Server and Client Components
+function BlogPage() {
+  return (
+    <div>
+      {/* This runs on the client for interactivity */}
+      <SearchBar onSearch={(query) => console.log(query)} />
+
+      {/* This runs on the server for data fetching */}
+      <BlogList />
+    </div>
+  );
+}
+```
+
+**File Structure Example:**
+
+```
+app/
+├── layout.tsx          // Server Component
+├── page.tsx           // Server Component
+├── blog/
+│   ├── page.tsx       // Server Component
+│   └── search.tsx     // Client Component ('use client')
+└── components/
+    ├── header.tsx     // Server Component
+    └── interactive.tsx // Client Component
+```
+
+</details>
+
+<details>
+<summary>
+    <h3>83. Explain the App Router in Next.js 13+ and its benefits.</h3>
+</summary>
+
+The App Router is a new routing system in Next.js 13+ that leverages React Server Components and provides a more intuitive file-based routing system.
+
+**Key Features:**
+
+- **File-based routing** with `app/` directory
+- **Layouts** and **Templates** for shared UI
+- **Server Components** by default
+- **Streaming** and **Suspense** support
+- **Parallel Routes** and **Intercepting Routes**
+
+```tsx
+// app/layout.tsx - Root Layout (Server Component)
+import "./globals.css";
+
+export const metadata = {
+  title: "My App",
+  description: "A Next.js 13+ application",
+};
+
+interface RootLayoutProps {
+  children: React.ReactNode;
+}
+
+export default function RootLayout({ children }: RootLayoutProps) {
+  return (
+    <html lang="en">
+      <body>
+        <header>
+          <nav>My Navigation</nav>
+        </header>
+        <main>{children}</main>
+        <footer>My Footer</footer>
+      </body>
+    </html>
+  );
+}
+
+// app/page.tsx - Home Page (Server Component)
+export default function HomePage() {
+  return (
+    <div>
+      <h1>Welcome to My App</h1>
+      <p>This is a server component!</p>
+    </div>
+  );
+}
+
+// app/blog/layout.tsx - Nested Layout
+interface BlogLayoutProps {
+  children: React.ReactNode;
+}
+
+export default function BlogLayout({ children }: BlogLayoutProps) {
+  return (
+    <div className="blog-layout">
+      <aside>
+        <h2>Blog Sidebar</h2>
+        <ul>
+          <li>
+            <a href="/blog/react">React Posts</a>
+          </li>
+          <li>
+            <a href="/blog/nextjs">Next.js Posts</a>
+          </li>
+        </ul>
+      </aside>
+      <div className="blog-content">{children}</div>
+    </div>
+  );
+}
+
+// app/blog/[slug]/page.tsx - Dynamic Route
+interface BlogPostPageProps {
+  params: { slug: string };
+}
+
+export default async function BlogPostPage({ params }: BlogPostPageProps) {
+  // This runs on the server
+  const post = await fetch(`https://api.example.com/posts/${params.slug}`).then(
+    (res) => res.json()
+  );
+
+  return (
+    <article>
+      <h1>{post.title}</h1>
+      <div>{post.content}</div>
+    </article>
+  );
+}
+
+// app/blog/[slug]/loading.tsx - Loading UI
+export default function Loading() {
+  return (
+    <div>
+      <h1>Loading blog post...</h1>
+      <div className="skeleton" />
+    </div>
+  );
+}
+
+// app/blog/[slug]/error.tsx - Error UI
+("use client");
+
+interface ErrorPageProps {
+  error: Error;
+  reset: () => void;
+}
+
+export default function Error({ error, reset }: ErrorPageProps) {
+  return (
+    <div>
+      <h2>Something went wrong!</h2>
+      <p>{error.message}</p>
+      <button onClick={reset}>Try again</button>
+    </div>
+  );
+}
+```
+
+**Directory Structure:**
+
+```
+app/
+├── layout.tsx           // Root layout
+├── page.tsx            // Home page
+├── loading.tsx         // Global loading
+├── error.tsx           // Global error
+├── globals.css         // Global styles
+├── blog/
+│   ├── layout.tsx      // Blog layout
+│   ├── page.tsx        // Blog listing
+│   ├── [slug]/
+│   │   ├── page.tsx    // Individual blog post
+│   │   ├── loading.tsx // Post loading
+│   │   └── error.tsx   // Post error
+│   └── create/
+│       └── page.tsx    // Create post
+└── api/
+    └── posts/
+        └── route.ts    // API endpoint
+```
+
+</details>
+
+---
+
+## Performance Optimization & TypeScript
+
+<details>
+<summary>
+    <h3>84. Advanced Performance Optimization: When and how to use React.memo, useMemo, and useCallback?</h3>
+</summary>
+
+Understanding when and how to use these optimization techniques is crucial for building performant React applications.
+
+**React.memo - Component Memoization:**
+
+```tsx
+// TypeScript interface for props
+interface UserCardProps {
+  user: {
+    id: number;
+    name: string;
+    email: string;
+  };
+  onEdit: (userId: number) => void;
+}
+
+// Memoized component - only re-renders when props change
+const UserCard = React.memo(({ user, onEdit }: UserCardProps) => {
+  console.log("UserCard rendered for:", user.name);
+
+  return (
+    <div className="user-card">
+      <h3>{user.name}</h3>
+      <p>{user.email}</p>
+      <button onClick={() => onEdit(user.id)}>Edit</button>
+    </div>
+  );
+});
+
+// Custom comparison function for React.memo
+const UserCardWithCustomComparison = React.memo(
+  ({ user, onEdit }: UserCardProps) => {
+    return (
+      <div className="user-card">
+        <h3>{user.name}</h3>
+        <p>{user.email}</p>
+        <button onClick={() => onEdit(user.id)}>Edit</button>
+      </div>
+    );
+  },
+  (prevProps, nextProps) => {
+    // Only re-render if user data actually changed
+    return (
+      prevProps.user.id === nextProps.user.id &&
+      prevProps.user.name === nextProps.user.name &&
+      prevProps.user.email === nextProps.user.email
+    );
+  }
+);
+```
+
+**useMemo - Value Memoization:**
+
+```tsx
+interface Product {
+  id: number;
+  name: string;
+  price: number;
+  category: string;
+}
+
+interface ProductListProps {
+  products: Product[];
+  filter: string;
+  sortBy: "name" | "price";
+}
+
+function ProductList({ products, filter, sortBy }: ProductListProps) {
+  // Expensive computation - only runs when dependencies change
+  const filteredAndSortedProducts = useMemo(() => {
+    console.log("Computing filtered and sorted products");
+
+    return products
+      .filter(
+        (product) =>
+          product.name.toLowerCase().includes(filter.toLowerCase()) ||
+          product.category.toLowerCase().includes(filter.toLowerCase())
+      )
+      .sort((a, b) => {
+        if (sortBy === "name") {
+          return a.name.localeCompare(b.name);
+        }
+        return a.price - b.price;
+      });
+  }, [products, filter, sortBy]);
+
+  // Memoized calculation
+  const totalValue = useMemo(() => {
+    return filteredAndSortedProducts.reduce(
+      (sum, product) => sum + product.price,
+      0
+    );
+  }, [filteredAndSortedProducts]);
+
+  return (
+    <div>
+      <h2>Products (Total: ${totalValue.toFixed(2)})</h2>
+      {filteredAndSortedProducts.map((product) => (
+        <div key={product.id}>
+          <h3>{product.name}</h3>
+          <p>${product.price}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
+```
+
+**useCallback - Function Memoization:**
+
+```tsx
+interface TodoListProps {
+  todos: Array<{
+    id: number;
+    text: string;
+    completed: boolean;
+  }>;
+}
+
+function TodoList({ todos }: TodoListProps) {
+  const [filter, setFilter] = useState<"all" | "active" | "completed">("all");
+
+  // Memoized callback - prevents child re-renders
+  const handleToggleTodo = useCallback((todoId: number) => {
+    setTodos((prevTodos) =>
+      prevTodos.map((todo) =>
+        todo.id === todoId ? { ...todo, completed: !todo.completed } : todo
+      )
+    );
+  }, []); // Empty dependency array since setTodos is stable
+
+  // Memoized callback with dependencies
+  const handleFilterChange = useCallback(
+    (newFilter: "all" | "active" | "completed") => {
+      console.log("Filter changed to:", newFilter);
+      setFilter(newFilter);
+    },
+    []
+  );
+
+  // Memoized filtered todos
+  const filteredTodos = useMemo(() => {
+    switch (filter) {
+      case "active":
+        return todos.filter((todo) => !todo.completed);
+      case "completed":
+        return todos.filter((todo) => todo.completed);
+      default:
+        return todos;
+    }
+  }, [todos, filter]);
+
+  return (
+    <div>
+      <FilterButtons
+        currentFilter={filter}
+        onFilterChange={handleFilterChange}
+      />
+      {filteredTodos.map((todo) => (
+        <TodoItem key={todo.id} todo={todo} onToggle={handleToggleTodo} />
+      ))}
+    </div>
+  );
+}
+
+// Child component that benefits from memoized props
+const TodoItem = React.memo(
+  ({
+    todo,
+    onToggle,
+  }: {
+    todo: { id: number; text: string; completed: boolean };
+    onToggle: (id: number) => void;
+  }) => {
+    console.log("TodoItem rendered:", todo.text);
+
+    return (
+      <div>
+        <input
+          type="checkbox"
+          checked={todo.completed}
+          onChange={() => onToggle(todo.id)}
+        />
+        <span
+          style={{ textDecoration: todo.completed ? "line-through" : "none" }}
+        >
+          {todo.text}
+        </span>
+      </div>
+    );
+  }
+);
+```
+
+**When to use each:**
+
+- **React.memo**: When component re-renders frequently with same props
+- **useMemo**: For expensive calculations or object creation
+- **useCallback**: For functions passed as props to memoized components
+
+**Anti-patterns to avoid:**
+
+```tsx
+// ❌ Don't memoize everything
+const OverOptimized = React.memo(() => {
+  const simpleValue = useMemo(() => 1 + 1, []); // Unnecessary
+  const simpleCallback = useCallback(() => {
+    console.log("hello");
+  }, []); // May not be worth it
+
+  return <div>{simpleValue}</div>;
+});
+
+// ✅ Only optimize when there's a performance issue
+const WellOptimized = () => {
+  const expensiveValue = useMemo(() => {
+    return heavyComputation(largeDataSet);
+  }, [largeDataSet]);
+
+  return <div>{expensiveValue}</div>;
+};
+```
+
+</details>
+
+<details>
+<summary>
+    <h3>85. TypeScript with React: Advanced Patterns and Best Practices</h3>
+</summary>
+
+Here are advanced TypeScript patterns for React development with proper type safety and reusability.
+
+**Generic Components:**
+
+```tsx
+// Generic List Component
+interface ListItem {
+  id: string | number;
+}
+
+interface ListProps<T extends ListItem> {
+  items: T[];
+  renderItem: (item: T) => React.ReactNode;
+  keyExtractor?: (item: T) => string | number;
+  emptyMessage?: string;
+}
+
+function List<T extends ListItem>({
+  items,
+  renderItem,
+  keyExtractor = (item) => item.id,
+  emptyMessage = "No items found",
+}: ListProps<T>) {
+  if (items.length === 0) {
+    return <div className="empty-state">{emptyMessage}</div>;
+  }
+
+  return (
+    <div className="list">
+      {items.map((item) => (
+        <div key={keyExtractor(item)} className="list-item">
+          {renderItem(item)}
+        </div>
+      ))}
+    </div>
+  );
+}
+
+// Usage with different data types
+interface User {
+  id: number;
+  name: string;
+  email: string;
+}
+
+interface Product {
+  id: string;
+  title: string;
+  price: number;
+}
+
+function App() {
+  const users: User[] = [{ id: 1, name: "John", email: "john@example.com" }];
+
+  const products: Product[] = [{ id: "prod-1", title: "Laptop", price: 999 }];
+
+  return (
+    <div>
+      <List
+        items={users}
+        renderItem={(user) => (
+          <div>
+            <h3>{user.name}</h3>
+            <p>{user.email}</p>
+          </div>
+        )}
+      />
+
+      <List
+        items={products}
+        renderItem={(product) => (
+          <div>
+            <h3>{product.title}</h3>
+            <p>${product.price}</p>
+          </div>
+        )}
+        keyExtractor={(product) => product.id}
+      />
+    </div>
+  );
+}
+```
+
+**Advanced Hook Types:**
+
+```tsx
+// Custom hook with proper TypeScript
+interface UseApiResult<T> {
+  data: T | null;
+  loading: boolean;
+  error: string | null;
+  refetch: () => Promise<void>;
+}
+
+function useApi<T>(url: string, options?: RequestInit): UseApiResult<T> {
+  const [data, setData] = useState<T | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  const fetchData = useCallback(async () => {
+    try {
+      setLoading(true);
+      setError(null);
+
+      const response = await fetch(url, options);
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const result = await response.json();
+      setData(result);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "An error occurred");
+    } finally {
+      setLoading(false);
+    }
+  }, [url, options]);
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
+
+  return { data, loading, error, refetch: fetchData };
+}
+
+// Usage with typed responses
+interface ApiUser {
+  id: number;
+  name: string;
+  email: string;
+  avatar?: string;
+}
+
+function UserProfile({ userId }: { userId: number }) {
+  const {
+    data: user,
+    loading,
+    error,
+    refetch,
+  } = useApi<ApiUser>(`/api/users/${userId}`);
+
+  if (loading) return <div>Loading user...</div>;
+  if (error) return <div>Error: {error}</div>;
+  if (!user) return <div>User not found</div>;
+
+  return (
+    <div>
+      <h1>{user.name}</h1>
+      <p>{user.email}</p>
+      {user.avatar && <img src={user.avatar} alt={user.name} />}
+      <button onClick={refetch}>Refresh</button>
+    </div>
+  );
+}
+```
+
+**Form Handling with TypeScript:**
+
+```tsx
+// Type-safe form handling
+interface FormData {
+  email: string;
+  password: string;
+  rememberMe: boolean;
+}
+
+type FormErrors = Partial<Record<keyof FormData, string>>;
+
+interface UseFormResult<T> {
+  values: T;
+  errors: Partial<Record<keyof T, string>>;
+  handleChange: (
+    field: keyof T
+  ) => (event: React.ChangeEvent<HTMLInputElement>) => void;
+  handleSubmit: (
+    onSubmit: (values: T) => void
+  ) => (event: React.FormEvent) => void;
+  setFieldError: (field: keyof T, error: string) => void;
+  clearErrors: () => void;
+}
+
+function useForm<T extends Record<string, any>>(
+  initialValues: T,
+  validator?: (values: T) => Partial<Record<keyof T, string>>
+): UseFormResult<T> {
+  const [values, setValues] = useState<T>(initialValues);
+  const [errors, setErrors] = useState<Partial<Record<keyof T, string>>>({});
+
+  const handleChange = useCallback(
+    (field: keyof T) => (event: React.ChangeEvent<HTMLInputElement>) => {
+      const { value, type, checked } = event.target;
+      setValues((prev) => ({
+        ...prev,
+        [field]: type === "checkbox" ? checked : value,
+      }));
+
+      // Clear error when user starts typing
+      if (errors[field]) {
+        setErrors((prev) => ({ ...prev, [field]: undefined }));
+      }
+    },
+    [errors]
+  );
+
+  const setFieldError = useCallback((field: keyof T, error: string) => {
+    setErrors((prev) => ({ ...prev, [field]: error }));
+  }, []);
+
+  const clearErrors = useCallback(() => {
+    setErrors({});
+  }, []);
+
+  const handleSubmit = useCallback(
+    (onSubmit: (values: T) => void) => (event: React.FormEvent) => {
+      event.preventDefault();
+
+      const validationErrors = validator?.(values) || {};
+
+      if (Object.keys(validationErrors).length > 0) {
+        setErrors(validationErrors);
+        return;
+      }
+
+      onSubmit(values);
+    },
+    [values, validator]
+  );
+
+  return {
+    values,
+    errors,
+    handleChange,
+    handleSubmit,
+    setFieldError,
+    clearErrors,
+  };
+}
+
+// Login form implementation
+function LoginForm() {
+  const validateForm = (values: FormData): FormErrors => {
+    const errors: FormErrors = {};
+
+    if (!values.email) {
+      errors.email = "Email is required";
+    } else if (!/\S+@\S+\.\S+/.test(values.email)) {
+      errors.email = "Email is invalid";
+    }
+
+    if (!values.password) {
+      errors.password = "Password is required";
+    } else if (values.password.length < 6) {
+      errors.password = "Password must be at least 6 characters";
+    }
+
+    return errors;
+  };
+
+  const { values, errors, handleChange, handleSubmit, setFieldError } =
+    useForm<FormData>(
+      { email: "", password: "", rememberMe: false },
+      validateForm
+    );
+
+  const onSubmit = async (formData: FormData) => {
+    try {
+      const response = await fetch("/api/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        setFieldError("email", "Invalid credentials");
+        return;
+      }
+
+      console.log("Login successful!");
+    } catch (error) {
+      setFieldError("email", "Network error occurred");
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <div>
+        <label htmlFor="email">Email:</label>
+        <input
+          id="email"
+          type="email"
+          value={values.email}
+          onChange={handleChange("email")}
+        />
+        {errors.email && <span className="error">{errors.email}</span>}
+      </div>
+
+      <div>
+        <label htmlFor="password">Password:</label>
+        <input
+          id="password"
+          type="password"
+          value={values.password}
+          onChange={handleChange("password")}
+        />
+        {errors.password && <span className="error">{errors.password}</span>}
+      </div>
+
+      <div>
+        <label>
+          <input
+            type="checkbox"
+            checked={values.rememberMe}
+            onChange={handleChange("rememberMe")}
+          />
+          Remember me
+        </label>
+      </div>
+
+      <button type="submit">Login</button>
+    </form>
+  );
+}
+```
+
+**Component Props with Variants:**
+
+```tsx
+// Button component with variants
+type ButtonVariant = "primary" | "secondary" | "danger" | "outline";
+type ButtonSize = "sm" | "md" | "lg";
+
+interface BaseButtonProps {
+  variant?: ButtonVariant;
+  size?: ButtonSize;
+  loading?: boolean;
+  disabled?: boolean;
+  children: React.ReactNode;
+}
+
+type ButtonProps = BaseButtonProps &
+  React.ButtonHTMLAttributes<HTMLButtonElement>;
+
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  (
+    {
+      variant = "primary",
+      size = "md",
+      loading = false,
+      disabled = false,
+      children,
+      className = "",
+      ...rest
+    },
+    ref
+  ) => {
+    const baseClasses = "btn";
+    const variantClasses = `btn--${variant}`;
+    const sizeClasses = `btn--${size}`;
+    const loadingClasses = loading ? "btn--loading" : "";
+
+    const buttonClasses = [
+      baseClasses,
+      variantClasses,
+      sizeClasses,
+      loadingClasses,
+      className,
+    ]
+      .filter(Boolean)
+      .join(" ");
+
+    return (
+      <button
+        ref={ref}
+        className={buttonClasses}
+        disabled={disabled || loading}
+        {...rest}
+      >
+        {loading ? <span>Loading...</span> : children}
+      </button>
+    );
+  }
+);
+
+Button.displayName = "Button";
+
+// Usage
+function App() {
+  return (
+    <div>
+      <Button
+        variant="primary"
+        size="lg"
+        onClick={() => console.log("Primary clicked")}
+      >
+        Primary Button
+      </Button>
+
+      <Button variant="danger" loading>
+        Deleting...
+      </Button>
+
+      <Button variant="outline" disabled>
+        Disabled Button
+      </Button>
+    </div>
+  );
+}
+```
+
+</details>
+
+---
+
+## React Testing & Best Practices
+
+<details>
+<summary>
+    <h3>86. How do you test React components with React Testing Library and TypeScript?</h3>
+</summary>
+
+React Testing Library with TypeScript provides excellent tools for testing React components in a way that resembles how users interact with your application.
+
+**Basic Component Testing:**
+
+```tsx
+// UserCard.tsx
+interface User {
+  id: number;
+  name: string;
+  email: string;
+  isActive: boolean;
+}
+
+interface UserCardProps {
+  user: User;
+  onEdit: (userId: number) => void;
+  onDelete: (userId: number) => void;
+}
+
+export function UserCard({ user, onEdit, onDelete }: UserCardProps) {
+  return (
+    <div data-testid={`user-card-${user.id}`}>
+      <h3>{user.name}</h3>
+      <p>{user.email}</p>
+      <span className={user.isActive ? "active" : "inactive"}>
+        {user.isActive ? "Active" : "Inactive"}
+      </span>
+      <button onClick={() => onEdit(user.id)}>Edit</button>
+      <button onClick={() => onDelete(user.id)}>Delete</button>
+    </div>
+  );
+}
+
+// UserCard.test.tsx
+import { render, screen, fireEvent } from "@testing-library/react";
+import { UserCard } from "./UserCard";
+
+const mockUser: User = {
+  id: 1,
+  name: "John Doe",
+  email: "john@example.com",
+  isActive: true,
+};
+
+describe("UserCard", () => {
+  const mockOnEdit = jest.fn();
+  const mockOnDelete = jest.fn();
+
+  beforeEach(() => {
+    mockOnEdit.mockClear();
+    mockOnDelete.mockClear();
+  });
+
+  it("renders user information correctly", () => {
+    render(
+      <UserCard user={mockUser} onEdit={mockOnEdit} onDelete={mockOnDelete} />
+    );
+
+    expect(screen.getByText("John Doe")).toBeInTheDocument();
+    expect(screen.getByText("john@example.com")).toBeInTheDocument();
+    expect(screen.getByText("Active")).toBeInTheDocument();
+  });
+
+  it("calls onEdit when edit button is clicked", () => {
+    render(
+      <UserCard user={mockUser} onEdit={mockOnEdit} onDelete={mockOnDelete} />
+    );
+
+    fireEvent.click(screen.getByText("Edit"));
+    expect(mockOnEdit).toHaveBeenCalledWith(1);
+    expect(mockOnEdit).toHaveBeenCalledTimes(1);
+  });
+
+  it("calls onDelete when delete button is clicked", () => {
+    render(
+      <UserCard user={mockUser} onEdit={mockOnEdit} onDelete={mockOnDelete} />
+    );
+
+    fireEvent.click(screen.getByText("Delete"));
+    expect(mockOnDelete).toHaveBeenCalledWith(1);
+  });
+
+  it("displays correct status for inactive user", () => {
+    const inactiveUser = { ...mockUser, isActive: false };
+
+    render(
+      <UserCard
+        user={inactiveUser}
+        onEdit={mockOnEdit}
+        onDelete={mockOnDelete}
+      />
+    );
+
+    expect(screen.getByText("Inactive")).toBeInTheDocument();
+    expect(screen.getByText("Inactive")).toHaveClass("inactive");
+  });
+});
+```
+
+**Testing Custom Hooks:**
+
+```tsx
+// useCounter.ts
+import { useState, useCallback } from "react";
+
+interface UseCounterResult {
+  count: number;
+  increment: () => void;
+  decrement: () => void;
+  reset: () => void;
+  setCount: (value: number) => void;
+}
+
+export function useCounter(initialValue: number = 0): UseCounterResult {
+  const [count, setCount] = useState(initialValue);
+
+  const increment = useCallback(() => {
+    setCount((prev) => prev + 1);
+  }, []);
+
+  const decrement = useCallback(() => {
+    setCount((prev) => prev - 1);
+  }, []);
+
+  const reset = useCallback(() => {
+    setCount(initialValue);
+  }, [initialValue]);
+
+  return {
+    count,
+    increment,
+    decrement,
+    reset,
+    setCount,
+  };
+}
+
+// useCounter.test.ts
+import { renderHook, act } from "@testing-library/react";
+import { useCounter } from "./useCounter";
+
+describe("useCounter", () => {
+  it("initializes with default value", () => {
+    const { result } = renderHook(() => useCounter());
+    expect(result.current.count).toBe(0);
+  });
+
+  it("initializes with custom value", () => {
+    const { result } = renderHook(() => useCounter(10));
+    expect(result.current.count).toBe(10);
+  });
+
+  it("increments count", () => {
+    const { result } = renderHook(() => useCounter(5));
+
+    act(() => {
+      result.current.increment();
+    });
+
+    expect(result.current.count).toBe(6);
+  });
+
+  it("decrements count", () => {
+    const { result } = renderHook(() => useCounter(5));
+
+    act(() => {
+      result.current.decrement();
+    });
+
+    expect(result.current.count).toBe(4);
+  });
+
+  it("resets to initial value", () => {
+    const { result } = renderHook(() => useCounter(10));
+
+    act(() => {
+      result.current.increment();
+      result.current.increment();
+    });
+
+    expect(result.current.count).toBe(12);
+
+    act(() => {
+      result.current.reset();
+    });
+
+    expect(result.current.count).toBe(10);
+  });
+
+  it("sets count to specific value", () => {
+    const { result } = renderHook(() => useCounter());
+
+    act(() => {
+      result.current.setCount(25);
+    });
+
+    expect(result.current.count).toBe(25);
+  });
+});
+```
+
+**Testing Components with Context:**
+
+```tsx
+// AuthContext.tsx
+interface User {
+  id: string;
+  name: string;
+  role: "admin" | "user";
+}
+
+interface AuthContextType {
+  user: User | null;
+  login: (user: User) => void;
+  logout: () => void;
+  isAdmin: boolean;
+}
+
+const AuthContext = createContext<AuthContextType | null>(null);
+
+export function AuthProvider({ children }: { children: React.ReactNode }) {
+  const [user, setUser] = useState<User | null>(null);
+
+  const login = useCallback((user: User) => {
+    setUser(user);
+  }, []);
+
+  const logout = useCallback(() => {
+    setUser(null);
+  }, []);
+
+  const isAdmin = user?.role === "admin";
+
+  return (
+    <AuthContext.Provider value={{ user, login, logout, isAdmin }}>
+      {children}
+    </AuthContext.Provider>
+  );
+}
+
+export function useAuth() {
+  const context = useContext(AuthContext);
+  if (!context) {
+    throw new Error("useAuth must be used within AuthProvider");
+  }
+  return context;
+}
+
+// AdminPanel.tsx
+export function AdminPanel() {
+  const { user, isAdmin, logout } = useAuth();
+
+  if (!isAdmin) {
+    return <div>Access denied. Admin rights required.</div>;
+  }
+
+  return (
+    <div>
+      <h1>Admin Panel</h1>
+      <p>Welcome, {user?.name}</p>
+      <button onClick={logout}>Logout</button>
+    </div>
+  );
+}
+
+// AdminPanel.test.tsx
+import { render, screen, fireEvent } from "@testing-library/react";
+import { AuthProvider } from "./AuthContext";
+import { AdminPanel } from "./AdminPanel";
+
+const renderWithAuth = (ui: React.ReactElement, { user = null } = {}) => {
+  function Wrapper({ children }: { children: React.ReactNode }) {
+    return <AuthProvider>{children}</AuthProvider>;
+  }
+
+  const result = render(ui, { wrapper: Wrapper });
+
+  // If user is provided, log them in
+  if (user) {
+    const authContext = result.container.querySelector(
+      '[data-testid="auth-provider"]'
+    );
+    // In real implementation, you'd expose the login function through a test helper
+  }
+
+  return result;
+};
+
+// Custom render helper with authenticated user
+const renderWithAuthenticatedUser = (ui: React.ReactElement, user: User) => {
+  function AuthWrapper({ children }: { children: React.ReactNode }) {
+    return (
+      <AuthProvider>
+        <div data-testid="auth-wrapper">{children}</div>
+      </AuthProvider>
+    );
+  }
+
+  const result = render(ui, { wrapper: AuthWrapper });
+
+  // You would typically expose a way to set the user in tests
+  // This is a simplified example
+  return result;
+};
+
+describe("AdminPanel", () => {
+  const adminUser: User = {
+    id: "1",
+    name: "Admin User",
+    role: "admin",
+  };
+
+  const regularUser: User = {
+    id: "2",
+    name: "Regular User",
+    role: "user",
+  };
+
+  it("denies access for non-admin users", () => {
+    // This test would need proper setup with the context
+    render(
+      <AuthProvider>
+        <AdminPanel />
+      </AuthProvider>
+    );
+
+    expect(
+      screen.getByText("Access denied. Admin rights required.")
+    ).toBeInTheDocument();
+  });
+
+  it("shows admin panel for admin users", () => {
+    // You would set up the authenticated admin user here
+    // This is a simplified test structure
+  });
+});
+```
+
+**Testing Async Components:**
+
+```tsx
+// UserList.tsx
+interface User {
+  id: number;
+  name: string;
+  email: string;
+}
+
+export function UserList() {
+  const [users, setUsers] = useState<User[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const response = await fetch("/api/users");
+        if (!response.ok) {
+          throw new Error("Failed to fetch users");
+        }
+        const userData = await response.json();
+        setUsers(userData);
+      } catch (err) {
+        setError(err instanceof Error ? err.message : "Unknown error");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchUsers();
+  }, []);
+
+  if (loading) return <div>Loading users...</div>;
+  if (error) return <div>Error: {error}</div>;
+
+  return (
+    <div>
+      <h1>Users</h1>
+      {users.map((user) => (
+        <div key={user.id} data-testid={`user-${user.id}`}>
+          <h3>{user.name}</h3>
+          <p>{user.email}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+// UserList.test.tsx
+import { render, screen, waitFor } from "@testing-library/react";
+import { UserList } from "./UserList";
+
+// Mock fetch
+global.fetch = jest.fn();
+const mockFetch = fetch as jest.MockedFunction<typeof fetch>;
+
+const mockUsers: User[] = [
+  { id: 1, name: "John Doe", email: "john@example.com" },
+  { id: 2, name: "Jane Smith", email: "jane@example.com" },
+];
+
+describe("UserList", () => {
+  beforeEach(() => {
+    mockFetch.mockClear();
+  });
+
+  it("displays loading state initially", () => {
+    mockFetch.mockReturnValue(
+      Promise.resolve({
+        ok: true,
+        json: () => Promise.resolve(mockUsers),
+      } as Response)
+    );
+
+    render(<UserList />);
+    expect(screen.getByText("Loading users...")).toBeInTheDocument();
+  });
+
+  it("displays users after successful fetch", async () => {
+    mockFetch.mockResolvedValue({
+      ok: true,
+      json: () => Promise.resolve(mockUsers),
+    } as Response);
+
+    render(<UserList />);
+
+    await waitFor(() => {
+      expect(screen.getByText("Users")).toBeInTheDocument();
+    });
+
+    expect(screen.getByText("John Doe")).toBeInTheDocument();
+    expect(screen.getByText("jane@example.com")).toBeInTheDocument();
+  });
+
+  it("displays error message on fetch failure", async () => {
+    mockFetch.mockRejectedValue(new Error("Network error"));
+
+    render(<UserList />);
+
+    await waitFor(() => {
+      expect(screen.getByText(/Error: Network error/)).toBeInTheDocument();
+    });
+  });
+
+  it("handles HTTP error responses", async () => {
+    mockFetch.mockResolvedValue({
+      ok: false,
+      status: 404,
+    } as Response);
+
+    render(<UserList />);
+
+    await waitFor(() => {
+      expect(
+        screen.getByText(/Error: Failed to fetch users/)
+      ).toBeInTheDocument();
+    });
+  });
+});
+```
+
+**Test Setup Configuration:**
+
+```typescript
+// setupTests.ts
+import "@testing-library/jest-dom";
+import { configure } from "@testing-library/react";
+
+// Configure testing library
+configure({ testIdAttribute: "data-testid" });
+
+// Mock IntersectionObserver
+global.IntersectionObserver = class IntersectionObserver {
+  constructor() {}
+  disconnect() {}
+  observe() {}
+  unobserve() {}
+};
+
+// Mock ResizeObserver
+global.ResizeObserver = class ResizeObserver {
+  constructor(cb: any) {}
+  observe() {}
+  unobserve() {}
+  disconnect() {}
+};
+```
+
+</details>
+
+---
+
+## React Security & Accessibility
+
+<details>
+<summary>
+    <h3>87. What are the common security vulnerabilities in React applications and how to prevent them?</h3>
+</summary>
+
+React applications can be vulnerable to several security threats. Here are the most common ones and how to prevent them:
+
+**1. Cross-Site Scripting (XSS):**
+
+```tsx
+// ❌ Dangerous - allows XSS attacks
+interface UnsafeComponentProps {
+  userContent: string;
+}
+
+function UnsafeComponent({ userContent }: UnsafeComponentProps) {
+  // This directly injects HTML and can execute malicious scripts
+  return <div dangerouslySetInnerHTML={{ __html: userContent }} />;
+}
+
+// ✅ Safe approaches
+import DOMPurify from "dompurify";
+
+function SafeComponent({ userContent }: UnsafeComponentProps) {
+  // Approach 1: Use React's built-in XSS protection
+  return <div>{userContent}</div>; // React automatically escapes content
+
+  // Approach 2: Sanitize HTML content
+  const sanitizedContent = DOMPurify.sanitize(userContent);
+  return <div dangerouslySetInnerHTML={{ __html: sanitizedContent }} />;
+}
+
+// Safe handling of user input
+function CommentComponent({ comment }: { comment: string }) {
+  // React automatically escapes this content
+  return (
+    <div className="comment">
+      <p>{comment}</p> {/* Safe - React escapes special characters */}
+    </div>
+  );
+}
+```
+
+**2. Dependency Vulnerabilities:**
+
+```bash
+# Regular security audits
+npm audit
+npm audit fix
+
+# Use tools like Snyk
+npx snyk test
+npx snyk monitor
+
+# Keep dependencies updated
+npm update
+npm outdated
+```
+
+**3. Environment Variables Security:**
+
+```typescript
+// ❌ Don't expose sensitive data in client-side code
+const API_KEY = process.env.REACT_APP_SECRET_API_KEY; // Exposed to client!
+
+// ✅ Safe approach
+// Only expose non-sensitive public variables
+const PUBLIC_API_URL = process.env.REACT_APP_PUBLIC_API_URL;
+
+// Keep sensitive data on the server
+// server-side API call
+async function getSecureData() {
+  const response = await fetch("/api/secure-endpoint", {
+    headers: {
+      Authorization: `Bearer ${await getAuthToken()}`, // Server-side token
+    },
+  });
+  return response.json();
+}
+```
+
+**4. Authentication & Authorization:**
+
+```tsx
+// Secure authentication implementation
+interface AuthToken {
+  token: string;
+  expiresAt: number;
+  refreshToken: string;
+}
+
+class AuthService {
+  private static readonly TOKEN_KEY = "auth_token";
+  private static readonly REFRESH_KEY = "refresh_token";
+
+  static setTokens(tokens: AuthToken): void {
+    // Store tokens securely (consider httpOnly cookies for production)
+    localStorage.setItem(this.TOKEN_KEY, tokens.token);
+    localStorage.setItem(this.REFRESH_KEY, tokens.refreshToken);
+  }
+
+  static getToken(): string | null {
+    const token = localStorage.getItem(this.TOKEN_KEY);
+    if (token && this.isTokenValid(token)) {
+      return token;
+    }
+    return null;
+  }
+
+  static isTokenValid(token: string): boolean {
+    try {
+      const payload = JSON.parse(atob(token.split(".")[1]));
+      return payload.exp * 1000 > Date.now();
+    } catch {
+      return false;
+    }
+  }
+
+  static async refreshToken(): Promise<string | null> {
+    const refreshToken = localStorage.getItem(this.REFRESH_KEY);
+    if (!refreshToken) return null;
+
+    try {
+      const response = await fetch("/api/auth/refresh", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ refreshToken }),
+      });
+
+      if (response.ok) {
+        const newTokens = await response.json();
+        this.setTokens(newTokens);
+        return newTokens.token;
+      }
+    } catch (error) {
+      console.error("Token refresh failed:", error);
+    }
+
+    return null;
+  }
+
+  static clearTokens(): void {
+    localStorage.removeItem(this.TOKEN_KEY);
+    localStorage.removeItem(this.REFRESH_KEY);
+  }
+}
+
+// Protected Route Component
+function ProtectedRoute({
+  children,
+  requiredRole,
+}: {
+  children: React.ReactNode;
+  requiredRole?: string;
+}) {
+  const { user, isAuthenticated } = useAuth();
+
+  if (!isAuthenticated) {
+    return <Navigate to="/login" replace />;
+  }
+
+  if (requiredRole && user?.role !== requiredRole) {
+    return <Navigate to="/unauthorized" replace />;
+  }
+
+  return <>{children}</>;
+}
+```
+
+**5. CSRF Protection:**
+
+```tsx
+// CSRF token handling
+function CSRFProtectedForm() {
+  const [csrfToken, setCsrfToken] = useState<string>("");
+
+  useEffect(() => {
+    // Get CSRF token from meta tag or API
+    const token = document
+      .querySelector('meta[name="csrf-token"]')
+      ?.getAttribute("content");
+    setCsrfToken(token || "");
+  }, []);
+
+  const handleSubmit = async (formData: any) => {
+    await fetch("/api/protected-endpoint", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-CSRF-Token": csrfToken, // Include CSRF token
+        Authorization: `Bearer ${AuthService.getToken()}`,
+      },
+      body: JSON.stringify(formData),
+    });
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      {/* Form content */}
+      <input type="hidden" name="_token" value={csrfToken} />
+    </form>
+  );
+}
+```
+
+**6. Content Security Policy (CSP):**
+
+```html
+<!-- Add to index.html -->
+<meta
+  http-equiv="Content-Security-Policy"
+  content="default-src 'self'; 
+               script-src 'self' 'unsafe-inline' https://trusted-cdn.com; 
+               style-src 'self' 'unsafe-inline'; 
+               img-src 'self' data: https:; 
+               connect-src 'self' https://api.yourapp.com;"
+/>
+```
+
+**7. Input Validation:**
+
+```tsx
+// Comprehensive input validation
+interface FormValidation {
+  email: (value: string) => string | null;
+  password: (value: string) => string | null;
+  url: (value: string) => string | null;
+}
+
+const validation: FormValidation = {
+  email: (value: string) => {
+    if (!value) return "Email is required";
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+      return "Please enter a valid email address";
+    }
+    if (value.length > 254) return "Email is too long";
+    return null;
+  },
+
+  password: (value: string) => {
+    if (!value) return "Password is required";
+    if (value.length < 8) return "Password must be at least 8 characters";
+    if (!/(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/.test(value)) {
+      return "Password must contain uppercase, lowercase, and number";
+    }
+    return null;
+  },
+
+  url: (value: string) => {
+    if (!value) return null; // Optional field
+    try {
+      const url = new URL(value);
+      if (!["http:", "https:"].includes(url.protocol)) {
+        return "URL must use HTTP or HTTPS protocol";
+      }
+      return null;
+    } catch {
+      return "Please enter a valid URL";
+    }
+  },
+};
+
+// Secure form component
+function SecureForm() {
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+    website: "",
+  });
+  const [errors, setErrors] = useState<Record<string, string>>({});
+
+  const validateField = (name: string, value: string) => {
+    const validator = validation[name as keyof FormValidation];
+    return validator ? validator(value) : null;
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+
+    // Sanitize input
+    const sanitizedValue = value.trim().slice(0, 1000); // Limit length
+
+    setFormData((prev) => ({ ...prev, [name]: sanitizedValue }));
+
+    // Real-time validation
+    const error = validateField(name, sanitizedValue);
+    setErrors((prev) => ({ ...prev, [name]: error || "" }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    // Validate all fields
+    const newErrors: Record<string, string> = {};
+    Object.entries(formData).forEach(([key, value]) => {
+      const error = validateField(key, value);
+      if (error) newErrors[key] = error;
+    });
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
+
+    // Submit data securely
+    await submitForm(formData);
+  };
+
+  return (
+    <form onSubmit={handleSubmit} noValidate>
+      <div>
+        <input
+          type="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          autoComplete="email"
+          required
+          aria-invalid={!!errors.email}
+          aria-describedby={errors.email ? "email-error" : undefined}
+        />
+        {errors.email && (
+          <div id="email-error" role="alert">
+            {errors.email}
+          </div>
+        )}
+      </div>
+
+      <div>
+        <input
+          type="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+          autoComplete="current-password"
+          required
+          aria-invalid={!!errors.password}
+        />
+        {errors.password && <div role="alert">{errors.password}</div>}
+      </div>
+
+      <button type="submit">Submit</button>
+    </form>
+  );
+}
+```
+
+</details>
+
+<details>
+<summary>
+    <h3>88. How do you implement accessibility (a11y) in React applications?</h3>
+</summary>
+
+Accessibility is crucial for making React applications usable by everyone. Here are key techniques and patterns:
+
+**1. Semantic HTML and ARIA:**
+
+```tsx
+// Good semantic structure
+interface NavigationProps {
+  items: Array<{ href: string; label: string; current?: boolean }>;
+}
+
+function AccessibleNavigation({ items }: NavigationProps) {
+  return (
+    <nav aria-label="Main navigation">
+      <ul role="list">
+        {items.map((item, index) => (
+          <li key={item.href}>
+            <a
+              href={item.href}
+              aria-current={item.current ? "page" : undefined}
+              className={item.current ? "current-page" : ""}
+            >
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  );
+}
+
+// Modal with proper ARIA
+interface ModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  title: string;
+  children: React.ReactNode;
+}
+
+function AccessibleModal({ isOpen, onClose, title, children }: ModalProps) {
+  const modalRef = useRef<HTMLDivElement>(null);
+  const previousFocusRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    if (isOpen) {
+      // Store current focus
+      previousFocusRef.current = document.activeElement as HTMLElement;
+
+      // Focus modal
+      modalRef.current?.focus();
+
+      // Trap focus within modal
+      const trapFocus = (e: KeyboardEvent) => {
+        if (e.key === "Escape") {
+          onClose();
+        }
+      };
+
+      document.addEventListener("keydown", trapFocus);
+      return () => document.removeEventListener("keydown", trapFocus);
+    } else {
+      // Return focus to previous element
+      previousFocusRef.current?.focus();
+    }
+  }, [isOpen, onClose]);
+
+  if (!isOpen) return null;
+
+  return (
+    <div
+      className="modal-backdrop"
+      onClick={(e) => e.target === e.currentTarget && onClose()}
+    >
+      <div
+        ref={modalRef}
+        className="modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-title"
+        tabIndex={-1}
+      >
+        <div className="modal-header">
+          <h2 id="modal-title">{title}</h2>
+          <button
+            onClick={onClose}
+            aria-label="Close modal"
+            className="close-button"
+          >
+            ×
+          </button>
+        </div>
+        <div className="modal-content">{children}</div>
+      </div>
+    </div>
+  );
+}
+```
+
+**2. Form Accessibility:**
+
+```tsx
+// Comprehensive accessible form
+interface FormField {
+  id: string;
+  label: string;
+  type: "text" | "email" | "password" | "tel";
+  required?: boolean;
+  placeholder?: string;
+  autoComplete?: string;
+}
+
+interface AccessibleFormProps {
+  fields: FormField[];
+  onSubmit: (data: Record<string, string>) => void;
+}
+
+function AccessibleForm({ fields, onSubmit }: AccessibleFormProps) {
+  const [formData, setFormData] = useState<Record<string, string>>({});
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const firstErrorRef = useRef<HTMLInputElement>(null);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    // Validate form
+    const newErrors: Record<string, string> = {};
+    fields.forEach((field) => {
+      if (field.required && !formData[field.id]) {
+        newErrors[field.id] = `${field.label} is required`;
+      }
+    });
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      // Focus first error field
+      setTimeout(() => firstErrorRef.current?.focus(), 0);
+      setIsSubmitting(false);
+      return;
+    }
+
+    try {
+      await onSubmit(formData);
+    } catch (error) {
+      setErrors({ general: "An error occurred while submitting the form" });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleChange = (fieldId: string, value: string) => {
+    setFormData((prev) => ({ ...prev, [fieldId]: value }));
+    // Clear error when user starts typing
+    if (errors[fieldId]) {
+      setErrors((prev) => ({ ...prev, [fieldId]: "" }));
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} noValidate>
+      <fieldset disabled={isSubmitting}>
+        <legend>Registration Form</legend>
+
+        {errors.general && (
+          <div role="alert" className="error-message">
+            {errors.general}
+          </div>
+        )}
+
+        {fields.map((field, index) => (
+          <div key={field.id} className="form-field">
+            <label htmlFor={field.id} className="form-label">
+              {field.label}
+              {field.required && <span aria-label="required"> *</span>}
+            </label>
+
+            <input
+              ref={
+                index === 0 && Object.keys(errors).length > 0
+                  ? firstErrorRef
+                  : null
+              }
+              id={field.id}
+              type={field.type}
+              value={formData[field.id] || ""}
+              onChange={(e) => handleChange(field.id, e.target.value)}
+              placeholder={field.placeholder}
+              autoComplete={field.autoComplete}
+              required={field.required}
+              aria-invalid={!!errors[field.id]}
+              aria-describedby={
+                errors[field.id] ? `${field.id}-error` : undefined
+              }
+              className={errors[field.id] ? "error" : ""}
+            />
+
+            {errors[field.id] && (
+              <div
+                id={`${field.id}-error`}
+                role="alert"
+                className="field-error"
+              >
+                {errors[field.id]}
+              </div>
+            )}
+          </div>
+        ))}
+
+        <button
+          type="submit"
+          disabled={isSubmitting}
+          aria-describedby={isSubmitting ? "submit-status" : undefined}
+        >
+          {isSubmitting ? "Submitting..." : "Submit"}
+        </button>
+
+        {isSubmitting && (
+          <div id="submit-status" aria-live="polite" className="sr-only">
+            Form is being submitted
+          </div>
+        )}
+      </fieldset>
+    </form>
+  );
+}
+```
+
+**3. Focus Management:**
+
+```tsx
+// Custom hook for focus management
+function useFocusTrap(isActive: boolean) {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!isActive) return;
+
+    const container = containerRef.current;
+    if (!container) return;
+
+    const focusableElements = container.querySelectorAll(
+      'a[href], button, textarea, input[type="text"], input[type="radio"], input[type="checkbox"], select'
+    ) as NodeListOf<HTMLElement>;
+
+    const firstElement = focusableElements[0];
+    const lastElement = focusableElements[focusableElements.length - 1];
+
+    const handleTabKey = (e: KeyboardEvent) => {
+      if (e.key === "Tab") {
+        if (e.shiftKey) {
+          if (document.activeElement === firstElement) {
+            lastElement.focus();
+            e.preventDefault();
+          }
+        } else {
+          if (document.activeElement === lastElement) {
+            firstElement.focus();
+            e.preventDefault();
+          }
+        }
+      }
+    };
+
+    document.addEventListener("keydown", handleTabKey);
+    firstElement?.focus();
+
+    return () => {
+      document.removeEventListener("keydown", handleTabKey);
+    };
+  }, [isActive]);
+
+  return containerRef;
+}
+
+// Skip links for keyboard navigation
+function SkipLinks() {
+  return (
+    <div className="skip-links">
+      <a href="#main-content" className="skip-link">
+        Skip to main content
+      </a>
+      <a href="#navigation" className="skip-link">
+        Skip to navigation
+      </a>
+    </div>
+  );
+}
+```
+
+**4. Screen Reader Support:**
+
+```tsx
+// Live regions for dynamic content
+function useAnnouncement() {
+  const [announcement, setAnnouncement] = useState("");
+
+  const announce = useCallback((message: string) => {
+    setAnnouncement(message);
+    // Clear after announcement
+    setTimeout(() => setAnnouncement(""), 1000);
+  }, []);
+
+  const AnnouncementRegion = useCallback(
+    () => (
+      <div
+        role="status"
+        aria-live="polite"
+        aria-atomic="true"
+        className="sr-only"
+      >
+        {announcement}
+      </div>
+    ),
+    [announcement]
+  );
+
+  return { announce, AnnouncementRegion };
+}
+
+// Data table with proper headers
+interface TableData {
+  id: string;
+  name: string;
+  email: string;
+  status: "active" | "inactive";
+}
+
+interface AccessibleTableProps {
+  data: TableData[];
+  caption: string;
+}
+
+function AccessibleTable({ data, caption }: AccessibleTableProps) {
+  const { announce, AnnouncementRegion } = useAnnouncement();
+
+  const handleStatusToggle = (userId: string, currentStatus: string) => {
+    const newStatus = currentStatus === "active" ? "inactive" : "active";
+    // Update logic here
+    announce(`User status changed to ${newStatus}`);
+  };
+
+  return (
+    <div>
+      <table role="table" aria-label={caption}>
+        <caption>{caption}</caption>
+        <thead>
+          <tr>
+            <th scope="col" id="name-header">
+              Name
+            </th>
+            <th scope="col" id="email-header">
+              Email
+            </th>
+            <th scope="col" id="status-header">
+              Status
+            </th>
+            <th scope="col" id="actions-header">
+              Actions
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {data.map((user) => (
+            <tr key={user.id}>
+              <td headers="name-header">{user.name}</td>
+              <td headers="email-header">{user.email}</td>
+              <td headers="status-header">
+                <span className={`status status--${user.status}`}>
+                  {user.status}
+                </span>
+              </td>
+              <td headers="actions-header">
+                <button
+                  onClick={() => handleStatusToggle(user.id, user.status)}
+                  aria-describedby={`status-description-${user.id}`}
+                >
+                  Toggle Status
+                </button>
+                <div id={`status-description-${user.id}`} className="sr-only">
+                  Current status: {user.status}. Click to change to{" "}
+                  {user.status === "active" ? "inactive" : "active"}
+                </div>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <AnnouncementRegion />
+    </div>
+  );
+}
+```
+
+**5. CSS for Accessibility:**
+
+```css
+/* Screen reader only content */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Skip links */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: #000;
+  color: #fff;
+  padding: 8px;
+  text-decoration: none;
+  border-radius: 0 0 4px 4px;
+  z-index: 1000;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* Focus styles */
+*:focus {
+  outline: 2px solid #005fcc;
+  outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .button {
+    border: 2px solid;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+```
+
+**6. Testing Accessibility:**
+
+```tsx
+// Accessibility testing utilities
+import { axe, toHaveNoViolations } from "jest-axe";
+
+expect.extend(toHaveNoViolations);
+
+describe("AccessibleForm", () => {
+  it("should have no accessibility violations", async () => {
+    const { container } = render(
+      <AccessibleForm
+        fields={[
+          { id: "email", label: "Email", type: "email", required: true },
+          {
+            id: "password",
+            label: "Password",
+            type: "password",
+            required: true,
+          },
+        ]}
+        onSubmit={jest.fn()}
+      />
+    );
+
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
+  });
+
+  it("should have proper ARIA labels", () => {
+    render(
+      <AccessibleForm
+        fields={[
+          { id: "email", label: "Email", type: "email", required: true },
+        ]}
+        onSubmit={jest.fn()}
+      />
+    );
+
+    expect(screen.getByLabelText("Email *")).toBeInTheDocument();
+    expect(screen.getByRole("textbox", { name: /email/i })).toBeInTheDocument();
+  });
+});
+```
+
+</details>
+
+---
+
+## Advanced React Patterns
+
+<details>
+<summary>
+    <h3>89. Explain Compound Components pattern and provide a TypeScript example.</h3>
+</summary>
+
+Compound Components is a pattern where components work together to form a complete UI. The parent component manages the state and passes it down to child components through context.
+
+```tsx
+// Accordion implementation using Compound Components
+interface AccordionContextType {
+  activeIndex: number | null;
+  setActiveIndex: (index: number | null) => void;
+}
+
+const AccordionContext = createContext<AccordionContextType | null>(null);
+
+function useAccordion() {
+  const context = useContext(AccordionContext);
+  if (!context) {
+    throw new Error(
+      "Accordion compound components must be used within Accordion"
+    );
+  }
+  return context;
+}
+
+// Main Accordion component
+interface AccordionProps {
+  children: React.ReactNode;
+  defaultActiveIndex?: number | null;
+  allowMultiple?: boolean;
+}
+
+function Accordion({
+  children,
+  defaultActiveIndex = null,
+  allowMultiple = false,
+}: AccordionProps) {
+  const [activeIndex, setActiveIndex] = useState<number | null>(
+    defaultActiveIndex
+  );
+
+  const handleSetActiveIndex = (index: number | null) => {
+    if (allowMultiple) {
+      // Implementation for multiple panels (would need array state)
+      return;
+    }
+    setActiveIndex(activeIndex === index ? null : index);
+  };
+
+  return (
+    <AccordionContext.Provider
+      value={{ activeIndex, setActiveIndex: handleSetActiveIndex }}
+    >
+      <div className="accordion">{children}</div>
+    </AccordionContext.Provider>
+  );
+}
+
+// AccordionItem component
+interface AccordionItemProps {
+  children: React.ReactNode;
+  index: number;
+}
+
+function AccordionItem({ children, index }: AccordionItemProps) {
+  const { activeIndex } = useAccordion();
+  const isActive = activeIndex === index;
+
+  return (
+    <div
+      className={`accordion-item ${isActive ? "active" : ""}`}
+      data-index={index}
+    >
+      {children}
+    </div>
+  );
+}
+
+// AccordionHeader component
+interface AccordionHeaderProps {
+  children: React.ReactNode;
+}
+
+function AccordionHeader({ children }: AccordionHeaderProps) {
+  const { setActiveIndex } = useAccordion();
+  const itemElement = useRef<HTMLElement>();
+
+  useEffect(() => {
+    // Find parent AccordionItem to get index
+    let element = itemElement.current?.parentElement;
+    while (element && !element.hasAttribute("data-index")) {
+      element = element.parentElement;
+    }
+    itemElement.current = element as HTMLElement;
+  }, []);
+
+  const handleClick = () => {
+    const index = itemElement.current?.getAttribute("data-index");
+    if (index !== null && index !== undefined) {
+      setActiveIndex(parseInt(index));
+    }
+  };
+
+  return (
+    <button
+      ref={itemElement as any}
+      className="accordion-header"
+      onClick={handleClick}
+      type="button"
+    >
+      {children}
+    </button>
+  );
+}
+
+// AccordionPanel component
+interface AccordionPanelProps {
+  children: React.ReactNode;
+}
+
+function AccordionPanel({ children }: AccordionPanelProps) {
+  const { activeIndex } = useAccordion();
+  const itemElement = useRef<HTMLElement>();
+  const [isActive, setIsActive] = useState(false);
+
+  useEffect(() => {
+    let element = itemElement.current?.parentElement;
+    while (element && !element.hasAttribute("data-index")) {
+      element = element.parentElement;
+    }
+
+    if (element) {
+      const index = parseInt(element.getAttribute("data-index") || "0");
+      setIsActive(activeIndex === index);
+    }
+  }, [activeIndex]);
+
+  return (
+    <div
+      ref={itemElement as any}
+      className={`accordion-panel ${isActive ? "expanded" : ""}`}
+      style={{
+        display: isActive ? "block" : "none",
+      }}
+    >
+      {children}
+    </div>
+  );
+}
+
+// Compound component assignment
+Accordion.Item = AccordionItem;
+Accordion.Header = AccordionHeader;
+Accordion.Panel = AccordionPanel;
+
+// Usage
+function App() {
+  return (
+    <Accordion defaultActiveIndex={0}>
+      <Accordion.Item index={0}>
+        <Accordion.Header>What is React?</Accordion.Header>
+        <Accordion.Panel>
+          React is a JavaScript library for building user interfaces.
+        </Accordion.Panel>
+      </Accordion.Item>
+
+      <Accordion.Item index={1}>
+        <Accordion.Header>What is TypeScript?</Accordion.Header>
+        <Accordion.Panel>
+          TypeScript is a typed superset of JavaScript that compiles to plain
+          JavaScript.
+        </Accordion.Panel>
+      </Accordion.Item>
+
+      <Accordion.Item index={2}>
+        <Accordion.Header>What are React Hooks?</Accordion.Header>
+        <Accordion.Panel>
+          Hooks are functions that let you use state and other React features
+          without writing a class.
+        </Accordion.Panel>
+      </Accordion.Item>
+    </Accordion>
+  );
+}
+```
+
+**Alternative implementation with better TypeScript support:**
+
+```tsx
+// More type-safe compound component approach
+interface TabsContextType {
+  activeTab: string;
+  setActiveTab: (tabId: string) => void;
+}
+
+const TabsContext = createContext<TabsContextType | null>(null);
+
+interface TabsProviderProps {
+  children: React.ReactNode;
+  defaultTab?: string;
+}
+
+function TabsProvider({ children, defaultTab = "" }: TabsProviderProps) {
+  const [activeTab, setActiveTab] = useState(defaultTab);
+
+  return (
+    <TabsContext.Provider value={{ activeTab, setActiveTab }}>
+      {children}
+    </TabsContext.Provider>
+  );
+}
+
+// Tab components
+interface TabsProps {
+  children: React.ReactNode;
+  defaultTab?: string;
+}
+
+function Tabs({ children, defaultTab }: TabsProps) {
+  return (
+    <TabsProvider defaultTab={defaultTab}>
+      <div className="tabs">{children}</div>
+    </TabsProvider>
+  );
+}
+
+interface TabListProps {
+  children: React.ReactNode;
+}
+
+function TabList({ children }: TabListProps) {
+  return (
+    <div className="tab-list" role="tablist">
+      {children}
+    </div>
+  );
+}
+
+interface TabProps {
+  tabId: string;
+  children: React.ReactNode;
+  disabled?: boolean;
+}
+
+function Tab({ tabId, children, disabled = false }: TabProps) {
+  const context = useContext(TabsContext);
+  if (!context) throw new Error("Tab must be used within Tabs");
+
+  const { activeTab, setActiveTab } = context;
+  const isActive = activeTab === tabId;
+
+  return (
+    <button
+      role="tab"
+      aria-selected={isActive}
+      aria-controls={`panel-${tabId}`}
+      id={`tab-${tabId}`}
+      className={`tab ${isActive ? "active" : ""}`}
+      onClick={() => !disabled && setActiveTab(tabId)}
+      disabled={disabled}
+      type="button"
+    >
+      {children}
+    </button>
+  );
+}
+
+interface TabPanelsProps {
+  children: React.ReactNode;
+}
+
+function TabPanels({ children }: TabPanelsProps) {
+  return <div className="tab-panels">{children}</div>;
+}
+
+interface TabPanelProps {
+  tabId: string;
+  children: React.ReactNode;
+}
+
+function TabPanel({ tabId, children }: TabPanelProps) {
+  const context = useContext(TabsContext);
+  if (!context) throw new Error("TabPanel must be used within Tabs");
+
+  const { activeTab } = context;
+  const isActive = activeTab === tabId;
+
+  return (
+    <div
+      role="tabpanel"
+      id={`panel-${tabId}`}
+      aria-labelledby={`tab-${tabId}`}
+      className={`tab-panel ${isActive ? "active" : ""}`}
+      hidden={!isActive}
+    >
+      {isActive ? children : null}
+    </div>
+  );
+}
+
+// Export compound component
+const TabsCompound = Object.assign(Tabs, {
+  List: TabList,
+  Tab,
+  Panels: TabPanels,
+  Panel: TabPanel,
+});
+
+// Usage with proper TypeScript support
+function TabExample() {
+  return (
+    <TabsCompound defaultTab="profile">
+      <TabsCompound.List>
+        <TabsCompound.Tab tabId="profile">Profile</TabsCompound.Tab>
+        <TabsCompound.Tab tabId="settings">Settings</TabsCompound.Tab>
+        <TabsCompound.Tab tabId="billing" disabled>
+          Billing
+        </TabsCompound.Tab>
+      </TabsCompound.List>
+
+      <TabsCompound.Panels>
+        <TabsCompound.Panel tabId="profile">
+          <h3>Profile Content</h3>
+          <p>Manage your profile information here.</p>
+        </TabsCompound.Panel>
+
+        <TabsCompound.Panel tabId="settings">
+          <h3>Settings Content</h3>
+          <p>Adjust your application settings.</p>
+        </TabsCompound.Panel>
+
+        <TabsCompound.Panel tabId="billing">
+          <h3>Billing Content</h3>
+          <p>Manage your billing information.</p>
+        </TabsCompound.Panel>
+      </TabsCompound.Panels>
+    </TabsCompound>
+  );
+}
+
+export default TabsCompound;
+```
+
+**Benefits of Compound Components:**
+
+- **Flexible API**: Users can compose components however they need
+- **Separation of Concerns**: Each component has a single responsibility
+- **Implicit State Sharing**: Context eliminates prop drilling
+- **Type Safety**: TypeScript ensures correct usage
+
+</details>
+
+<details>
+<summary>
+    <h3>90. What is the Render Props pattern and how does it compare to custom hooks?</h3>
+</summary>
+
+Render Props is a pattern where a component accepts a function as a prop that returns React elements. This pattern enables component logic sharing and inversion of control.
+
+**Render Props Implementation:**
+
+```tsx
+// Mouse position tracker using render props
+interface MousePosition {
+  x: number;
+  y: number;
+}
+
+interface MouseTrackerProps {
+  children: (mouse: MousePosition) => React.ReactNode;
+  // Alternative: render prop
+  render?: (mouse: MousePosition) => React.ReactNode;
+}
+
+class MouseTracker extends React.Component<MouseTrackerProps, MousePosition> {
+  state: MousePosition = { x: 0, y: 0 };
+
+  handleMouseMove = (event: MouseEvent) => {
+    this.setState({
+      x: event.clientX,
+      y: event.clientY,
+    });
+  };
+
+  componentDidMount() {
+    window.addEventListener("mousemove", this.handleMouseMove);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("mousemove", this.handleMouseMove);
+  }
+
+  render() {
+    const { children, render } = this.props;
+    return (
+      <div>
+        {/* Use children function or render prop */}
+        {render ? render(this.state) : children(this.state)}
+      </div>
+    );
+  }
+}
+
+// Usage with children function
+function App() {
+  return (
+    <MouseTracker>
+      {({ x, y }) => (
+        <div>
+          <h1>Mouse Position</h1>
+          <p>
+            X: {x}, Y: {y}
+          </p>
+          <div
+            style={{
+              position: "absolute",
+              left: x,
+              top: y,
+              width: 10,
+              height: 10,
+              backgroundColor: "red",
+              borderRadius: "50%",
+              pointerEvents: "none",
+            }}
+          />
+        </div>
+      )}
+    </MouseTracker>
+  );
+}
+
+// More complex render props example - Data fetcher
+interface DataFetcherState<T> {
+  data: T | null;
+  loading: boolean;
+  error: Error | null;
+}
+
+interface DataFetcherProps<T> {
+  url: string;
+  children: (state: DataFetcherState<T>) => React.ReactNode;
+}
+
+class DataFetcher<T> extends React.Component<
+  DataFetcherProps<T>,
+  DataFetcherState<T>
+> {
+  state: DataFetcherState<T> = {
+    data: null,
+    loading: true,
+    error: null,
+  };
+
+  async componentDidMount() {
+    await this.fetchData();
+  }
+
+  async componentDidUpdate(prevProps: DataFetcherProps<T>) {
+    if (prevProps.url !== this.props.url) {
+      await this.fetchData();
+    }
+  }
+
+  fetchData = async () => {
+    this.setState({ loading: true, error: null });
+
+    try {
+      const response = await fetch(this.props.url);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      this.setState({ data, loading: false });
+    } catch (error) {
+      this.setState({
+        error: error instanceof Error ? error : new Error("Unknown error"),
+        loading: false,
+      });
+    }
+  };
+
+  render() {
+    return this.props.children(this.state);
+  }
+}
+
+// Usage
+interface User {
+  id: number;
+  name: string;
+  email: string;
+}
+
+function UserProfile({ userId }: { userId: number }) {
+  return (
+    <DataFetcher<User> url={`/api/users/${userId}`}>
+      {({ data: user, loading, error }) => {
+        if (loading) return <div>Loading user...</div>;
+        if (error) return <div>Error: {error.message}</div>;
+        if (!user) return <div>User not found</div>;
+
+        return (
+          <div>
+            <h1>{user.name}</h1>
+            <p>{user.email}</p>
+          </div>
+        );
+      }}
+    </DataFetcher>
+  );
+}
+```
+
+**Converting to Custom Hooks (Modern Approach):**
+
+```tsx
+// Custom hook version of mouse tracker
+function useMousePosition(): MousePosition {
+  const [mousePosition, setMousePosition] = useState<MousePosition>({
+    x: 0,
+    y: 0,
+  });
+
+  useEffect(() => {
+    const handleMouseMove = (event: MouseEvent) => {
+      setMousePosition({
+        x: event.clientX,
+        y: event.clientY,
+      });
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
+
+  return mousePosition;
+}
+
+// Custom hook version of data fetcher
+function useApi<T>(url: string): DataFetcherState<T> & { refetch: () => void } {
+  const [state, setState] = useState<DataFetcherState<T>>({
+    data: null,
+    loading: true,
+    error: null,
+  });
+
+  const fetchData = useCallback(async () => {
+    setState((prev) => ({ ...prev, loading: true, error: null }));
+
+    try {
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      setState({ data, loading: false, error: null });
+    } catch (error) {
+      setState({
+        data: null,
+        loading: false,
+        error: error instanceof Error ? error : new Error("Unknown error"),
+      });
+    }
+  }, [url]);
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
+
+  return { ...state, refetch: fetchData };
+}
+
+// Usage with hooks (much cleaner!)
+function App() {
+  const mousePosition = useMousePosition();
+
+  return (
+    <div>
+      <h1>Mouse Position</h1>
+      <p>
+        X: {mousePosition.x}, Y: {mousePosition.y}
+      </p>
+      <div
+        style={{
+          position: "absolute",
+          left: mousePosition.x,
+          top: mousePosition.y,
+          width: 10,
+          height: 10,
+          backgroundColor: "red",
+          borderRadius: "50%",
+          pointerEvents: "none",
+        }}
+      />
+    </div>
+  );
+}
+
+function UserProfile({ userId }: { userId: number }) {
+  const {
+    data: user,
+    loading,
+    error,
+    refetch,
+  } = useApi<User>(`/api/users/${userId}`);
+
+  if (loading) return <div>Loading user...</div>;
+  if (error)
+    return (
+      <div>
+        Error: {error.message}
+        <button onClick={refetch}>Retry</button>
+      </div>
+    );
+  if (!user) return <div>User not found</div>;
+
+  return (
+    <div>
+      <h1>{user.name}</h1>
+      <p>{user.email}</p>
+      <button onClick={refetch}>Refresh</button>
+    </div>
+  );
+}
+```
+
+**Complex Render Props Example - Form Validation:**
+
+```tsx
+// Advanced render props for form validation
+interface ValidationRules<T> {
+  [K in keyof T]?: Array<(value: T[K]) => string | null>;
+}
+
+interface FormRenderProps<T> {
+  values: T;
+  errors: Partial<Record<keyof T, string>>;
+  touched: Partial<Record<keyof T, boolean>>;
+  handleChange: (field: keyof T) => (value: T[keyof T]) => void;
+  handleBlur: (field: keyof T) => () => void;
+  handleSubmit: (onSubmit: (values: T) => void) => (e: React.FormEvent) => void;
+  isValid: boolean;
+  isSubmitting: boolean;
+}
+
+interface FormProps<T> {
+  initialValues: T;
+  validationRules?: ValidationRules<T>;
+  children: (props: FormRenderProps<T>) => React.ReactNode;
+}
+
+function Form<T extends Record<string, any>>({
+  initialValues,
+  validationRules = {},
+  children
+}: FormProps<T>) {
+  const [values, setValues] = useState<T>(initialValues);
+  const [errors, setErrors] = useState<Partial<Record<keyof T, string>>>({});
+  const [touched, setTouched] = useState<Partial<Record<keyof T, boolean>>>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const validateField = useCallback((field: keyof T, value: T[keyof T]): string | null => {
+    const rules = validationRules[field];
+    if (!rules) return null;
+
+    for (const rule of rules) {
+      const error = rule(value);
+      if (error) return error;
+    }
+    return null;
+  }, [validationRules]);
+
+  const handleChange = useCallback((field: keyof T) => (value: T[keyof T]) => {
+    setValues(prev => ({ ...prev, [field]: value }));
+
+    if (touched[field]) {
+      const error = validateField(field, value);
+      setErrors(prev => ({ ...prev, [field]: error }));
+    }
+  }, [touched, validateField]);
+
+  const handleBlur = useCallback((field: keyof T) => () => {
+    setTouched(prev => ({ ...prev, [field]: true }));
+    const error = validateField(field, values[field]);
+    setErrors(prev => ({ ...prev, [field]: error }));
+  }, [values, validateField]);
+
+  const handleSubmit = useCallback((onSubmit: (values: T) => void) =>
+    async (e: React.FormEvent) => {
+      e.preventDefault();
+      setIsSubmitting(true);
+
+      // Validate all fields
+      const newErrors: Partial<Record<keyof T, string>> = {};
+      Object.keys(values).forEach(key => {
+        const field = key as keyof T;
+        const error = validateField(field, values[field]);
+        if (error) newErrors[field] = error;
+      });
+
+      setErrors(newErrors);
+      setTouched(
+        Object.keys(values).reduce((acc, key) => ({
+          ...acc,
+          [key]: true
+        }), {})
+      );
+
+      if (Object.keys(newErrors).length === 0) {
+        try {
+          await onSubmit(values);
+        } catch (error) {
+          console.error('Form submission error:', error);
+        }
+      }
+
+      setIsSubmitting(false);
+    }, [values, validateField]
+  );
+
+  const isValid = useMemo(() => {
+    return Object.keys(values).every(key => {
+      const field = key as keyof T;
+      return !validateField(field, values[field]);
+    });
+  }, [values, validateField]);
+
+  return (
+    <>
+      {children({
+        values,
+        errors,
+        touched,
+        handleChange,
+        handleBlur,
+        handleSubmit,
+        isValid,
+        isSubmitting
+      })}
+    </>
+  );
+}
+
+// Usage
+interface LoginForm {
+  email: string;
+  password: string;
+}
+
+const validationRules: ValidationRules<LoginForm> = {
+  email: [
+    (value) => value ? null : 'Email is required',
+    (value) => /\S+@\S+\.\S+/.test(value) ? null : 'Email is invalid'
+  ],
+  password: [
+    (value) => value ? null : 'Password is required',
+    (value) => value.length >= 6 ? null : 'Password must be at least 6 characters'
+  ]
+};
+
+function LoginPage() {
+  const handleLogin = async (values: LoginForm) => {
+    console.log('Logging in with:', values);
+    // Simulate API call
+    await new Promise(resolve => setTimeout(resolve, 1000));
+  };
+
+  return (
+    <Form
+      initialValues={{ email: '', password: '' }}
+      validationRules={validationRules}
+    >
+      {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isValid, isSubmitting }) => (
+        <form onSubmit={handleSubmit(handleLogin)}>
+          <div>
+            <input
+              type="email"
+              placeholder="Email"
+              value={values.email}
+              onChange={(e) => handleChange('email')(e.target.value)}
+              onBlur={handleBlur('email')}
+            />
+            {touched.email && errors.email && <span>{errors.email}</span>}
+          </div>
+
+          <div>
+            <input
+              type="password"
+              placeholder="Password"
+              value={values.password}
+              onChange={(e) => handleChange('password')(e.target.value)}
+              onBlur={handleBlur('password')}
+            />
+            {touched.password && errors.password && <span>{errors.password}</span>}
+          </div>
+
+          <button type="submit" disabled={!isValid || isSubmitting}>
+            {isSubmitting ? 'Logging in...' : 'Login'}
+          </button>
+        </form>
+      )}
+    </Form>
+  );
+}
+```
+
+**Render Props vs Hooks Comparison:**
+
+| Feature                | Render Props            | Custom Hooks         |
+| ---------------------- | ----------------------- | -------------------- |
+| **Syntax**             | More verbose            | Cleaner, simpler     |
+| **Reusability**        | Good                    | Excellent            |
+| **Composition**        | Nested functions        | Linear composition   |
+| **TypeScript Support** | Complex generics        | Better inference     |
+| **Performance**        | Can cause extra renders | More optimized       |
+| **Learning Curve**     | Steeper                 | Easier               |
+| **Modern React**       | Legacy pattern          | Recommended approach |
+
+**When to Use Each:**
+
+- **Render Props**: When you need very flexible component composition or working with class components
+- **Custom Hooks**: For most modern React applications, simpler logic sharing, and better performance
 
 </details>
