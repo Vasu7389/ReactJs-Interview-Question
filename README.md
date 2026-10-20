@@ -4,7 +4,7 @@ description: "Crack your React interview! Explore top React Js coding interview 
 githubPath: "https://github.com/Vasu7389/ReactJs-Interview-Question"
 ---
 
-<span style=" font-size: 1rem; border-bottom: 1px solid grey;"> Updated Mar 29, 2025 </span>
+<span style=" font-size: 1rem; border-bottom: 1px solid grey;"> Updated Oct 20, 2026 </span>
 
 Here you'll find the top 50+ React js coding test questions and answers for freshers, beginners, frontend developers, junior developers as well as for experienced developers which might help you cracking your next interview.
 
@@ -238,7 +238,7 @@ const element = <h1 className="greeting">Hello, world!</h1>;
 const element = React.createElement(
   "h1",
   { className: "greeting" },
-  "Hello, world!"
+  "Hello, world!",
 );
 ```
 
@@ -1353,7 +1353,7 @@ For the render function on the setState is not something that you would typicall
 
 const useDarkMode = () => {
   const [isDarkMode, setIsDarkMode] = useState(
-    localStorage.getItem("isDarkMode") === "true"
+    localStorage.getItem("isDarkMode") === "true",
   );
 
   // function to toggle
@@ -2195,7 +2195,7 @@ function DataList() {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          "https://jsonplaceholder.typicode.com/users"
+          "https://jsonplaceholder.typicode.com/users",
         );
         const json = await response.json();
         // Simulate a 2-second delay before setting the data
@@ -2516,7 +2516,7 @@ function UserList() {
     setError(null);
     try {
       const response = await fetch(
-        "https://jsonplaceholder.typicode.com/users"
+        "https://jsonplaceholder.typicode.com/users",
       );
 
       if (!response.ok) throw new Error("Failed to fetch data");
