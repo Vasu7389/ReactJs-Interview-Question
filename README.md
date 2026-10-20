@@ -2573,3 +2573,65 @@ This question evaluates:
 ✅ Efficient re-renders to prevent unnecessary API calls
 
 </details>
+
+<details>
+<summary>
+<h3>79. What problem does the <code>useEffectEvent</code> Hook solve in React?</h3>
+
+How does it help an Effect use the latest props or state without reconnecting or re-running unnecessarily?
+
+</summary>
+
+**Answer:**
+
+`useEffectEvent` lets an Effect use the latest value of a prop or state without making that value re-run the Effect. For example, an interval can always read the latest counter value without being recreated after every click.
+
+### Without `useEffectEvent`
+
+Adding `count` as a dependency lets the interval log the current value, but it also clears and starts a new interval after every click.
+
+```jsx
+import { useEffect, useState } from "react";
+
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      console.log(count);
+    }, 1000);
+
+    return () => clearInterval(intervalId);
+  }, [count]); // Each count change starts a new interval
+
+  return <button onClick={() => setCount(count + 1)}>{count}</button>;
+}
+```
+
+### With `useEffectEvent`
+
+The Effect Event always reads the latest `count`, while the interval is created only once.
+
+```jsx
+import { useEffect, useEffectEvent, useState } from "react";
+
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  const logCount = useEffectEvent(() => {
+    console.log(count);
+  });
+
+  useEffect(() => {
+    const intervalId = setInterval(logCount, 1000);
+
+    return () => clearInterval(intervalId);
+  }, []); // The interval is not recreated when count changes
+
+  return <button onClick={() => setCount(count + 1)}>{count}</button>;
+}
+```
+
+Without `useEffectEvent`, adding `count` to the dependency list would restart the interval whenever the counter changed; leaving it out could log a stale value. An Effect Event is not a general event-handler replacement: call it from an Effect or from callbacks registered by an Effect, and do not add it to the Effect dependency array.
+
+</details>
