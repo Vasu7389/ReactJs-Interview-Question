@@ -1,5 +1,5 @@
 ---
-title: "React Js Coding Interview Questions & Answers 2025 - Asked by TOP Companies"
+title: "React Js Coding Interview Questions & Answers 2026 - Asked by TOP Companies"
 description: "Crack your React interview! Explore top React Js coding interview questions with answers. Covers hooks, lifecycle, state, and performance tips."
 githubPath: "https://github.com/Vasu7389/ReactJs-Interview-Question"
 ---
